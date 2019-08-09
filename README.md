@@ -4,6 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 For notes about boilerplate see https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
 
 
+## Installation
+* clone this repo
+* `$ yarn`
+* `yarn start`
+* visit localhost:3000
+
+You should see:
+![alt text](./data-explorer-hello.png)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
