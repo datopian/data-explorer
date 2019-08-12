@@ -11,7 +11,7 @@ export const dataViewBuilderAction = (payload) => dispatch => {
 }
 
 export const fetchDataAction = payload => dispatch => {
-  dispatch(fetchDataBegin)
+  dispatch(fetchDataBegin())
 
   setTimeout(() => {
     // fail randomly
