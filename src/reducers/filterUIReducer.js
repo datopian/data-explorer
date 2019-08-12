@@ -3,8 +3,7 @@ export default (state = {}, action) => {
   case 'FILTER_UI_ACTION':
    console.log('reducer', state)
    return {
-    uiState: (state.uiState || 0)*1 + 1,
-    // workingData: <--- we need to some async redux magic to fire actions on start, success, fail
+    test: (state.test || 0)*1 + 1,
    } 
   default:
    return state

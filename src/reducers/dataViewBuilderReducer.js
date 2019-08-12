@@ -3,7 +3,7 @@ export default (state = {}, action) => {
   case 'DATA_VIEW_BUILDER_ACTION':
    console.log('reducer', state)
    return {
-    uiState: (state.uiState || 0)*1 + 1
+    test: (state.test || 0)*1 + 1
    }
   default:
    return state

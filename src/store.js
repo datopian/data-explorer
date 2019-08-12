@@ -4,13 +4,15 @@ import rootReducer from './reducers/rootReducer';
 
 const initialState = {
   dataViewBuilder: {
-    uiState: 100
+    test: 100
   },
   filterUI: {
-    uiState: 1000
+    test: 1000
   },
   sharedState: {
-    loading: false
+    loading: false,
+    datapackage: {},
+    loadedData: {}
   }
 }
 
