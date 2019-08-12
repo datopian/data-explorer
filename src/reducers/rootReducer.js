@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import dataViewBuilderReducer from './dataViewBuilderReducer'
-import filterUIReducer from './filterUIReducer'
+import { default as dataViewBuilder } from './dataViewBuilderReducer'
+import { default as filterUI } from './filterUIReducer'
 
 export default combineReducers({
- dataViewBuilderReducer, filterUIReducer
+ dataViewBuilder, filterUI
 })

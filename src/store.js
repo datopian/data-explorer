@@ -3,18 +3,19 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
 
 const initialState = {
-  filterUIStore: {
-    uiState: 1
+  dataViewBuilder: {
+    uiState: 100
   },
-  dataViewStore: {
-    dataViewState: 1
+  filterUI: {
+    uiState: 1000
   },
-  dataViewBuilderStore: {
-    uiState: 1
+  sharedState: {
+    loading: false
   }
 }
 
-export default function configureStore(initialState) {
+export default function configureStore() {
+ 
  return createStore(
    rootReducer,
    initialState,
