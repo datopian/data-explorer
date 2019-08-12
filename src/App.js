@@ -4,7 +4,7 @@ import './App.css';
 import FilterUI from './components/FilterUI'
 import DataView from './components/DataView'
 import DataViewBuilder from './components/DataViewBuilder'
-import { filterUIAction, dataViewBuilderAction } from './actions/';
+import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
 
 const App = props => {
   
@@ -26,6 +26,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
  filterUIAction: () => dispatch(filterUIAction()),
+ fetchDataAction: () => dispatch(fetchDataAction()),
  dataViewBuilderAction: () => dispatch(dataViewBuilderAction())
 })
 

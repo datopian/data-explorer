@@ -5,7 +5,9 @@ export default props => {
     <div>
       <h2>Filter UI</h2>
       <button onClick={e => {
-        console.log(props)
+        props.fetchDataAction()
+      }}>Fetch Data</button>
+      <button onClick={e => {
         props.filterUIAction({payload: 'hello'})
       }}>Test redux action</button>
       <hr />
