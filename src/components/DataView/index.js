@@ -4,9 +4,8 @@ import React from 'react'
 export default props => {
   return (
     <div>
-      <h2>Data View</h2>
+      <h2 className="text-2xl">Data View</h2>
       <pre>{ JSON.stringify(props) }</pre>
-      <hr/>
     </div>
   )
 }

@@ -9,13 +9,25 @@ import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './action
 export const App = props => {
   
   return (
-     <div className="App">
+    <div className="text-center mx-auto">
       <header>
-       <h1 className="App-title">Data Explorer</h1>
+        <div className="container">
+          <h1 className="text-3xl">Data Explorer</h1>
+        </div>
       </header>
-      <FilterUI {...props} />
-      <DataView {...props} />
-      <DataViewBuilder {...props} />
+      <div className="container my-6">
+        <div className="">
+          <FilterUI {...props} />
+        </div>
+      </div>
+      <div className="container flex mx-auto">
+        <div className="w-3/4 p-4 overflow-x-auto">
+          <DataView {...props} />
+        </div>
+        <div className="w-1/4 p-4">
+          <DataViewBuilder {...props} />
+        </div>
+      </div>
      </div>
   )
 }
