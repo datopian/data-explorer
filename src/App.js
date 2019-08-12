@@ -9,22 +9,22 @@ import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './action
 export const App = props => {
   
   return (
-    <div className="text-center mx-auto">
+    <div className="text-center ml-6">
       <header>
         <div className="container">
           <h1 className="text-3xl">Data Explorer</h1>
         </div>
       </header>
-      <div className="container my-6">
+      <div className="container py-6 bg-pink-100">
         <div className="">
           <FilterUI {...props} />
         </div>
       </div>
-      <div className="container flex mx-auto">
-        <div className="w-3/4 p-4 overflow-x-auto">
+      <div className="container flex py-6 bg-yellow-100">
+        <div className="w-3/4 p-4 mr-4 overflow-x-auto">
           <DataView {...props} />
         </div>
-        <div className="w-1/4 p-4">
+        <div className="w-1/4 p-4 mr-4 bg-green-100">
           <DataViewBuilder {...props} />
         </div>
       </div>
