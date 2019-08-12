@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import configureStore from './store'
 import './App.css';
 import FilterUI from './components/FilterUI'
 import DataView from './components/DataView'
