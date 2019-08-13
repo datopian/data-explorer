@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import FilterUI from './components/FilterUI'
-import DataView from './components/DataView'
+import DataView from 'datapackage-views-js'
+//import DataView from './components/DataView'
 import DataViewBuilder from './components/DataViewBuilder'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
 
@@ -22,7 +23,7 @@ export const App = props => {
       </div>
       <div className="container flex py-6 bg-yellow-100">
         <div className="w-3/4 p-4 mr-4 overflow-x-auto">
-          <DataView {...props} />
+          <DataView {...props.sharedState} />
         </div>
         <div className="w-1/4 p-4 mr-4 bg-green-100">
           <DataViewBuilder {...props} />
