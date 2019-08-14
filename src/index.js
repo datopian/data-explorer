@@ -7,7 +7,7 @@ import App from './App'
 import { register } from './serviceWorker'
 
 // Mock init data
-import datapackage from './testDataInit.json'
+import datapackage from './testData/testDataInit.json'
 
 ReactDOM.render(
  <Provider store={configureStore({sharedState: {datapackage}})}>

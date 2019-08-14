@@ -1,10 +1,23 @@
-import datapackage from '../testData.json'
-
-//import datapackage from '../testData/actes-criminels.json'
-//import loadDataset from '../utils/loadDataset'
+import { deepClone } from '../utils'
 
 export default (state = {}, action) => {
  switch (action.type) {
+  case 'DATA_VIEW_BUILDER_ACTION':
+      const datapackage = deepClone(state.datapackage)
+      console.log('DVB', action.payload, datapackage.views)
+
+      if (datapackage.views.length === 1) {
+        datapackage.views = [action.payload]
+      }   
+    
+      if (datapackage.views.length > 1) {
+        datapackage.views[0] = action.payload  
+      }
+
+      const newState = Object.assign(deepClone(state), {datapackage})
+      console.log(newState, datapackage)
+      return newState
+
   case 'FILTER_UI_ACTION':
    return {
     datapackage: {foo: 'bar'},
@@ -14,8 +27,8 @@ export default (state = {}, action) => {
     console.log('FETCH_DATA_BEGIN')
     return Object.assign({}, state, {loading: true})
   case 'FETCH_DATA_SUCCESS':
-    console.log('FETCH_DATA_SUCCESS')
-    return Object.assign({}, state, {loading: false, error: false, datapackage})
+    console.log('FETCH_DATA_SUCCESS', action.payload)
+    return Object.assign({}, state, {loading: false, error: false, datapackage: action.payload.datapackage})
   case 'FETCH_DATA_FAILURE':
     return Object.assign({}, state, {loading: false, error: true, errorBody: action.payload})
   default:

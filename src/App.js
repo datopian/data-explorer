@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import FilterUI from './components/FilterUI'
-import DataView from 'datapackage-views-js'
-//import DataView from './components/DataView'
+import DataView from './components/DataView'
 import DataViewBuilder from './components/DataViewBuilder'
-import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
+import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/'
+import { getDataViewBuilderView } from './utils'
 
 export const App = props => {
-  console.log('APP', props)
+  console.log('APP', props, getDataViewBuilderView(props.sharedState.datapackage))
   
   return (
     <div className="text-center ml-6">
@@ -27,7 +27,7 @@ export const App = props => {
           <DataView {...props.sharedState} />
         </div>
         <div className="w-1/4 p-4 mr-4 bg-green-100">
-          <DataViewBuilder {...props} />
+          <DataViewBuilder dataViewBuilderAction={props.dataViewBuilderAction} view={getDataViewBuilderView(props.sharedState.datapackage)} />
         </div>
       </div>
      </div>
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
  filterUIAction: () => dispatch(filterUIAction()),
  fetchDataAction: () => dispatch(fetchDataAction()),
- dataViewBuilderAction: () => dispatch(dataViewBuilderAction())
+ dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

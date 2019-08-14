@@ -3,7 +3,6 @@ import { Dataset } from 'data.js'
 
 var toArray = require('stream-to-array')
 
-
 function parseDatapackageIdentifier(stringOrJSON) {
   try {
     return JSON.parse(stringOrJSON)
@@ -13,6 +12,7 @@ function parseDatapackageIdentifier(stringOrJSON) {
 }
 
 function compile(descriptor) {
+  console.log(1, descriptor)
 	if (!Array.isArray(descriptor)) descriptor = [descriptor]
 	
   return descriptor.views.map(view => {
@@ -20,16 +20,21 @@ function compile(descriptor) {
   })
 }
 
+// needs to be encapsulated
+// should be library code
 export default (dpID) => { 
   console.log("DPID", dpID) 
   const DP_ID = parseDatapackageIdentifier(dpID)
 
   // Load Dataset object
+  // TODO data.js should expose json() method
+
+  // load single applicable resource
   Dataset.load(DP_ID).then(async (dataset) => {
     const tabularFormats = ['csv', 'tsv', 'dsv', 'xls', 'xlsx']
     // TODO: support local files
     // Data fetcher
-    dataset.resources.forEach(async (file) => {
+    dataset.resources.forEach(async (file) => {  // single resource
       if (file.displayName === 'FileInline') {
         return
       } else if (file.descriptor.path && file.descriptor.path.includes('datastore_search')) {
@@ -88,7 +93,7 @@ export default (dpID) => {
 
     // Compile views and render App
     const compiledViews = compile(dataset.descriptor)
-    console.log("D1", compiledViews)
+    console.log("D2", compiledViews)
   })
   .catch((error) => {
     console.warn('Failed to load a Dataset from provided datapackage id\n' + error)

@@ -1,13 +1,16 @@
 import React from 'react'
 import Loader from 'react-loader'
+import DataView from 'datapackage-views-js'
 
 export default props => {
-  console.log(props.sharedState.loading)
+  const views = props.datapackage.views
+
   return (
-  <Loader loaded={!props.sharedState.loading}>
+  <Loader loaded={!props.loading}>
     <div>
-      <h2 className="text-2xl">Data View</h2>
-      <pre>{ JSON.stringify(props) }</pre>
+     {
+        views.map(view => <DataView key={Math.random()} datapackage={{views: [view]}} />)
+     }
     </div>
   </Loader>
   )
