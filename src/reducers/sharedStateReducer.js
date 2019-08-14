@@ -7,7 +7,7 @@ export default (state = {}, action) => {
       console.log('DVB', action.payload, datapackage.views)
 
       if (datapackage.views.length === 1) {
-        datapackage.views = [action.payload]
+        datapackage.views.unshift(action.payload)
       }   
     
       if (datapackage.views.length > 1) {
