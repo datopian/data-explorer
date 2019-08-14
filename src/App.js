@@ -23,11 +23,11 @@ export const App = props => {
           <FilterUI {...props} />
         </div>
       </div>
-      <div className="container flex py-6 bg-yellow-100">
-        <div className="w-3/4 p-4 mr-4 overflow-x-auto">
+      <div className="container flex py-6">
+        <div className="w-3/4 p-4 mr-4 overflow-x-auto border-r-2">
           <DataView {...props.sharedState} />
         </div>
-        <div className="w-1/4 p-4 mr-4 bg-green-100">
+        <div className="w-1/4 p-4 mr-4">
           <ChartBuilder view={getDataViewBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
         </div>
       </div>
