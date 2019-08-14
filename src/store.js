@@ -1,9 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
-import datapackage from './testData.json'
-
-console.log("DATA", datapackage)
+// import datapackage from './testData.json'
 
 const initialState = {
   dataViewBuilder: {
@@ -14,7 +12,7 @@ const initialState = {
   },
   sharedState: {
     loading: false,
-    datapackage: {},
+    datapackage: {views: []},
     loadedData: {}
   }
 }

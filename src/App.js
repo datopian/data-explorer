@@ -8,6 +8,7 @@ import DataViewBuilder from './components/DataViewBuilder'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
 
 export const App = props => {
+  console.log('APP', props)
   
   return (
     <div className="text-center ml-6">

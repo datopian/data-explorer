@@ -1,5 +1,8 @@
 import datapackage from '../testData.json'
 
+//import datapackage from '../testData/actes-criminels.json'
+//import loadDataset from '../utils/loadDataset'
+
 export default (state = {}, action) => {
  switch (action.type) {
   case 'FILTER_UI_ACTION':
@@ -11,13 +14,8 @@ export default (state = {}, action) => {
     console.log('FETCH_DATA_BEGIN')
     return Object.assign({}, state, {loading: true})
   case 'FETCH_DATA_SUCCESS':
-    const _state = JSON.parse(JSON.stringify(state))
-    const newState = Object.assign({}, _state, {loading: false, error: false, errorBody: '', datapackage, loadedData: action.payload})
     console.log('FETCH_DATA_SUCCESS')
-    console.log('_state', _state)
-    console.log('datapackage', datapackage)
-    console.log('new state', newState)
-    return newState
+    return Object.assign({}, state, {loading: false, error: false, datapackage})
   case 'FETCH_DATA_FAILURE':
     return Object.assign({}, state, {loading: false, error: true, errorBody: action.payload})
   default:
