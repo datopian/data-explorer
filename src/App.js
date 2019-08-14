@@ -4,6 +4,7 @@ import './App.css';
 import FilterUI from './components/FilterUI'
 import DataView from './components/DataView'
 import DataViewBuilder from './components/DataViewBuilder'
+import { ChartBuilder } from 'chart-builder'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/'
 import { getDataViewBuilderView } from './utils'
 
@@ -27,7 +28,7 @@ export const App = props => {
           <DataView {...props.sharedState} />
         </div>
         <div className="w-1/4 p-4 mr-4 bg-green-100">
-          <DataViewBuilder dataViewBuilderAction={props.dataViewBuilderAction} view={getDataViewBuilderView(props.sharedState.datapackage)} />
+          <ChartBuilder view={getDataViewBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
         </div>
       </div>
      </div>

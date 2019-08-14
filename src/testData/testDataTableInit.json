@@ -33,61 +33,6 @@
               "d"
             ],
             [
-              11,
-              22,
-              33,
-              44
-            ],
-            [
-              21,
-              31,
-              41,
-              15
-            ],
-            [
-              32,
-              42,
-              52,
-              62
-            ]
-          ]
-        }
-     ]
-  },
-    {
-      "id": 2,
-      "specType": "table",
-      "resources": [
-        {
-          "name": "test",
-      "schema": {
-        "fields": [
-          {
-            "name": "a",
-            "type": "string"
-          },
-          {
-            "name": "b",
-            "type": "string"
-          },
-          {
-            "name": "c",
-            "type": "string"
-          },
-          {
-            "name": "d",
-            "type": "string"
-          }
-        ]
-	},
-          "data": [
-            [
-              "a",
-              "b",
-              "c",
-              "d"
-            ],
-            [
               1,
               2,
               3,

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "^9.6.1",
+    "chart-builder": "git+https://github.com/datopian/chart-builder.git",
     "data.js": "^0.12.9",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
     "datapackage-views-js": "git+https://github.com/datopian/datapackage-views-js.git#refactor/data-views",

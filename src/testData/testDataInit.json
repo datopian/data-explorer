@@ -1,16 +1,43 @@
 { "views": [
     {
       "id": 1,
-      "specType": "table",
+          "specType": "simple",
+          "spec": {
+  			"type": "bar",
+  			"group": "b",
+  			"series": [
+    			"a"
+  			]
+		 },
       "resources": [
         {
           "name": "test",
+      "schema": {
+        "fields": [
+          {
+            "name": "a",
+            "type": "string"
+          },
+          {
+            "name": "b",
+            "type": "string"
+          },
+          {
+            "name": "c",
+            "type": "string"
+          },
+          {
+            "name": "d",
+            "type": "string"
+          }
+        ]
+	},
           "data": [
             [
-              "X",
-              "X",
-              "X",
-              "X"
+              "a",
+              "b",
+              "c",
+              "d"
             ],
             [
               1,
