@@ -23,9 +23,8 @@ export const App = props => {
           <h1 className="text-3xl">Data Explorer</h1>
         </div>
       </header>
-      <div className="container py-6 bg-pink-100">
+      <div className="container py-4">
         <div className="">
-          <FilterUI {...props} />
         </div>
       </div>
       <div className="container flex py-6">
