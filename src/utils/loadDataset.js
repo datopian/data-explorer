@@ -19,19 +19,17 @@ function compile(descriptor) {
 
 // needs to be encapsulated
 // should be library code
-export default async dpID => { 
-  console.log("DPID", dpID) 
+export default async dpID => {
   const DP_ID = parseDatapackageIdentifier(dpID)
   const tabularFormats = ['csv', 'tsv', 'dsv', 'xls', 'xlsx']
 
   try {
     const dataset = await Dataset.load(DP_ID)
-    console.log('loadDataset-1', dataset)
 
     // TODO why is this happening here? This looks like library code
-    // TODO clean up! this shouldn't handle mutation of descriptor along 
+    // TODO clean up! this shouldn't handle mutation of descriptor along
     //      side of fetching resources etc... a mess
-    dataset.resources.forEach(async (file) => {
+    await Promise.all(dataset.resources.map(async (file) => {
       if (file.displayName === 'FileInline') {
         return
       } else if (file.descriptor.path && file.descriptor.path.includes('datastore_search')) {
@@ -83,9 +81,7 @@ export default async dpID => {
         // We can't load any other data types for now.
         file.descriptor.unavailable = true
       }
-    })
-
-    console.log('222', dataset)
+    }))
 
     return compile(dataset.descriptor)
   } catch (e) {

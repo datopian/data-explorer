@@ -1,0 +1,61 @@
+{
+  "name": "inlined-data",
+  "resources": [
+    {
+      "name": "test",
+      "schema": {
+        "fields": [
+          {
+            "name": "a",
+            "type": "string"
+          },
+          {
+            "name": "b",
+            "type": "string"
+          },
+          {
+            "name": "c",
+            "type": "string"
+          },
+          {
+            "name": "d",
+            "type": "string"
+          }
+        ]
+      },
+      "data": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          6
+        ]
+      ]
+    }
+  ],
+  "views": [
+    {
+      "id": 1,
+      "specType": "table",
+      "resources": ["test"]
+    }
+  ]
+}
