@@ -1,5 +1,3 @@
-import __datapackage from '../testData/testData.json'
-import _datapackage from '../testData/montreal1.json'
 import loadDataset from '../utils/loadDataset'
 
 export const filterUIAction = payload => dispatch => {
@@ -17,9 +15,7 @@ export const dataViewBuilderAction = (payload) => dispatch => {
 
 export const fetchDataAction = payload => async dispatch => {
   dispatch(fetchDataBegin())
-  
-  const views = await loadDataset(_datapackage)
-  
+  const views = await loadDataset(payload.datapackage)
   dispatch(fetchDataSuccess({datapackage: {views}}))
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import FilterUI from './components/FilterUI'
@@ -9,7 +9,13 @@ import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './action
 import { getDataViewBuilderView } from './utils'
 
 export const App = props => {
-  
+  useEffect(() => {
+    const payload = {
+      datapackage: props.sharedState.datapackage
+    }
+    props.fetchDataAction(payload)
+  }, [])
+
   return (
     <div className="text-center ml-6">
       <header>
@@ -40,7 +46,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
  filterUIAction: () => dispatch(filterUIAction()),
- fetchDataAction: () => dispatch(fetchDataAction()),
+ fetchDataAction: payload => dispatch(fetchDataAction(payload)),
  dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload))
 })
 
