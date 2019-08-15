@@ -2095,7 +2095,7 @@ chardet@^0.7.0:
 
 "chart-builder@git+https://github.com/datopian/chart-builder.git":
   version "0.0.1"
-  resolved "git+https://github.com/datopian/chart-builder.git#2fe910dafd0a93df106b4965ea56530388cff936"
+  resolved "git+https://github.com/datopian/chart-builder.git#7cd882352e703c002bd64a881dc4fa7cd82d29ff"
   dependencies:
     formik "^1.5.8"
     react "^16.9.0"
