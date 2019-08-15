@@ -9,7 +9,6 @@ import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './action
 import { getDataViewBuilderView } from './utils'
 
 export const App = props => {
-  console.log('APP', props, getDataViewBuilderView(props.sharedState.datapackage))
   
   return (
     <div className="text-center ml-6">

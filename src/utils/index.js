@@ -6,10 +6,12 @@ export const getEmptyView = datapackage => {
   }
 }
 
-export const getDataViewBuilderView = datapackage => {
-  console.log('gdvbv', datapackage)
+export const getDataViewBuilderView = (datapackage) => {
+  if (!datapackage) return {}
 
-  switch (datapackage.views.length) {
+  const views = datapackage.views || []
+
+  switch (views.length) {
     case 1:
       return datapackage.views[0]
     case 2:

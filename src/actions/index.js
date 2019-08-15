@@ -1,5 +1,5 @@
 import __datapackage from '../testData/testData.json'
-import _datapackage from '../testData/actes-criminels.json'
+import _datapackage from '../testData/montreal1.json'
 import loadDataset from '../utils/loadDataset'
 
 export const filterUIAction = payload => dispatch => {
@@ -15,14 +15,12 @@ export const dataViewBuilderAction = (payload) => dispatch => {
  })
 }
 
-export const fetchDataAction = payload => dispatch => {
+export const fetchDataAction = payload => async dispatch => {
   dispatch(fetchDataBegin())
   
-  const datapackage = __datapackage
-
-  setTimeout(() => {
-      dispatch(fetchDataSuccess({datapackage}))
-  }, 800)
+  const views = await loadDataset(_datapackage)
+  
+  dispatch(fetchDataSuccess({datapackage: {views}}))
 }
 
 const fetchDataBegin = () => ({

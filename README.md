@@ -6,13 +6,12 @@ For notes about boilerplate see https://medium.com/backticks-tildes/setting-up-a
 
 ## Installation
 * clone this repo
-* `$ yarn`
+* `yarn`
 * `yarn start`
 * visit localhost:3000
 
 You should see:
-![alt text](./data-explorer-hello.png)
-
+![alt text](https://i.imgur.com/IygXUYF.png))
 
 ## Available Scripts
 

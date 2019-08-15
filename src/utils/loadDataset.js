@@ -12,9 +12,6 @@ function parseDatapackageIdentifier(stringOrJSON) {
 }
 
 function compile(descriptor) {
-  console.log(1, descriptor)
-	if (!Array.isArray(descriptor)) descriptor = [descriptor]
-	
   return descriptor.views.map(view => {
     return dpRender.compileView(view, descriptor)
   })
@@ -22,19 +19,19 @@ function compile(descriptor) {
 
 // needs to be encapsulated
 // should be library code
-export default (dpID) => { 
+export default async dpID => { 
   console.log("DPID", dpID) 
   const DP_ID = parseDatapackageIdentifier(dpID)
+  const tabularFormats = ['csv', 'tsv', 'dsv', 'xls', 'xlsx']
 
-  // Load Dataset object
-  // TODO data.js should expose json() method
+  try {
+    const dataset = await Dataset.load(DP_ID)
+    console.log('loadDataset-1', dataset)
 
-  // load single applicable resource
-  Dataset.load(DP_ID).then(async (dataset) => {
-    const tabularFormats = ['csv', 'tsv', 'dsv', 'xls', 'xlsx']
-    // TODO: support local files
-    // Data fetcher
-    dataset.resources.forEach(async (file) => {  // single resource
+    // TODO why is this happening here? This looks like library code
+    // TODO clean up! this shouldn't handle mutation of descriptor along 
+    //      side of fetching resources etc... a mess
+    dataset.resources.forEach(async (file) => {
       if (file.displayName === 'FileInline') {
         return
       } else if (file.descriptor.path && file.descriptor.path.includes('datastore_search')) {
@@ -86,16 +83,13 @@ export default (dpID) => {
         // We can't load any other data types for now.
         file.descriptor.unavailable = true
       }
-
-      const compiledViews = compile(dataset.descriptor)
-      console.log("D1", compiledViews)
     })
 
-    // Compile views and render App
-    const compiledViews = compile(dataset.descriptor)
-    console.log("D2", compiledViews)
-  })
-  .catch((error) => {
-    console.warn('Failed to load a Dataset from provided datapackage id\n' + error)
-  })
+    console.log('222', dataset)
+
+    return compile(dataset.descriptor)
+  } catch (e) {
+    console.warn('Failed to load a Dataset from provided datapackage id\n' + e)
+    return DP_ID
+  }
 }
