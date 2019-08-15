@@ -1,0 +1,61 @@
+{
+  "name": "inlined-data",
+  "resources": [
+    {
+      "name": "test",
+      "path": "https://raw.githubusercontent.com/datapackage-examples/sample-csv/master/sample.csv",
+      "format": "csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "header 0",
+            "type": "string"
+          },
+          {
+            "name": "header 1",
+            "type": "string"
+          },
+          {
+            "name": "header 2",
+            "type": "string"
+          },
+          {
+            "name": "header 3",
+            "type": "string"
+          },
+          {
+            "name": "header 4",
+            "type": "string"
+          },
+          {
+            "name": "header 5",
+            "type": "string"
+          },
+          {
+            "name": "header 6",
+            "type": "string"
+          },
+          {
+            "name": "header 7",
+            "type": "string"
+          },
+          {
+            "name": "header 8",
+            "type": "string"
+          },
+          {
+            "name": "header 9",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "views": [
+    {
+      "id": 1,
+      "specType": "table",
+      "resources": ["test"]
+    }
+  ]
+}
