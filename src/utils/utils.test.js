@@ -9,5 +9,5 @@ it('compiles views!', async () => {
   expect(compiledView[0].resources).toBeInstanceOf(Array)
   expect(compiledView[0].resources[0]).toBeInstanceOf(Object)
   expect(compiledView[0].resources[0].data).toBeInstanceOf(Array)
-  expect(compiledView[0].resources[0].data.length).toBe(4)
+  expect(compiledView[0].resources[0].data.length).toBe(3)
 });
