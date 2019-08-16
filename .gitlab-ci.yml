@@ -1,17 +1,13 @@
 image: node:alpine
 
 stages:
-- build
 - test
 
-Build:
-  stage: build
-  script:
-    - npm install -g yarn
-    - apk add --no-cache git
 Test:
   stage: test
   before_script:
+    - apk add --no-cache git
+    - npm install -g yarn
     - yarn
   script:
     - yarn test
