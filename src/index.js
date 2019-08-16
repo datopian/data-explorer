@@ -10,7 +10,7 @@ function parseDatapackageIdentifier(stringOrJSON) {
   try {
     return JSON.parse(stringOrJSON)
   } catch (e) {
-    console.error(e)
+    console.warn(e)
     return stringOrJSON
   }
 }
