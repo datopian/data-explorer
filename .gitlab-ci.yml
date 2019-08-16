@@ -1,13 +1,11 @@
 image: node:alpine
 
-# Name the stages involved in the pipeline
 stages:
 - test
 
 Test:
-  stage: build
+  stage: test
   before_script:
     - yarn
   script:
     - yarn test
-
