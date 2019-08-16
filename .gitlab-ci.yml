@@ -7,7 +7,7 @@ stages:
 Build:
   stage: build
   script:
-    - napm install -g yarn
+    - npm install -g yarn
 Test:
   stage: test
   before_script:
