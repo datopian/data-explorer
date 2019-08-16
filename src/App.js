@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import FilterUI from './components/FilterUI'
+import { QueryBuilder } from 'datastore-query-builder';
 import DataView from './components/DataView'
-import DataViewBuilder from './components/DataViewBuilder'
 import { ChartBuilder } from 'chart-builder'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/'
-import { getDataViewBuilderView } from './utils'
+import { getDataViewBuilderView, getResourceForFiltering } from './utils'
 
 export const App = props => {
   useEffect(() => {
@@ -25,6 +24,7 @@ export const App = props => {
       </header>
       <div className="container py-4">
         <div className="">
+          <QueryBuilder resource={getResourceForFiltering(props.sharedState.datapackage)} filterBuilderAction={props.filterUIAction} />
         </div>
       </div>
       <div className="container flex py-6">
@@ -44,7 +44,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
- filterUIAction: () => dispatch(filterUIAction()),
+ filterUIAction: (payload) => dispatch(filterUIAction(payload)),
  fetchDataAction: payload => dispatch(fetchDataAction(payload)),
  dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload))
 })

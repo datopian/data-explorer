@@ -21,6 +21,11 @@ export const getDataViewBuilderView = (datapackage) => {
   }
 }
 
+export const getResourceForFiltering = (datapackage) => {
+  if (!datapackage) return {}
+  return datapackage.resources[0]
+}
+
 export const deepClone = obj => {
   return JSON.parse(JSON.stringify(obj))
 }

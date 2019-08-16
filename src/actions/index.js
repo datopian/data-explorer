@@ -1,9 +1,23 @@
 import loadDataset from '../utils/loadDataset'
 
-export const filterUIAction = payload => dispatch => {
+export const filterUIAction = (payload) => async (dispatch, getState) => {
  dispatch({
-  type: 'FILTER_UI_ACTION'
+  type: 'FILTER_UI_ACTION',
+  payload
  })
+ const datapackage = getState().sharedState.datapackage
+ // For datastore resources, we need to remove loaded `data` attribute to
+ // trigger re-fetch of a resource. This is required since we initially fetch
+ // only subset of data from datastore, eg, first 100 rows. When user applies
+ // filters, we need to hit datastore api and update the data.
+ if (datapackage.resources[0].datastore_active) {
+   delete datapackage.resources[0].data
+ }
+ dispatch(fetchDataBegin())
+ const views = await loadDataset(datapackage)
+ const newDatapackage = JSON.parse(JSON.stringify(datapackage))
+ newDatapackage.views = views
+ dispatch(fetchDataSuccess({datapackage: newDatapackage}))
 }
 
 export const dataViewBuilderAction = (payload) => dispatch => {
@@ -16,7 +30,9 @@ export const dataViewBuilderAction = (payload) => dispatch => {
 export const fetchDataAction = payload => async dispatch => {
   dispatch(fetchDataBegin())
   const views = await loadDataset(payload.datapackage)
-  dispatch(fetchDataSuccess({datapackage: {views}}))
+  const newDatapackage = JSON.parse(JSON.stringify(payload.datapackage))
+  newDatapackage.views = views
+  dispatch(fetchDataSuccess({datapackage: newDatapackage}))
 }
 
 const fetchDataBegin = () => ({
