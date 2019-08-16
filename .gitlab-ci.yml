@@ -8,6 +8,7 @@ Build:
   stage: build
   script:
     - npm install -g yarn
+    - apk add --no-cache git
 Test:
   stage: test
   before_script:
