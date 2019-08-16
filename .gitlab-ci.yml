@@ -1,8 +1,13 @@
 image: node:alpine
 
 stages:
+- build
 - test
 
+Build:
+  stage: build
+  script:
+    - napm install -g yarn
 Test:
   stage: test
   before_script:
