@@ -51,8 +51,9 @@ export default async dpID => {
           } else {
             file.descriptor.unavailable = true
           }
+          await file.addSchema()
         } catch (e) {
-          console.log(e)
+          console.warn(e)
           file.descriptor.unavailable = true
         }
       } else if (file.descriptor.format.toLowerCase().includes('json')) {
