@@ -14,14 +14,21 @@ function parseDatapackageIdentifier(stringOrJSON) {
     return stringOrJSON
   }
 }
-const datapackage = parseDatapackageIdentifier(window.DP_ID)
 
+const instances = document.getElementsByClassName('data-explorer')
 
-ReactDOM.render(
- <Provider store={configureStore({sharedState: {datapackage}})}>
-  <App />
- </Provider>,
- document.getElementById('data-explorer')
-)
+for (const instance of instances) {
+  try {
+    const datapackage=JSON.parse(instance.getAttribute('data-datapackage'))
+
+    ReactDOM.render(
+     <Provider store={configureStore({sharedState: {datapackage}})}>
+      <App />
+     </Provider>, document.getElementById(instance.id)
+    )
+  } catch (e) {
+    console.warn('Failed to render data-explorer', e)
+  }
+}
 
 serviceWorker.unregister();
