@@ -23,29 +23,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="data-explorer"></div>
-
-    <script>
-      var DP_ID = {
-        "name": "test",
-        "resources": [
-          {
-            "name": "datastore-test",
-            "id": "f40147ba-8e83-438e-9e89-bfddd0cba81f",
-            "format": "csv",
-            "datastore_active": true,
-            "path": "https://www.energidataservice.dk/datastore/dump/f40147ba-8e83-438e-9e89-bfddd0cba81f"
-          }
-        ],
-        "views": [
-          {
-            "specType": "table",
-            "resources": [
-              "datastore-test"
-            ]
-          }
-        ]
-      };
-    </script>
+    <div class="data-explorer" id="data-explorer-1" data-datapackage='{"name":"test","resources":[{"name":"datastore-test","id":"f40147ba-8e83-438e-9e89-bfddd0cba81f","format":"csv","datastore_active":true,"path":"https://www.energidataservice.dk/datastore/dump/f40147ba-8e83-438e-9e89-bfddd0cba81f"}],"views":[{"specType":"table","resources":["datastore-test"]}], "controls": {"showChartBuilder": true}}'></div>
+    <div class="data-explorer" id="data-explorer-2" data-datapackage='{"name":"test","resources":[{"name":"datastore-test","id":"f40147ba-8e83-438e-9e89-bfddd0cba81f","format":"csv","datastore_active":true,"path":"https://www.energidataservice.dk/datastore/dump/f40147ba-8e83-438e-9e89-bfddd0cba81f"}],"views":[{"specType":"table","resources":["datastore-test"]}]}'></div>
   </body>
 </html>

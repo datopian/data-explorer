@@ -15,25 +15,25 @@ export const App = props => {
     props.fetchDataAction(payload)
   }, [])
 
+  const showChartBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showChartBuilder
+  const chartBuilder = (showChartBuilder) && (
+        <div className="p-4 mr-4">
+          <ChartBuilder view={getDataViewBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
+        </div>
+      )
+
   return (
     <div className="text-center ml-6">
-      <header>
-        <div className="container">
-          <h1 className="text-3xl">Data Explorer</h1>
-        </div>
-      </header>
       <div className="container py-4">
         <div className="">
           <QueryBuilder resource={getResourceForFiltering(props.sharedState.datapackage)} filterBuilderAction={props.filterUIAction} />
         </div>
       </div>
       <div className="container flex py-6">
-        <div className="w-3/4 p-4 mr-4 overflow-x-auto border-r-2">
+        <div className="w-3/4 p-3 mr-4">
           <DataView {...props.sharedState} />
         </div>
-        <div className="w-1/4 p-4 mr-4">
-          <ChartBuilder view={getDataViewBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
-        </div>
+        {chartBuilder}
       </div>
      </div>
   )
