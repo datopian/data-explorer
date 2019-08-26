@@ -21,10 +21,16 @@ export const filterUIAction = (payload) => async (dispatch, getState) => {
 }
 
 export const dataViewBuilderAction = (payload) => dispatch => {
- dispatch({
-  type: 'DATA_VIEW_BUILDER_ACTION',
-  payload
- })
+  let actionType
+  if (payload.specType === 'simple') {
+    actionType = 'DATA_VIEW_CHART_BUILDER_ACTION'
+  } else if (payload.specType === 'tabularmap') {
+    actionType = 'DATA_VIEW_MAP_BUILDER_ACTION'
+  }
+  dispatch({
+    type: actionType,
+    payload
+  })
 }
 
 export const fetchDataAction = payload => async dispatch => {

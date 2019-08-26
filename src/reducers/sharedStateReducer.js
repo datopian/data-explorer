@@ -2,19 +2,28 @@ import { deepClone } from '../utils'
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'DATA_VIEW_BUILDER_ACTION':
+    case 'DATA_VIEW_CHART_BUILDER_ACTION':
       const datapackage = deepClone(state.datapackage)
 
-      if (datapackage.views.length === 1) {
+      if (datapackage.views.length <= 2) {
         datapackage.views.unshift(action.payload)
       }
 
-      if (datapackage.views.length > 1) {
+      if (datapackage.views.length > 2) {
         datapackage.views[0] = action.payload
       }
 
       const newState = Object.assign(deepClone(state), {datapackage})
       return newState
+    case 'DATA_VIEW_MAP_BUILDER_ACTION':
+      const mapBuilderDp = deepClone(state.datapackage)
+      mapBuilderDp.views.forEach((view, index) => {
+        if (view.specType === 'tabularmap') {
+          mapBuilderDp.views[index] = action.payload
+        }
+      })
+      const mapBuilderState = Object.assign(deepClone(state), {datapackage: mapBuilderDp})
+      return mapBuilderState
     case 'FILTER_UI_ACTION':
       const filteredDatapackage = deepClone(state.datapackage)
       filteredDatapackage.resources[0] = action.payload

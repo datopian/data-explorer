@@ -751,6 +751,25 @@
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
 
+"@datopian/datapackage-views-js@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.0.0.tgz#dac568b7b0c201dec9719dab51c3040d8d94e2b3"
+  dependencies:
+    "@handsontable/react" "^3.0.0"
+    data.js "^0.12.8"
+    datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
+    handsontable "^7.1.0"
+    leaflet "^1.5.1"
+    plotly.js-basic-dist "^1.49.2"
+    react "^16.8.6"
+    react-csv "^1.1.1"
+    react-dom "^16.8.6"
+    react-leaflet "^2.4.0"
+    react-loader-spinner "^2.3.0"
+    react-pdf-js "^5.1.0"
+    react-plotly.js "^2.3.0"
+    react-scripts "3.0.1"
+
 "@handsontable/formulajs@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@handsontable/formulajs/-/formulajs-2.0.1.tgz#e0b15f085bf485702dd776b6e95269630ae44e98"
@@ -2741,27 +2760,9 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-data.js@^0.12.10:
+data.js@^0.12.10, data.js@^0.12.8:
   version "0.12.10"
   resolved "https://registry.yarnpkg.com/data.js/-/data.js-0.12.10.tgz#e25557424b5efc73c65dc45011803067eeecbc88"
-  dependencies:
-    "@babel/polyfill" "^7.4.4"
-    chardet "^0.4.2"
-    csv-parse "^4.4.3"
-    csv-sniffer "^0.1.1"
-    iconv-lite "^0.4.19"
-    lodash "^4.17.4"
-    mime-types "^2.1.16"
-    node-fetch "^2.0.0"
-    stream-to-array "^2.3.0"
-    stream-to-string "^1.1.0"
-    tableschema "^1.9.0"
-    url-join "^2.0.2"
-    xlsx "^0.14.3"
-
-data.js@^0.12.8:
-  version "0.12.9"
-  resolved "https://registry.yarnpkg.com/data.js/-/data.js-0.12.9.tgz#6838fc5965797432dc6f1289813c8a51743940bd"
   dependencies:
     "@babel/polyfill" "^7.4.4"
     chardet "^0.4.2"
@@ -2782,25 +2783,6 @@ data.js@^0.12.8:
   resolved "git+https://github.com/frictionlessdata/datapackage-render-js.git#b7cfbbb09f68e7063e7a48901b9e677b4d7d314c"
   dependencies:
     lodash "^4.0.0"
-
-"datapackage-views-js@git+https://github.com/datopian/datapackage-views-js.git#refactor/data-views":
-  version "0.0.8"
-  resolved "git+https://github.com/datopian/datapackage-views-js.git#6ffcd88e234d809579df9768bab67d219f8b6117"
-  dependencies:
-    "@handsontable/react" "^3.0.0"
-    data.js "^0.12.8"
-    datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
-    handsontable "^7.1.0"
-    leaflet "^1.5.1"
-    plotly.js-basic-dist "^1.49.2"
-    react "^16.8.6"
-    react-csv "^1.1.1"
-    react-dom "^16.8.6"
-    react-leaflet "^2.4.0"
-    react-loader-spinner "^2.3.0"
-    react-pdf-js "^5.1.0"
-    react-plotly.js "^2.3.0"
-    react-scripts "3.0.1"
 
 "datastore-query-builder@git+https://github.com/datopian/datastore-query-builder.git#feature/package":
   version "0.1.0"
@@ -5501,6 +5483,14 @@ map-age-cleaner@^0.1.1:
   dependencies:
     p-defer "^1.0.0"
 
+"map-builder@git+https://github.com/datopian/map-builder.git":
+  version "0.0.1"
+  resolved "git+https://github.com/datopian/map-builder.git#6e27e52720223d9769de3b7a635caf0f545dee7e"
+  dependencies:
+    formik "^1.5.8"
+    react "^16.9.0"
+    react-dom "^16.9.0"
+
 map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
@@ -6410,8 +6400,8 @@ pkg-up@2.0.0:
     find-up "^2.1.0"
 
 plotly.js-basic-dist@^1.49.2:
-  version "1.49.2"
-  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.49.2.tgz#c2a69dc0dffacb7bfee7675848c851bce878dedb"
+  version "1.49.4"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.49.4.tgz#bc95f2845494f4796de775583494076a42c70685"
 
 pn@^1.1.0:
   version "1.1.0"

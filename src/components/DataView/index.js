@@ -1,6 +1,6 @@
 import React from 'react'
 import Loader from 'react-loader'
-import DataView from 'datapackage-views-js'
+import { DataView } from '@datopian/datapackage-views-js'
 
 export default props => {
   const views = props.datapackage.views

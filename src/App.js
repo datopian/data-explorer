@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { QueryBuilder } from 'datastore-query-builder';
-import DataView from './components/DataView'
-import { ChartBuilder } from 'chart-builder'
-import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/'
-import { getDataViewBuilderView, getResourceForFiltering } from './utils'
+import DataView from './components/DataView';
+import { ChartBuilder } from 'chart-builder';
+import { MapBuilder } from 'map-builder';
+import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
+import { getDataViewChartBuilderView, getDataViewMapBuilderView, getResourceForFiltering } from './utils';
 
 export const App = props => {
   useEffect(() => {
@@ -18,7 +19,13 @@ export const App = props => {
   const showChartBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showChartBuilder
   const chartBuilder = (showChartBuilder) && (
         <div className="p-4 mr-4">
-          <ChartBuilder view={getDataViewBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
+          <ChartBuilder view={getDataViewChartBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
+        </div>
+      )
+  const showMapBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showMapBuilder
+  const mapBuilder = (showMapBuilder) && (
+        <div className="p-4 mr-4">
+          <MapBuilder view={getDataViewMapBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
         </div>
       )
 
@@ -33,7 +40,14 @@ export const App = props => {
         <div className="w-3/4 p-3 mr-4">
           <DataView {...props.sharedState} />
         </div>
-        {chartBuilder}
+        <div className="w-1/4">
+          <div className="w-full">
+            {chartBuilder}
+          </div>
+          <div className="w-full">
+            {mapBuilder}
+          </div>
+        </div>
       </div>
      </div>
   )

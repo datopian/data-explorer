@@ -6,7 +6,7 @@ export const getEmptyView = datapackage => {
   }
 }
 
-export const getDataViewBuilderView = (datapackage) => {
+export const getDataViewChartBuilderView = (datapackage) => {
   if (!datapackage) return {}
 
   const views = datapackage.views || []
@@ -16,9 +16,19 @@ export const getDataViewBuilderView = (datapackage) => {
       return datapackage.views[0]
     case 2:
       return datapackage.views[1]
+    case 3:
+      return datapackage.views[2]
     default:
       return getEmptyView(datapackage)
   }
+}
+
+export const getDataViewMapBuilderView = (datapackage) => {
+  if (!datapackage) return {}
+
+  const views = datapackage.views || []
+
+  return views.find(view => view.specType === 'tabularmap') || getEmptyView(datapackage)
 }
 
 export const getResourceForFiltering = (datapackage) => {

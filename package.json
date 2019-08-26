@@ -1,13 +1,14 @@
 {
-  "name": "data-explorer",
+  "name": "@datopian/data-explorer",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
+    "@datopian/datapackage-views-js": "^1.0.0",
     "chart-builder": "git+https://github.com/datopian/chart-builder.git",
     "data.js": "^0.12.10",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
-    "datapackage-views-js": "git+https://github.com/datopian/datapackage-views-js.git#refactor/data-views",
     "datastore-query-builder": "git+https://github.com/datopian/datastore-query-builder.git#feature/package",
+    "map-builder": "git+https://github.com/datopian/map-builder.git",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-loader": "^2.4.5",
