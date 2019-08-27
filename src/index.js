@@ -6,14 +6,6 @@ import './App.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker';
 
-function parseDatapackageIdentifier(stringOrJSON) {
-  try {
-    return JSON.parse(stringOrJSON)
-  } catch (e) {
-    console.warn(e)
-    return stringOrJSON
-  }
-}
 
 const instances = document.getElementsByClassName('data-explorer')
 
