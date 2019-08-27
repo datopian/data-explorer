@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "@datopian/datapackage-views-js": "^1.0.0",
+    "@datopian/datapackage-views-js": "^1.0.1",
     "chart-builder": "git+https://github.com/datopian/chart-builder.git",
     "data.js": "^0.12.10",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
