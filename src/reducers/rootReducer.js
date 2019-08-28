@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import { default as dataViewBuilder } from './dataViewBuilderReducer'
-import { default as filterUI } from './filterUIReducer'
-import { default as sharedState } from './sharedStateReducer'
+import { default as widgets } from './widgets'
+import { default as datapackage } from './datapackage'
+import { default as datastoreFilters } from './datastoreFilters'
 
 export default combineReducers({
- dataViewBuilder, filterUI, sharedState
+  widgets, datastoreFilters, datapackage
 })
