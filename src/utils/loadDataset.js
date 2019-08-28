@@ -1,4 +1,3 @@
-import * as dpRender from 'datapackage-render'
 import { Dataset } from 'data.js'
 
 var toArray = require('stream-to-array')
@@ -9,12 +8,6 @@ function parseDatapackageIdentifier(stringOrJSON) {
   } catch (e) {
     return stringOrJSON
   }
-}
-
-function compile(descriptor) {
-  return descriptor.views.map(view => {
-    return dpRender.compileView(view, descriptor)
-  })
 }
 
 // needs to be encapsulated
@@ -84,7 +77,7 @@ export default async dpID => {
       }
     }))
 
-    return compile(dataset.descriptor)
+    return dataset.descriptor
   } catch (e) {
     console.warn('Failed to load a Dataset from provided datapackage id\n' + e)
     return DP_ID

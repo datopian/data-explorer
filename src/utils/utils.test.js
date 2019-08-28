@@ -1,13 +1,14 @@
 import loadDataset from './loadDataset';
 import inlinedDataset from '../testData/inlinedData.json'
-
+import { compileView } from 'datapackage-render';
 
 it('compiles views!', async () => {
-  const compiledView = await loadDataset(inlinedDataset)
+  const loadedView = await loadDataset(inlinedDataset)
+  console.log(loadedView)
   // We expect 'resources' key to be defined in the compiled view:
-  expect(compiledView[0].resources).toBeDefined()
-  expect(compiledView[0].resources).toBeInstanceOf(Array)
-  expect(compiledView[0].resources[0]).toBeInstanceOf(Object)
-  expect(compiledView[0].resources[0].data).toBeInstanceOf(Array)
-  expect(compiledView[0].resources[0].data.length).toBe(3)
+  expect(loadedView.resources).toBeDefined()
+  expect(loadedView.resources).toBeInstanceOf(Array)
+  expect(loadedView.resources[0]).toBeInstanceOf(Object)
+  expect(loadedView.resources[0].data).toBeInstanceOf(Array)
+  expect(loadedView.resources[0].data.length).toBe(3)
 });
