@@ -23,23 +23,12 @@ for (const instance of instances) {
 
     const views = JSON.parse(JSON.stringify(datapackage.views))
     delete datapackage.views
-    const tableView = views.find(view => view.specType === 'table')
-    const chartView = views.find(view => view.specType === 'simple')
-    const mapView = views.find(view => view.specType === 'tabularmap')
 
-    let widgets = [
-      {
-        datapackage: {views: [tableView]},
-      },
-      {
-        datapackage: {views: [chartView]}
-      },
-      {
-        datapackage: {views: [mapView]}
+    const widgets = views.map(view => {
+      return {
+        datapackage: {views: [view]}
       }
-    ]
-
-    widgets = widgets.filter(widget => widget.datapackage.views[0])
+    })
 
     ReactDOM.render(
      <Provider store={configureStore({widgets, datapackage})}>
