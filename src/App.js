@@ -28,7 +28,7 @@ export const App = props => {
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name}>
       <div className="container flex py-6">
-        <div className="w-3/4 p-3 mr-4">
+        <div className="w-3/4 py-3 mr-4">
           <DataView {...widget} />
         </div>
         <div className="w-1/4">
@@ -52,7 +52,7 @@ export const App = props => {
   })
 
   return (
-    <div className="text-center ml-6">
+    <div className="ml-6">
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="container py-4">
         <div className="datastore-query-builder">
