@@ -2114,7 +2114,7 @@ chardet@^0.7.0:
 
 "chart-builder@git+https://github.com/datopian/chart-builder.git":
   version "0.0.1"
-  resolved "git+https://github.com/datopian/chart-builder.git#7cd882352e703c002bd64a881dc4fa7cd82d29ff"
+  resolved "git+https://github.com/datopian/chart-builder.git#b5c45915af98cdb5a3bddf66ebe4b36df75d29da"
   dependencies:
     formik "^1.5.8"
     react "^16.9.0"
@@ -5489,7 +5489,7 @@ map-age-cleaner@^0.1.1:
 
 "map-builder@git+https://github.com/datopian/map-builder.git":
   version "0.0.1"
-  resolved "git+https://github.com/datopian/map-builder.git#6e27e52720223d9769de3b7a635caf0f545dee7e"
+  resolved "git+https://github.com/datopian/map-builder.git#ac811be13c429b2ef2d17b1e19b55c3864f3480d"
   dependencies:
     formik "^1.5.8"
     react "^16.9.0"
