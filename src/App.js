@@ -22,10 +22,10 @@ export const App = props => {
     return widget.active
   })
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
-  const tabLinks = props.widgets.map((widget, index) => {
+  const tabLinks = props.widgets.map((widget) => {
     return <TabLink to={widget.name} className='mr-4'>{widget.name}</TabLink>
   })
-  const tabContents = props.widgets.map((widget, index) => {
+  const tabContents = props.widgets.map((widget) => {
     return <TabContent for={widget.name}>
       <div className="container flex py-6">
         <div className="w-3/4 py-3 mr-4">
