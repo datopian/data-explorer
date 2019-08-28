@@ -19,10 +19,30 @@ const instances = document.getElementsByClassName('data-explorer')
 
 for (const instance of instances) {
   try {
-    const datapackage=JSON.parse(instance.getAttribute('data-datapackage'))
+    const datapackage = JSON.parse(instance.getAttribute('data-datapackage'))
+
+    const views = JSON.parse(JSON.stringify(datapackage.views))
+    delete datapackage.views
+    const tableView = views.find(view => view.specType === 'table')
+    const chartView = views.find(view => view.specType === 'simple')
+    const mapView = views.find(view => view.specType === 'tabularmap')
+
+    let widgets = [
+      {
+        datapackage: {views: [tableView]},
+      },
+      {
+        datapackage: {views: [chartView]}
+      },
+      {
+        datapackage: {views: [mapView]}
+      }
+    ]
+
+    widgets = widgets.filter(widget => widget.datapackage.views[0])
 
     ReactDOM.render(
-     <Provider store={configureStore({sharedState: {datapackage}})}>
+     <Provider store={configureStore({widgets, datapackage})}>
       <App />
      </Provider>, document.getElementById(instance.id)
     )

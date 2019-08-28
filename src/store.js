@@ -4,17 +4,29 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 
 const initialState = {
-  dataViewBuilder: {
-    // chartBuilder state
+  datastoreFilters: {
+    // Datastore specific filters
   },
-  filterUI: {
-    // UIState
+  datapackage: {
+    // Original datapackage
   },
-  sharedState: {
-    loading: false,
-    datapackage: {},
-    loadedData: {} // not implemented
-  }
+  widgets: [
+    {
+      datapackage: {},
+      loading: false,
+      active: false
+    },
+    {
+      datapackage: {},
+      loading: false,
+      active: false
+    },
+    {
+      datapackage: {},
+      loading: false,
+      active: false
+    }
+  ]
 }
 
 export default function configureStore(props) {
