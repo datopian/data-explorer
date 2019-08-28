@@ -6,49 +6,54 @@ import DataView from './components/DataView';
 import { ChartBuilder } from 'chart-builder';
 import { MapBuilder } from 'map-builder';
 import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
-import { getDataViewChartBuilderView, getDataViewMapBuilderView, getResourceForFiltering } from './utils';
+import { getResourceForFiltering } from './utils';
 
 export const App = props => {
   useEffect(() => {
     const payload = {
-      datapackage: props.sharedState.datapackage
+      datapackage: props.datapackage,
+      widgets: props.widgets
     }
     props.fetchDataAction(payload)
   }, [])
 
-  const showChartBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showChartBuilder
-  const chartBuilder = (showChartBuilder) && (
-        <div className="p-4 mr-4">
-          <ChartBuilder view={getDataViewChartBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
-        </div>
-      )
-  const showMapBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showMapBuilder
-  const mapBuilder = (showMapBuilder) && (
-        <div className="p-4 mr-4">
-          <MapBuilder view={getDataViewMapBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
-        </div>
-      )
-
   return (
     <div className="text-center ml-6">
+      {/* Data Editor (aka filters / datastore query builder) */}
       <div className="container py-4">
         <div className="">
-          <QueryBuilder resource={getResourceForFiltering(props.sharedState.datapackage)} filterBuilderAction={props.filterUIAction} />
+          <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
         </div>
       </div>
-      <div className="container flex py-6">
-        <div className="w-3/4 p-3 mr-4">
-          <DataView {...props.sharedState} />
-        </div>
-        <div className="w-1/4">
-          <div className="w-full">
-            {chartBuilder}
+      {/* End of Data Editor */}
+
+      {/* Widgets (aka Views and Controls/Builders) */}
+      {props.widgets.map((widget, index) => {
+        return (
+          <div className="container flex py-6" key={`widget-${index}`}>
+            <div className="w-3/4 p-3 mr-4">
+              <DataView {...widget} />
+            </div>
+            <div className="w-1/4">
+              <div className="w-full">
+                <div className="p-4 mr-4">
+                  {
+                    widget.datapackage.views[0].specType === 'simple'
+                    ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                    : ''
+                  }
+                  {
+                    widget.datapackage.views[0].specType === 'tabularmap'
+                    ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                    : ''
+                  }
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="w-full">
-            {mapBuilder}
-          </div>
-        </div>
-      </div>
+        )
+      })}
+      {/* End of Widgets */}
      </div>
   )
 }
