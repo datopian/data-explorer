@@ -2114,7 +2114,7 @@ chardet@^0.7.0:
 
 "chart-builder@git+https://github.com/datopian/chart-builder.git":
   version "0.0.1"
-  resolved "git+https://github.com/datopian/chart-builder.git#7cd882352e703c002bd64a881dc4fa7cd82d29ff"
+  resolved "git+https://github.com/datopian/chart-builder.git#b5c45915af98cdb5a3bddf66ebe4b36df75d29da"
   dependencies:
     formik "^1.5.8"
     react "^16.9.0"
@@ -2167,6 +2167,10 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
 clean-css@4.2.x:
   version "4.2.1"
@@ -5485,7 +5489,7 @@ map-age-cleaner@^0.1.1:
 
 "map-builder@git+https://github.com/datopian/map-builder.git":
   version "0.0.1"
-  resolved "git+https://github.com/datopian/map-builder.git#6e27e52720223d9769de3b7a635caf0f545dee7e"
+  resolved "git+https://github.com/datopian/map-builder.git#ac811be13c429b2ef2d17b1e19b55c3864f3480d"
   dependencies:
     formik "^1.5.8"
     react "^16.9.0"
@@ -7480,6 +7484,13 @@ react-scripts@3.0.1:
     workbox-webpack-plugin "4.2.0"
   optionalDependencies:
     fsevents "2.0.6"
+
+react-tabs-redux@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-tabs-redux/-/react-tabs-redux-4.0.0.tgz#b803aa3e80ae317311a83b3740ae13a938247156"
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
 
 react@^16.8.6, react@^16.9.0:
   version "16.9.0"

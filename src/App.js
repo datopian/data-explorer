@@ -5,50 +5,77 @@ import { QueryBuilder } from 'datastore-query-builder';
 import DataView from './components/DataView';
 import { ChartBuilder } from 'chart-builder';
 import { MapBuilder } from 'map-builder';
-import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
-import { getDataViewChartBuilderView, getDataViewMapBuilderView, getResourceForFiltering } from './utils';
+import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
+import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/';
+import { getResourceForFiltering } from './utils';
 
 export const App = props => {
   useEffect(() => {
     const payload = {
-      datapackage: props.sharedState.datapackage
+      datapackage: props.datapackage,
+      widgets: props.widgets
     }
     props.fetchDataAction(payload)
   }, [])
 
-  const showChartBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showChartBuilder
-  const chartBuilder = (showChartBuilder) && (
-        <div className="p-4 mr-4">
-          <ChartBuilder view={getDataViewChartBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
-        </div>
-      )
-  const showMapBuilder = props.sharedState.datapackage.controls && props.sharedState.datapackage.controls.showMapBuilder
-  const mapBuilder = (showMapBuilder) && (
-        <div className="p-4 mr-4">
-          <MapBuilder view={getDataViewMapBuilderView(props.sharedState.datapackage)} dataViewBuilderAction={props.dataViewBuilderAction} />
-        </div>
-      )
-
-  return (
-    <div className="text-center ml-6">
-      <div className="container py-4">
-        <div className="">
-          <QueryBuilder resource={getResourceForFiltering(props.sharedState.datapackage)} filterBuilderAction={props.filterUIAction} />
-        </div>
-      </div>
+  const activeWidget = props.widgets.find(widget => {
+    return widget.active
+  })
+  const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
+  const tabLinks = props.widgets.map((widget) => {
+    return <TabLink to={widget.name} className='mr-4'>{widget.name}</TabLink>
+  })
+  const tabContents = props.widgets.map((widget) => {
+    return <TabContent for={widget.name}>
       <div className="container flex py-6">
-        <div className="w-3/4 p-3 mr-4">
-          <DataView {...props.sharedState} />
+        <div className="w-3/4 py-3 mr-4">
+          <DataView {...widget} />
         </div>
         <div className="w-1/4">
           <div className="w-full">
-            {chartBuilder}
-          </div>
-          <div className="w-full">
-            {mapBuilder}
+            <div className="p-4 mr-4">
+              {
+                widget.datapackage.views[0].specType === 'simple'
+                ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                : ''
+              }
+              {
+                widget.datapackage.views[0].specType === 'tabularmap'
+                ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                : ''
+              }
+            </div>
           </div>
         </div>
       </div>
+    </TabContent>
+  })
+
+  return (
+    <div className="ml-6">
+      {/* Data Editor (aka filters / datastore query builder) */}
+      <div className="container py-4">
+        <div className="datastore-query-builder">
+          {
+            props.datapackage.resources[0].datastore_active
+            ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+            : ''
+          }
+        </div>
+      </div>
+      {/* End of Data Editor */}
+
+      {/* Widgets (aka Views and Controls/Builders) */}
+      <Tabs 
+        renderActiveTabContentOnly={true}
+        handleSelect={(selectedTab) => {
+          props.selectTabAction(selectedTab)
+        }}
+        selectedTab={selectedTab}>
+          {tabLinks}
+          {tabContents}
+      </Tabs>
+      {/* End of Widgets */}
      </div>
   )
 }
@@ -60,7 +87,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
  filterUIAction: (payload) => dispatch(filterUIAction(payload)),
  fetchDataAction: payload => dispatch(fetchDataAction(payload)),
- dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload))
+ dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload)),
+ selectTabAction: payload => dispatch(selectTabAction(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
