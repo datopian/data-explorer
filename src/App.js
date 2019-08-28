@@ -21,8 +21,12 @@ export const App = props => {
     <div className="text-center ml-6">
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="container py-4">
-        <div className="">
-          <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+        <div className="datastore-query-builder">
+          {
+            props.datapackage.resources[0].datastore_active
+            ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+            : ''
+          }
         </div>
       </div>
       {/* End of Data Editor */}
