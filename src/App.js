@@ -5,7 +5,8 @@ import { QueryBuilder } from 'datastore-query-builder';
 import DataView from './components/DataView';
 import { ChartBuilder } from 'chart-builder';
 import { MapBuilder } from 'map-builder';
-import { filterUIAction, fetchDataAction, dataViewBuilderAction } from './actions/';
+import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
+import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/';
 import { getResourceForFiltering } from './utils';
 
 export const App = props => {
@@ -16,6 +17,39 @@ export const App = props => {
     }
     props.fetchDataAction(payload)
   }, [])
+
+  const activeWidget = props.widgets.find(widget => {
+    return widget.active
+  })
+  const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
+  const tabLinks = props.widgets.map((widget, index) => {
+    return <TabLink to={widget.name} className='mr-4'>{widget.name}</TabLink>
+  })
+  const tabContents = props.widgets.map((widget, index) => {
+    return <TabContent for={widget.name}>
+      <div className="container flex py-6">
+        <div className="w-3/4 p-3 mr-4">
+          <DataView {...widget} />
+        </div>
+        <div className="w-1/4">
+          <div className="w-full">
+            <div className="p-4 mr-4">
+              {
+                widget.datapackage.views[0].specType === 'simple'
+                ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                : ''
+              }
+              {
+                widget.datapackage.views[0].specType === 'tabularmap'
+                ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                : ''
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </TabContent>
+  })
 
   return (
     <div className="text-center ml-6">
@@ -32,31 +66,15 @@ export const App = props => {
       {/* End of Data Editor */}
 
       {/* Widgets (aka Views and Controls/Builders) */}
-      {props.widgets.map((widget, index) => {
-        return (
-          <div className="container flex py-6" key={`widget-${index}`}>
-            <div className="w-3/4 p-3 mr-4">
-              <DataView {...widget} />
-            </div>
-            <div className="w-1/4">
-              <div className="w-full">
-                <div className="p-4 mr-4">
-                  {
-                    widget.datapackage.views[0].specType === 'simple'
-                    ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
-                    : ''
-                  }
-                  {
-                    widget.datapackage.views[0].specType === 'tabularmap'
-                    ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
-                    : ''
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })}
+      <Tabs 
+        renderActiveTabContentOnly={true}
+        handleSelect={(selectedTab) => {
+          props.selectTabAction(selectedTab)
+        }}
+        selectedTab={selectedTab}>
+          {tabLinks}
+          {tabContents}
+      </Tabs>
       {/* End of Widgets */}
      </div>
   )
@@ -69,7 +87,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
  filterUIAction: (payload) => dispatch(filterUIAction(payload)),
  fetchDataAction: payload => dispatch(fetchDataAction(payload)),
- dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload))
+ dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload)),
+ selectTabAction: payload => dispatch(selectTabAction(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

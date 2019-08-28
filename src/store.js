@@ -7,26 +7,8 @@ const initialState = {
   datastoreFilters: {
     // Datastore specific filters
   },
-  datapackage: {
-    // Original datapackage
-  },
-  widgets: [
-    {
-      datapackage: {},
-      loading: false,
-      active: false
-    },
-    {
-      datapackage: {},
-      loading: false,
-      active: false
-    },
-    {
-      datapackage: {},
-      loading: false,
-      active: false
-    }
-  ]
+  datapackage: {},
+  widgets: []
 }
 
 export default function configureStore(props) {

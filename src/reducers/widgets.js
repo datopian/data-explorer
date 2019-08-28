@@ -20,6 +20,8 @@ export default (state = {}, action) => {
         return widget
       })
       return Object.assign(deepClone(state), stateForMapBuilder)
+    case 'SELECT_TAB':
+      return action.payload.widgets
     case 'FETCH_DATA_BEGIN':
       return action.payload.widgets
     case 'FETCH_DATA_SUCCESS':

@@ -1,6 +1,17 @@
 import loadDataset from '../utils/loadDataset'
 import { compileView } from 'datapackage-render';
 
+export const selectTabAction = (payload) => (dispatch, getState) => {
+  const widgets = JSON.parse(JSON.stringify(getState().widgets))
+  widgets.forEach((widget, index) => {
+    widgets[index].active = false
+    if (widget.name === payload) {
+      widgets[index].active = true
+    }
+  })
+  dispatch(selectTab({widgets}))
+}
+
 export const filterUIAction = (payload) => async (dispatch, getState) => {
  let datapackage = JSON.parse(JSON.stringify(getState().datapackage))
  // For datastore resources, we need to remove loaded `data` attribute to
@@ -67,6 +78,11 @@ export const fetchDataAction = payload => async dispatch => {
     })
   dispatch(fetchDataSuccess({widgets}))
 }
+
+const selectTab = res => ({
+  type: 'SELECT_TAB',
+  payload: { ...res }
+})
 
 const datapackageLoad = res => ({
   type: 'DATAPACKAGE_LOAD',

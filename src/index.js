@@ -24,8 +24,17 @@ for (const instance of instances) {
     const views = JSON.parse(JSON.stringify(datapackage.views))
     delete datapackage.views
 
-    const widgets = views.map(view => {
+    const widgetNames = {
+      'table': 'Table',
+      'tabularmap': 'Map',
+      'map': 'Map',
+      'simple': 'Chart'
+    }
+
+    const widgets = views.map((view, index) => {
       return {
+        active: index === 0 ? true : false,
+        name: widgetNames[view.specType],
         datapackage: {views: [view]}
       }
     })
