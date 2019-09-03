@@ -21,6 +21,7 @@ export const App = props => {
   const activeWidget = props.widgets.find(widget => {
     return widget.active
   })
+
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
   const tabLinks = props.widgets.map((widget) => {
     return <TabLink to={widget.name} className='mr-4'>{widget.name}</TabLink>
