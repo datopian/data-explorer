@@ -1,6 +1,6 @@
 {
   "name": "@datopian/data-explorer",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": false,
   "dependencies": {
     "@datopian/datapackage-views-js": "^1.0.3",
