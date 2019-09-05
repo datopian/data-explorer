@@ -4,7 +4,6 @@ import { compileView } from 'datapackage-render';
 
 it('compiles views!', async () => {
   const loadedView = await loadDataset(inlinedDataset)
-  console.log(loadedView)
   // We expect 'resources' key to be defined in the compiled view:
   expect(loadedView.resources).toBeDefined()
   expect(loadedView.resources).toBeInstanceOf(Array)

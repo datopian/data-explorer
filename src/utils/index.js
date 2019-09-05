@@ -1,3 +1,21 @@
+export const unloadDatapackage = datapackage => {
+  const unloadedDatapackage = deepClone(datapackage)
+  
+  unloadedDatapackage.resources && unloadedDatapackage.resources.forEach(resource => {
+    delete resource.data
+    delete resource._values
+  })
+  
+  unloadedDatapackage.views && unloadedDatapackage.views.forEach(view => {
+    view.resources && view.resources.forEach(resource => {
+      delete resource.data
+      delete resource._values
+    })
+  })
+
+  return unloadedDatapackage
+}
+
 export const getEmptyView = datapackage => {
   try {
     return {resources: [{schema: datapackage.resources[0].schema}]}

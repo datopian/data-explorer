@@ -19,9 +19,6 @@ export default async dpID => {
   try {
     const dataset = await Dataset.load(DP_ID)
 
-    // TODO why is this happening here? This looks like library code
-    // TODO clean up! this shouldn't handle mutation of descriptor along
-    //      side of fetching resources etc... a mess
     await Promise.all(dataset.resources.map(async (file) => {
       if (file.displayName === 'FileInline') {
         return
