@@ -8,7 +8,8 @@ const initialState = {
     // Datastore specific filters
   },
   datapackage: {},
-  widgets: []
+  widgets: [],
+  serializedState: {}
 }
 
 export default function configureStore(props) {

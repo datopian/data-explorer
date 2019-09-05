@@ -3,7 +3,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 For notes about boilerplate see https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
 
-
 ## Installation
 * clone this repo
 * `yarn`
@@ -12,6 +11,26 @@ For notes about boilerplate see https://medium.com/backticks-tildes/setting-up-a
 
 You should see:
 ![alt text](https://i.imgur.com/IygXUYF.png))
+
+## Cosmos
+
+Run `yarn cosmos`
+
+You should see:
+![alt text](https://imgur.com/a/GSN7tST)
+
+
+## Fixtures
+Until we have better docs on settings, use fixtures as examples of how to instantiate the app.
+
+Fixtures are representations of Data Explorer state, contained in `__fixtures__` directory.
+
+## Serialized state 
+`store->serializedState` is a representation of the application state _without fetched data_
+A data-explorer can be "hydrated" using the serialized state, it will refetch the data, and will render in the same state it was exported in
+
+### A note on share links
+There is common limit of up 2000 characters on URL strings. Our share links contain the entire application store tree, which is often larger than 2000 characters, in which the application state cannot be shared via URL. Thems the breaks.
 
 ## Available Scripts
 

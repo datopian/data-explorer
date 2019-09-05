@@ -5,17 +5,30 @@ import './App.css'
 import App from './App'
 
 export default props => {
-  const datapackage = JSON.parse(props.datapackage)
+  let datapackage
+  
+  // Allow datapackage json or obj
+  if (typeof props.datapackage === 'string') {
+    try {
+      datapackage = JSON.parse(props.datapackage)
+    } catch (e) {
+      // TODO -- would be nice for the app to still load in an empty state on fail case
+      datapackage = {}
+      console.warn('Invalid datapackage', e)
+    }
+  } else if (typeof props.datapackage === 'object') {
+    datapackage = props.datapackage
+  }
+  
   let views
   
   try {
     views = JSON.parse(JSON.stringify(datapackage.views))
+    delete datapackage.views
   } catch {
     console.log('No views set on datapackage')
   }
 
-  delete datapackage.views
-  
   const widgetsFromViews = (views) => {
     const widgetNames = {
       'table': 'Table',
@@ -33,7 +46,7 @@ export default props => {
     })
   }
 
-  const widgets = props.widgets || widgetsFromViews(views)
+  const widgets = (props.widgets) ? props.widgets : widgetsFromViews(views)
 
   return (
     <Provider store={configureStore({widgets, datapackage})}>

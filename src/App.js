@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
-import { connect } from 'react-redux';
-import './App.css';
-import { QueryBuilder } from 'datastore-query-builder';
-import DataView from './components/DataView';
-import { ChartBuilder } from 'chart-builder';
-import { MapBuilder } from 'map-builder';
-import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
-import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/';
-import { getResourceForFiltering } from './utils';
+import React, {useEffect} from 'react'
+import { connect } from 'react-redux'
+import './App.css'
+import { QueryBuilder } from 'datastore-query-builder'
+import DataView from './components/DataView'
+import Share from './components/Share'
+import { ChartBuilder } from 'chart-builder'
+import { MapBuilder } from 'map-builder'
+import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
+import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
+import { getResourceForFiltering } from './utils'
 
 export const App = props => {
   useEffect(() => {
@@ -76,6 +77,7 @@ export const App = props => {
           {tabLinks}
           {tabContents}
       </Tabs>
+      <Share serializedState={props.serializedState} />
       {/* End of Widgets */}
      </div>
   )
@@ -92,4 +94,4 @@ const mapDispatchToProps = dispatch => ({
  selectTabAction: payload => dispatch(selectTabAction(payload))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)
