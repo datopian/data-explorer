@@ -1,10 +1,26 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
+const MAX_LEN = 1500
+const slimProps = ['archiver', 'schema', 'shareLink', 'iframeText']
+const slim = serializedState => {
+  if (serializedState.length <= MAX_LEN) return serializedState
+  const state = JSON.parse(serializedState)
+  state.datapackage.resources.forEach(resource => {
+    for (const prop in slimProps) {
+      if (resource[slimProps[prop]]) delete resource[slimProps[prop]]
+    }
+  })
+  return JSON.stringify(state)
+}
+
 export default props => {
+  const serializedState = slim(props.serializedState)
   // TODO this is a stub for montreal -- need to pass origin as props
-  const shareLink = `localhost:4000/data-explorer?explorer=${props.serializedState}`
-  const iframe = `<iframe src="localhost:4000/data-explorer?explorer=${props.serializedState}" />`
+  const shareLink = `localhost:4000/data-explorer?explorer=${serializedState}`
+  const iframe = `<iframe src="localhost:4000/data-explorer?explorer=${serializedState}" />`
+  const shareable = shareLink.length < 2000
+
   const copy = (str) => {
     // Create new element
     var el = document.createElement('textarea')
@@ -24,16 +40,23 @@ export default props => {
 
   return (
   <div>
-    <div>
-      <label htmlFor="share-link">Share link</label>
-      <input id="share-link" value={shareLink} />
-      <a href="#" id="copy-share-link" onClick={() => {copy(shareLink)}}><i>copy</i></a>
+    {shareable &&
+      <div>
+        <div>
+          <label htmlFor="share-link">Share link</label>
+          <input id="share-link" value={shareLink} />
+          <a href="#" id="copy-share-link" onClick={() => {copy(shareLink)}}><i>copy</i></a>
+        </div>
+        <div>
+          <label htmlFor="embed">Share link</label>
+          <input id="embed" value={iframe} />
+          <a href="#" id="copy-share-link" onClick={() => {copy(iframe)}}><i>copy</i></a>
+        </div>
+      </div>
+    }
+    {!shareable &&
+      <p>No share link available</p>
+    }
     </div>
-    <div>
-      <label htmlFor="embed">Share link</label>
-      <input id="embed" value={iframe} />
-      <a href="#" id="copy-share-link" onClick={() => {copy(iframe)}}><i>copy</i></a>
-    </div>
-  </div>
   )
 }
