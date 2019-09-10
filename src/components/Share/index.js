@@ -42,15 +42,15 @@ export default props => {
   <div>
     {shareable &&
       <div>
-        <div>
-          <label htmlFor="share-link">Share link</label>
-          <input id="share-link" value={shareLink} />
-          <a href="#" id="copy-share-link" onClick={() => {copy(shareLink)}}><i>copy</i></a>
+        <div className="m-4">
+          <label htmlFor="share-link" className="mr-4">Share link</label>
+          <input id="share-link" className="border-solid border-4 border-gray-600 w-1/2" value={shareLink} />
+          <a href="#" id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>copy</i></a>
         </div>
-        <div>
-          <label htmlFor="embed">Share link</label>
-          <input id="embed" value={iframe} />
-          <a href="#" id="copy-share-link" onClick={() => {copy(iframe)}}><i>copy</i></a>
+        <div className="m-4">
+          <label htmlFor="embed" className="mr-4">Share link</label>
+          <input id="embed" className="border-solid border-4 border-gray-600 px-2 w-1/2" value={iframe} />
+          <a href="#" id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>copy</i></a>
         </div>
       </div>
     }
