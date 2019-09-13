@@ -5,7 +5,7 @@
   "main": "/dist/AppWithProvider.js",
   "module": "/dist/AppWithProvider.js",
   "dependencies": {
-    "@datopian/datapackage-views-js": "^1.0.3",
+    "@datopian/datapackage-views-js": "git+https://github.com/datopian/datapackage-views-js.git#v1.0.4",
     "chart-builder": "git+https://github.com/datopian/chart-builder.git",
     "data.js": "^0.12.10",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",

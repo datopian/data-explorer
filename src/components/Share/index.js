@@ -44,11 +44,11 @@ export default props => {
       <div>
         <div className="m-4">
           <input id="share-link" className="border-solid border-4 border-gray-600 w-1/2 px-2" value={shareLink} />
-          <a href="#" id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>copy share link</i></a>
+          <button id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>copy share link</i></button>
         </div>
         <div className="m-4">
           <input id="embed" className="border-solid border-4 border-gray-600 px-2 w-1/2" value={iframe} />
-          <a href="#" id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>copy embed text</i></a>
+          <button id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>copy embed text</i></button>
         </div>
       </div>
     }
