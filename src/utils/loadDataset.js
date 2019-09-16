@@ -1,4 +1,4 @@
-import { Dataset } from 'data.js'
+import { Dataset, open } from 'data.js'
 
 var toArray = require('stream-to-array')
 
@@ -31,6 +31,15 @@ export default async dpID => {
         }
         const result = await response.json()
         file.descriptor.data = result.result.records
+        // Infer schema but re-open the file as it is now "inlined":
+        const fileInline = open({
+          data: file.descriptor.data.map(Object.values),
+          format: 'csv'
+        })
+        const headers = Object.keys(file.descriptor.data[0])
+        fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data)
+        await fileInline.addSchema()
+        file.descriptor.schema = fileInline.descriptor.schema
       } else if (file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format)) {
         // Tabular data
         try {

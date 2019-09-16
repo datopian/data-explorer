@@ -27,15 +27,14 @@ regeneratorRuntime.mark(function _callee() {
 
         case 2:
           loadedView = _context.sent;
-          console.log(loadedView); // We expect 'resources' key to be defined in the compiled view:
-
+          // We expect 'resources' key to be defined in the compiled view:
           expect(loadedView.resources).toBeDefined();
           expect(loadedView.resources).toBeInstanceOf(Array);
           expect(loadedView.resources[0]).toBeInstanceOf(Object);
           expect(loadedView.resources[0].data).toBeInstanceOf(Array);
           expect(loadedView.resources[0].data.length).toBe(3);
 
-        case 9:
+        case 8:
         case "end":
           return _context.stop();
       }
