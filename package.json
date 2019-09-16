@@ -7,7 +7,7 @@
   "dependencies": {
     "@datopian/datapackage-views-js": "^1.0.3",
     "chart-builder": "git+https://github.com/datopian/chart-builder.git",
-    "data.js": "^0.12.10",
+    "data.js": "^0.12.11",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
     "datastore-query-builder": "git+https://github.com/datopian/datastore-query-builder.git#feature/package",
     "map-builder": "git+https://github.com/datopian/map-builder.git",

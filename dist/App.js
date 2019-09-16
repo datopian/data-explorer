@@ -15,6 +15,8 @@ var _datastoreQueryBuilder = require("datastore-query-builder");
 
 var _DataView = _interopRequireDefault(require("./components/DataView"));
 
+var _Share = _interopRequireDefault(require("./components/Share"));
+
 var _chartBuilder = require("chart-builder");
 
 var _mapBuilder = require("map-builder");
@@ -89,7 +91,9 @@ var App = function App(props) {
       props.selectTabAction(selectedTab);
     },
     selectedTab: selectedTab
-  }, tabLinks, tabContents));
+  }, tabLinks, tabContents), _react.default.createElement(_Share.default, {
+    serializedState: props.serializedState
+  }));
 };
 
 exports.App = App;

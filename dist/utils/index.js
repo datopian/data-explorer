@@ -3,7 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deepClone = exports.getResourceForFiltering = exports.getDataViewMapBuilderView = exports.getDataViewChartBuilderView = exports.getEmptyView = void 0;
+exports.deepClone = exports.getResourceForFiltering = exports.getDataViewMapBuilderView = exports.getDataViewChartBuilderView = exports.getEmptyView = exports.unloadDatapackage = void 0;
+
+var unloadDatapackage = function unloadDatapackage(datapackage) {
+  var unloadedDatapackage = deepClone(datapackage);
+  unloadedDatapackage.resources && unloadedDatapackage.resources.forEach(function (resource) {
+    delete resource.data;
+    delete resource._values;
+  });
+  unloadedDatapackage.views && unloadedDatapackage.views.forEach(function (view) {
+    view.resources && view.resources.forEach(function (resource) {
+      delete resource.data;
+      delete resource._values;
+    });
+  });
+  return unloadedDatapackage;
+};
+
+exports.unloadDatapackage = unloadDatapackage;
 
 var getEmptyView = function getEmptyView(datapackage) {
   try {

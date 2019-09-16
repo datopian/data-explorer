@@ -2903,7 +2903,25 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-data.js@^0.12.10, data.js@^0.12.8:
+data.js@^0.12.11:
+  version "0.12.11"
+  resolved "https://registry.yarnpkg.com/data.js/-/data.js-0.12.11.tgz#31a237e1efcc5dcc3f62b0dcdd729cbbfed74404"
+  dependencies:
+    "@babel/polyfill" "^7.4.4"
+    chardet "^0.4.2"
+    csv-parse "^4.4.3"
+    csv-sniffer "^0.1.1"
+    iconv-lite "^0.4.19"
+    lodash "^4.17.4"
+    mime-types "^2.1.16"
+    node-fetch "^2.0.0"
+    stream-to-array "^2.3.0"
+    stream-to-string "^1.1.0"
+    tableschema "^1.9.0"
+    url-join "^2.0.2"
+    xlsx "^0.14.3"
+
+data.js@^0.12.8:
   version "0.12.10"
   resolved "https://registry.yarnpkg.com/data.js/-/data.js-0.12.10.tgz#e25557424b5efc73c65dc45011803067eeecbc88"
   dependencies:

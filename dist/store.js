@@ -19,7 +19,8 @@ var initialState = {
   datastoreFilters: {// Datastore specific filters
   },
   datapackage: {},
-  widgets: []
+  widgets: [],
+  serializedState: {}
 };
 
 function configureStore(props) {

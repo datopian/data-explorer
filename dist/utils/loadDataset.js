@@ -49,7 +49,7 @@ function () {
               var _ref2 = _asyncToGenerator(
               /*#__PURE__*/
               regeneratorRuntime.mark(function _callee(file) {
-                var response, result, rowStream, data, _response, _result, geoJsonTypes;
+                var response, result, fileInline, headers, rowStream, data, _response, _result, geoJsonTypes;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                   while (1) {
@@ -64,7 +64,7 @@ function () {
 
                       case 4:
                         if (!(file.descriptor.path && file.descriptor.path.includes('datastore_search'))) {
-                          _context.next = 17;
+                          _context.next = 23;
                           break;
                         }
 
@@ -88,29 +88,41 @@ function () {
 
                       case 13:
                         result = _context.sent;
-                        file.descriptor.data = result.result.records;
-                        _context.next = 60;
+                        file.descriptor.data = result.result.records; // Infer schema but re-open the file as it is now "inlined":
+
+                        fileInline = (0, _data.open)({
+                          data: file.descriptor.data.map(Object.values),
+                          format: 'csv'
+                        });
+                        headers = Object.keys(file.descriptor.data[0]);
+                        fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data);
+                        _context.next = 20;
+                        return fileInline.addSchema();
+
+                      case 20:
+                        file.descriptor.schema = fileInline.descriptor.schema;
+                        _context.next = 66;
                         break;
 
-                      case 17:
+                      case 23:
                         if (!(file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format))) {
-                          _context.next = 36;
+                          _context.next = 42;
                           break;
                         }
 
-                        _context.prev = 18;
-                        _context.next = 21;
+                        _context.prev = 24;
+                        _context.next = 27;
                         return file.rows({
                           size: 100,
                           keyed: true
                         });
 
-                      case 21:
+                      case 27:
                         rowStream = _context.sent;
-                        _context.next = 24;
+                        _context.next = 30;
                         return toArray(rowStream);
 
-                      case 24:
+                      case 30:
                         data = _context.sent;
 
                         if (data.length > 0) {
@@ -119,88 +131,88 @@ function () {
                           file.descriptor.unavailable = true;
                         }
 
-                        _context.next = 28;
+                        _context.next = 34;
                         return file.addSchema();
 
-                      case 28:
-                        _context.next = 34;
-                        break;
-
-                      case 30:
-                        _context.prev = 30;
-                        _context.t0 = _context["catch"](18);
-                        console.warn(_context.t0);
-                        file.descriptor.unavailable = true;
-
                       case 34:
-                        _context.next = 60;
+                        _context.next = 40;
                         break;
 
                       case 36:
+                        _context.prev = 36;
+                        _context.t0 = _context["catch"](24);
+                        console.warn(_context.t0);
+                        file.descriptor.unavailable = true;
+
+                      case 40:
+                        _context.next = 66;
+                        break;
+
+                      case 42:
                         if (!file.descriptor.format.toLowerCase().includes('json')) {
-                          _context.next = 55;
+                          _context.next = 61;
                           break;
                         }
 
-                        _context.next = 39;
+                        _context.next = 45;
                         return fetch(file.descriptor.path);
 
-                      case 39:
+                      case 45:
                         _response = _context.sent;
 
                         if (_response.ok) {
-                          _context.next = 43;
+                          _context.next = 49;
                           break;
                         }
 
                         file.descriptor.unavailable = true;
                         return _context.abrupt("return");
 
-                      case 43:
-                        _context.next = 45;
+                      case 49:
+                        _context.next = 51;
                         return _response.json();
 
-                      case 45:
+                      case 51:
                         _result = _context.sent;
                         // The '.json' files can contain geo data - check by its 'type' property
                         geoJsonTypes = ['Feature', 'FeatureCollection', 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
 
                         if (!geoJsonTypes.includes(_result.type)) {
-                          _context.next = 51;
+                          _context.next = 57;
                           break;
                         }
 
                         file.descriptor.data = _result;
-                        _context.next = 53;
+                        _context.next = 59;
                         break;
 
-                      case 51:
+                      case 57:
                         // It isn't a valid GeoJSON
                         file.descriptor.unavailable = true;
                         return _context.abrupt("return");
 
-                      case 53:
-                        _context.next = 60;
+                      case 59:
+                        _context.next = 66;
                         break;
 
-                      case 55:
+                      case 61:
                         if (!(file.descriptor.format.toLowerCase() === 'pdf')) {
-                          _context.next = 59;
+                          _context.next = 65;
                           break;
                         }
 
                         return _context.abrupt("return");
 
-                      case 59:
+                      case 65:
                         // We can't load any other data types for now.
                         file.descriptor.unavailable = true;
 
-                      case 60:
+                      case 66:
                       case "end":
                         return _context.stop();
                     }
                   }
-                }, _callee, null, [[18, 30]]);
+                }, _callee, null, [[24, 36]]);
               }));
 
               return function (_x2) {
