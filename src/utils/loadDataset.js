@@ -31,6 +31,7 @@ export default async dpID => {
         }
         const result = await response.json()
         file.descriptor.data = result.result.records
+        file.descriptor.totalrowcount = result.result.total;
         // Infer schema but re-open the file as it is now "inlined":
         const fileInline = open({
           data: file.descriptor.data.map(Object.values),
