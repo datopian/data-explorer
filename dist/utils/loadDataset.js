@@ -89,7 +89,13 @@ function () {
                       case 13:
                         result = _context.sent;
                         file.descriptor.data = result.result.records;
-                        file.descriptor.totalrowcount = result.result.total; // Infer schema but re-open the file as it is now "inlined":
+
+                        if (file.descriptor.path.includes('datastore_search_sql')) {
+                          file.descriptor.totalrowcount = result.result.records[0] ? result.result.records[0].count : undefined;
+                        } else {
+                          file.descriptor.totalrowcount = result.result.total;
+                        } // Infer schema but re-open the file as it is now "inlined":
+
 
                         fileInline = (0, _data.open)({
                           data: file.descriptor.data.map(Object.values),

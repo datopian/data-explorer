@@ -52,14 +52,16 @@ var _default = function _default(props) {
     document.body.removeChild(el);
   };
 
-  return _react.default.createElement("div", null, shareable && _react.default.createElement("div", null, _react.default.createElement("div", {
+  return _react.default.createElement("div", null, shareable && _react.default.createElement("div", {
+    className: "dx-share-container"
+  }, _react.default.createElement("div", {
     className: "m-4"
   }, _react.default.createElement("input", {
     id: "share-link",
     className: "border-solid border-4 border-gray-600 w-1/2 px-2",
     value: shareLink
   }), _react.default.createElement("a", {
-    href: "#",
+    href: "#/",
     id: "copy-share-link",
     className: "m-4",
     onClick: function onClick() {
@@ -72,7 +74,7 @@ var _default = function _default(props) {
     className: "border-solid border-4 border-gray-600 px-2 w-1/2",
     value: iframe
   }), _react.default.createElement("a", {
-    href: "#",
+    href: "#/",
     id: "copy-share-link",
     className: "m-4",
     onClick: function onClick() {
