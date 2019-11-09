@@ -1,9 +1,42 @@
-Full featured Data Explorer that incorporates data exploration, views (table, chart, map) and (basic) view creation / customization.
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Dataopian Data Explorer is a React single page application and framework for creating and displaying rich data explorers (think Tableau-lite). It incorporates connecting to data sources, searching and filtering, views such as table, charts and map as well as conrtros to create and customize those views.
 
-For notes about boilerplate see https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
+Use stand-alone or with CKAN. For CKAN it is a drop-in replacement for ReclineJS in CKAN Classic.
+
+Full overview and docs at: http://tech.datopian.com/data-explorer/
+
+
+# Use it
+
+## Usage
+
+```htmlmixed=
+<div class="data-explorer" id="..." data-datapackage="{...}" ></div>
+
+<!-- where datapackage is -->
+<srcipt>
+  const datapackage = {
+    resources: [{resource}], // single resource for this view
+    views: [...], // can be 3 views aka widgets
+    controls: { 
+      showChartBuilder: true,
+      showMapBuilder: true 
+    }
+  }
+</srcipt>
+
+<!-- import data explorer -->
+<srcipt src="..."></srcipt>
+```
+
+TODO: Using it via webpack etc
+
+
+# Development
+
+This was built using create-react-app so you can use all the standard commands.
 
 ## Installation
+
 * clone this repo
 * `yarn`
 * `yarn start`
@@ -21,80 +54,18 @@ You should see:
 
 
 ## Fixtures
+
 Until we have better docs on settings, use fixtures as examples of how to instantiate the app.
 
 Fixtures are representations of Data Explorer state, contained in `__fixtures__` directory.
 
 ## Serialized state 
+
 `store->serializedState` is a representation of the application state _without fetched data_
 A data-explorer can be "hydrated" using the serialized state, it will refetch the data, and will render in the same state it was exported in
 
 ### A note on share links
+
 There is common limit of up 2000 characters on URL strings. Our share links contain the entire application store tree, which is often larger than 2000 characters, in which the application state cannot be shared via URL. Thems the breaks.
 
-## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
