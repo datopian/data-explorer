@@ -22,9 +22,9 @@ export default async dpID => {
     await Promise.all(dataset.resources.map(async (file) => {
       if (file.displayName === 'FileInline') {
         return
-      } else if (file.descriptor.path && file.descriptor.path.includes('datastore_search')) {
+      } else if (file.descriptor.api && file.descriptor.api.includes('datastore_search')) {
         // Datastore, e.g., when a path is a 'datastore_search' API
-        const response = await fetch(file.descriptor.path)
+        const response = await fetch(file.descriptor.api)
         if (!response.ok) {
           file.descriptor.unavailable = true
           return
