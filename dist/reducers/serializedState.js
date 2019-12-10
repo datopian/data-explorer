@@ -7,7 +7,6 @@ exports.default = void 0;
 
 var _utils = require("../utils");
 
-// updates on every action and translates app state to shareable links
 var _default = function _default() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;

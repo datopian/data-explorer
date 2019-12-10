@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import './App.css'
-import { QueryBuilder } from 'datastore-query-builder'
+import { QueryBuilder } from '@datopian/datastore-query-builder'
 import DataView from './components/DataView'
 import Share from './components/Share'
 import { ChartBuilder } from 'chart-builder'
