@@ -54,16 +54,24 @@ export const App = props => {
   })
 
   return (
-    <div className="ml-6">
+    <div className="data-explorer">
+      {/* Number of total rows available. */}
+      <div className="total-rows">
+        {
+          props.datapackage.resources[0].datastore_active
+          ? props.datapackage.resources[0].totalrowcount.toLocaleString()
+          : ''
+        }
+      </div>
+      {/* End of Number of total rows available. */}
+
       {/* Data Editor (aka filters / datastore query builder) */}
-      <div className="container py-4">
-        <div className="datastore-query-builder">
-          {
-            props.datapackage.resources[0].datastore_active
-            ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
-            : ''
-          }
-        </div>
+      <div className="datastore-query-builder">
+        {
+          props.datapackage.resources[0].datastore_active
+          ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+          : ''
+        }
       </div>
       {/* End of Data Editor */}
 
