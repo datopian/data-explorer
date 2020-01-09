@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './App.css'
 import App from './AppWithProvider'
+
 import * as serviceWorker from './serviceWorker';
 
 const instances = document.getElementsByClassName('data-explorer')

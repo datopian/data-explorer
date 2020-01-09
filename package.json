@@ -10,9 +10,13 @@
     "chart-builder": "git+https://github.com/datopian/chart-builder.git",
     "data.js": "^0.12.11",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
+    "i18next": "^19.0.3",
+    "i18next-browser-languagedetector": "^4.0.1",
+    "i18next-xhr-backend": "^3.2.2",
     "map-builder": "git+https://github.com/datopian/map-builder.git",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-i18next": "^11.2.7",
     "react-loader": "^2.4.5",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
@@ -64,5 +68,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "sideEffects": [
+    "./src/i18n.js"
+  ]
 }
