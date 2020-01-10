@@ -1,6 +1,8 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
+import en from './locales/en/translation.json'
+import da from './locales/da/translation.json'
 
 i18n
   .use(LanguageDetector)
@@ -22,12 +24,8 @@ i18n
     },
 
     resources: {
-      en: {
-        translation: require('./locales/en/translation.json')
-      },
-      da: {
-        translation: require('./locales/da/translation.json')
-      }
+      en: {translation: en},
+      da: {translation: da},
     },
 
     react: {
