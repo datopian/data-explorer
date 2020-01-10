@@ -31,8 +31,7 @@ var slim = function slim(serializedState) {
 
 var _default = function _default(props) {
   var _useTranslation = (0, _reactI18next.useTranslation)(),
-      t = _useTranslation.t,
-      i18n = _useTranslation.i18n;
+      t = _useTranslation.t;
 
   var serializedState = slim(props.serializedState); // TODO this is a stub for montreal -- need to pass origin as props
 

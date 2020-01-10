@@ -19,7 +19,7 @@ const slim = serializedState => {
 
 export default props => {
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const serializedState = slim(props.serializedState)
   // TODO this is a stub for montreal -- need to pass origin as props
