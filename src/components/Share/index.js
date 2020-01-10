@@ -2,7 +2,7 @@ import "../../i18n/i18n";
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const MAX_LEN = 1500
 const slimProps = ['archiver', 'schema', 'shareLink', 'iframeText']

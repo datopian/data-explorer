@@ -1,3 +1,4 @@
+import i18n from './i18n/i18n'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './App.css'
@@ -6,6 +7,13 @@ import App from './AppWithProvider'
 import * as serviceWorker from './serviceWorker';
 
 const instances = document.getElementsByClassName('data-explorer')
+
+// this check needs to be here
+// otherwise the translations never get to the build
+// see https://gitlab.com/datopian/data-explorer/issues/31#note_269586593
+if (i18n.options.resources) {
+  console.log('Translations loaded')
+}
 
 for (const instance of instances) {
   try {
