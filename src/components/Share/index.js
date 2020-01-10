@@ -1,6 +1,5 @@
-import "./../../i18n";
-
-import React, { Suspense } from 'react'
+import "../../i18n/i18n";
+import React from 'react'
 import ReactDom from 'react-dom'
 
 import { useTranslation, Trans } from "react-i18next";
@@ -45,10 +44,7 @@ export default props => {
     document.body.removeChild(el)
   }
 
-  // i18n translations might still be loaded by the xhr backend
-  // use react's Suspense
   return (
-    <Suspense fallback="loading...">
       <div>
         {shareable &&
         <div className="dx-share-container">
@@ -66,6 +62,5 @@ export default props => {
         <p>{t('No share link available')}</p>
         }
       </div>
-    </Suspense>
   )
 }

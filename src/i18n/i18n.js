@@ -1,12 +1,8 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import Backend from 'i18next-xhr-backend';
 import { initReactI18next } from "react-i18next";
 
 i18n
-  // load translation using xhr -> see /public/locales
-  // learn more: https://github.com/i18next/i18next-xhr-backend
-  .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   // init i18next
@@ -15,8 +11,27 @@ i18n
 
     // for all options read: https://github.com/i18next/i18next-browser-languageDetector#detector-options
     detection: {
-      order: ['cookie'],
-      lookupCookie: 'defaultLocale'
+      order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+
+      // keys or params to lookup language from
+      lookupQuerystring: 'lng',
+      lookupCookie: 'defaultLocale',
+      lookupLocalStorage: 'defaultLocale',
+      lookupFromPathIndex: 0,
+      lookupFromSubdomainIndex: 0,
+    },
+
+    resources: {
+      en: {
+        translation: require('./locales/en/translation.json')
+      },
+      da: {
+        translation: require('./locales/da/translation.json')
+      }
+    },
+
+    react: {
+      useSuspense: false
     },
 
     initImmediate: false,
