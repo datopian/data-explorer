@@ -68,4 +68,10 @@ A data-explorer can be "hydrated" using the serialized state, it will refetch th
 
 There is common limit of up 2000 characters on URL strings. Our share links contain the entire application store tree, which is often larger than 2000 characters, in which the application state cannot be shared via URL. Thems the breaks.
 
+# Production
+
+In order to build files for production, run `npm run build` or `yarn build`.
+
+You need to have **node version >= 12** in order to build files. Otherwise a 'heap out of memory error' gets thrown.
+
 
