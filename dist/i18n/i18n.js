@@ -43,7 +43,6 @@ _i18next.default.use(_i18nextBrowserLanguagedetector.default).use(_reactI18next.
   },
   initImmediate: false,
   fallbackLng: "en",
-  debug: true,
   // use content as keys
   keySeparator: false,
   interpolation: {

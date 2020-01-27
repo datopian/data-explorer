@@ -17,8 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = function _default(props) {
   var _useTranslation = (0, _reactI18next.useTranslation)(),
-      t = _useTranslation.t,
-      i18n = _useTranslation.i18n;
+      t = _useTranslation.t;
 
   return _react.default.createElement("div", null, _react.default.createElement("h2", {
     className: "text-2xl"
