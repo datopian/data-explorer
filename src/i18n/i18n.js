@@ -34,7 +34,6 @@ i18n
 
     initImmediate: false,
     fallbackLng: "en",
-    debug: true,
 
     // use content as keys
     keySeparator: false,
