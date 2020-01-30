@@ -81,15 +81,15 @@ var App = function App(props) {
     }) : '')))));
   });
   return _react.default.createElement("div", {
-    className: "ml-6"
+    className: "data-explorer"
   }, _react.default.createElement("div", {
-    className: "container py-4"
-  }, _react.default.createElement("div", {
+    className: "total-rows"
+  }, props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount.toLocaleString() : ''), _react.default.createElement("div", {
     className: "datastore-query-builder"
   }, props.datapackage.resources[0].datastore_active ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
     filterBuilderAction: props.filterUIAction
-  }) : '')), _react.default.createElement(_reactTabsRedux.Tabs, {
+  }) : ''), _react.default.createElement(_reactTabsRedux.Tabs, {
     renderActiveTabContentOnly: true,
     handleSelect: function handleSelect(selectedTab) {
       props.selectTabAction(selectedTab);
