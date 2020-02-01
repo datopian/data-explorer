@@ -7,6 +7,10 @@ exports.default = void 0;
 
 var _data = require("data.js");
 
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 var toArray = require('stream-to-array');
 
 function parseDatapackageIdentifier(stringOrJSON) {
@@ -74,8 +78,17 @@ var _callee2 = function _callee2(dpID) {
 
                   case 13:
                     result = _context.sent;
-                    file.descriptor.data = result.result.records;
-                    file.descriptor.totalrowcount = result.result.total; // Infer schema but re-open the file as it is now "inlined":
+                    // Remove fields that start with `_` as we don't want to display internal values,
+                    // e.g., `_id`, `_full_text` and `_count`
+                    file.descriptor.data = result.result.records.map(function (_ref) {
+                      var _id = _ref._id,
+                          _full_text = _ref._full_text,
+                          _count = _ref._count,
+                          etc = _objectWithoutProperties(_ref, ["_id", "_full_text", "_count"]);
+
+                      return etc;
+                    });
+                    file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count; // Infer schema but re-open the file as it is now "inlined":
 
                     fileInline = (0, _data.open)({
                       data: file.descriptor.data.map(Object.values),
