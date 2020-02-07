@@ -1,8 +1,7 @@
-import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
-import en from './locales/en/translation.json'
-import da from './locales/da/translation.json'
+import i18n from "i18next"
+import LanguageDetector from "i18next-browser-languagedetector"
+import {initReactI18next} from "react-i18next"
+
 
 i18n
   .use(LanguageDetector)
@@ -24,8 +23,24 @@ i18n
     },
 
     resources: {
-      en: {translation: en},
-      da: {translation: da},
+      en: {
+        translation: {
+          ...require('./locales/en/translation.json'),
+          ...require('chart-builder/src/i18n/locales/en/translation.json'),
+          ...require('map-builder/src/i18n/locales/en/translation.json'),
+          ...require('datapackage-views-js/src/i18n/locales/en/translation.json'),
+          ...require('datastore-query-builder/src/i18n/locales/en/translation.json'),
+        }
+      },
+      da: {
+        translation: {
+          ...require('./locales/da/translation.json'),
+          ...require('chart-builder/src/i18n/locales/da/translation.json'),
+          ...require('map-builder/src/i18n/locales/da/translation.json'),
+          ...require('datapackage-views-js/src/i18n/locales/da/translation.json'),
+          ...require('datastore-query-builder/src/i18n/locales/da/translation.json'),
+        }
+      },
     },
 
     react: {
@@ -41,6 +56,6 @@ i18n
     interpolation: {
       escapeValue: false
     }
-  });
+  })
 
-export default i18n;
+export default i18n

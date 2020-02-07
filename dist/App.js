@@ -13,7 +13,7 @@ var _reactRedux = require("react-redux");
 
 require("./App.css");
 
-var _datastoreQueryBuilder = require("@datopian/datastore-query-builder");
+var _datastoreQueryBuilder = require("datastore-query-builder");
 
 var _DataView = _interopRequireDefault(require("./components/DataView"));
 

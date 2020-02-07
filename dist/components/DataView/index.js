@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactLoader = _interopRequireDefault(require("react-loader"));
 
-var _datapackageViewsJs = require("@datopian/datapackage-views-js");
+var _datapackageViewsJs = require("datapackage-views-js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
