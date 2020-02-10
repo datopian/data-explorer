@@ -48,11 +48,14 @@ i18n
     },
 
     initImmediate: false,
-    fallbackLng: "en",
     debug: true,
 
-    // use content as keys
+    // allow keys to be phrases having `:`, `.`
+    nsSeparator: false,
     keySeparator: false,
+
+    // do not load a fallback
+    fallbackLng: false,
 
     interpolation: {
       escapeValue: false

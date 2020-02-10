@@ -26,14 +26,14 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var instances = document.getElementsByClassName('data-explorer'); // this check needs to be here
+// this check needs to be here
 // otherwise the translations never get to the build
 // see https://gitlab.com/datopian/data-explorer/issues/31#note_269586593
-
 if (_i18n.default.options.resources) {
   console.log('Translations loaded');
 }
 
+var instances = document.getElementsByClassName('data-explorer');
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
 var _iteratorError = undefined;

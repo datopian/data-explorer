@@ -40,13 +40,16 @@ _i18next.default.use(_i18nextBrowserLanguagedetector.default).use(_reactI18next.
       translation: _objectSpread({}, require('./locales/da/translation.json'), {}, require('chart-builder/src/i18n/locales/da/translation.json'), {}, require('map-builder/src/i18n/locales/da/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/da/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/da/translation.json'))
     }
   },
-  react: {
-    useSuspense: false
-  },
+  // react: {
+  //   useSuspense: false
+  // },
   initImmediate: false,
-  fallbackLng: "en",
-  // use content as keys
+  debug: true,
+  // allow keys to be phrases having `:`, `.`
+  nsSeparator: false,
   keySeparator: false,
+  // do not load a fallback
+  fallbackLng: false,
   interpolation: {
     escapeValue: false
   }
