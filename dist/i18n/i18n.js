@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.initTranslations = void 0;
 
 var _i18next = _interopRequireDefault(require("i18next"));
 
@@ -19,41 +19,54 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-_i18next.default.use(_i18nextBrowserLanguagedetector.default).use(_reactI18next.initReactI18next) // init i18next
-// for all options read: https://www.i18next.com/overview/configuration-options
-.init({
-  // for all options read: https://github.com/i18next/i18next-browser-languageDetector#detector-options
-  detection: {
-    order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-    // keys or params to lookup language from
-    lookupQuerystring: 'lng',
-    lookupCookie: 'defaultLocale',
-    lookupLocalStorage: 'defaultLocale',
-    lookupFromPathIndex: 0,
-    lookupFromSubdomainIndex: 0
-  },
-  resources: {
-    en: {
-      translation: _objectSpread({}, require('./locales/en/translation.json'), {}, require('chart-builder/src/i18n/locales/en/translation.json'), {}, require('map-builder/src/i18n/locales/en/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/en/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/en/translation.json'))
-    },
-    da: {
-      translation: _objectSpread({}, require('./locales/da/translation.json'), {}, require('chart-builder/src/i18n/locales/da/translation.json'), {}, require('map-builder/src/i18n/locales/da/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/da/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/da/translation.json'))
-    }
-  },
-  // react: {
-  //   useSuspense: false
-  // },
-  initImmediate: false,
-  debug: true,
-  // allow keys to be phrases having `:`, `.`
-  nsSeparator: false,
-  keySeparator: false,
-  // do not load a fallback
-  fallbackLng: false,
-  interpolation: {
-    escapeValue: false
-  }
-});
+var initTranslations = function initTranslations() {
+  return regeneratorRuntime.async(function initTranslations$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return regeneratorRuntime.awrap(_i18next.default.use(_i18nextBrowserLanguagedetector.default).use(_reactI18next.initReactI18next) // init i18next
+          // for all options read: https://www.i18next.com/overview/configuration-options
+          .init({
+            // for all options read: https://github.com/i18next/i18next-browser-languageDetector#detector-options
+            detection: {
+              order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+              // keys or params to lookup language from
+              lookupQuerystring: 'lng',
+              lookupCookie: 'defaultLocale',
+              lookupLocalStorage: 'defaultLocale',
+              lookupFromPathIndex: 0,
+              lookupFromSubdomainIndex: 0
+            },
+            resources: {
+              en: {
+                translation: _objectSpread({}, require('./locales/en/translation.json'), {}, require('chart-builder/src/i18n/locales/en/translation.json'), {}, require('map-builder/src/i18n/locales/en/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/en/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/en/translation.json'))
+              },
+              da: {
+                translation: _objectSpread({}, require('./locales/da/translation.json'), {}, require('chart-builder/src/i18n/locales/da/translation.json'), {}, require('map-builder/src/i18n/locales/da/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/da/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/da/translation.json'))
+              }
+            },
+            react: {
+              useSuspense: false
+            },
+            initImmediate: false,
+            debug: true,
+            // allow keys to be phrases having `:`, `.`
+            nsSeparator: false,
+            keySeparator: false,
+            // do not load a fallback
+            fallbackLng: false,
+            interpolation: {
+              escapeValue: false
+            }
+          }));
 
-var _default = _i18next.default;
-exports.default = _default;
+        case 2:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+};
+
+exports.initTranslations = initTranslations;

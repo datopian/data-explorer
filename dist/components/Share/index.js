@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,17 +7,11 @@ exports.default = void 0;
 
 require("../../i18n/i18n");
 
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _react = _interopRequireDefault(require("react"));
 
 var _reactI18next = require("react-i18next");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var MAX_LEN = 1500;
 var slimProps = ['archiver', 'schema', 'shareLink', 'iframeText'];
@@ -37,8 +29,7 @@ var slim = function slim(serializedState) {
 
 var _default = function _default(props) {
   var _useTranslation = (0, _reactI18next.useTranslation)(),
-      t = _useTranslation.t,
-      i18n = _useTranslation.i18n;
+      t = _useTranslation.t;
 
   var serializedState = slim(props.serializedState); // TODO this is a stub for montreal -- need to pass origin as props
 
@@ -64,18 +55,9 @@ var _default = function _default(props) {
     document.execCommand('copy'); // Remove temporary element
 
     document.body.removeChild(el);
-  }; // loading component for suspense fallback
-
-
-  var Loader = function Loader() {
-    return _react.default.createElement("div", {
-      className: "App"
-    }, _react.default.createElement("div", null, "loading..."));
   };
 
-  return _react.default.createElement(_react.Suspense, {
-    fallback: _react.default.createElement(Loader, null)
-  }, _react.default.createElement("div", null, shareable && _react.default.createElement("div", {
+  return _react.default.createElement("div", null, shareable && _react.default.createElement("div", {
     className: "dx-share-container"
   }, _react.default.createElement("div", {
     className: "m-4"
@@ -103,7 +85,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(iframe);
     }
-  }, _react.default.createElement("i", null, t("copy embed text"))))), !shareable && _react.default.createElement("p", null, t('No share link available'))));
+  }, _react.default.createElement("i", null, t("copy embed text"))))), !shareable && _react.default.createElement("p", null, t('No share link available')));
 };
 
 exports.default = _default;

@@ -2,7 +2,7 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var _i18n = _interopRequireDefault(require("./i18n/i18n"));
+var _i18n = require("./i18n/i18n");
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -26,48 +26,42 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-// this check needs to be here
-// otherwise the translations never get to the build
-// see https://gitlab.com/datopian/data-explorer/issues/31#note_269586593
-if (_i18n.default.options.resources) {
-  console.log('Translations loaded');
-}
-
 var instances = document.getElementsByClassName('data-explorer');
-var _iteratorNormalCompletion = true;
-var _didIteratorError = false;
-var _iteratorError = undefined;
+(0, _i18n.initTranslations)().then(function () {
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-try {
-  for (var _iterator = instances[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-    var instance = _step.value;
-
-    try {
-      var props = JSON.parse(instance.getAttribute('data-datapackage'));
-
-      var datapackage = props.datapackage,
-          rest = _objectWithoutProperties(props, ["datapackage"]);
-
-      _reactDom.default.render(_react.default.createElement(_AppWithProvider.default, _extends({
-        datapackage: datapackage
-      }, rest)), document.getElementById(instance.id));
-    } catch (e) {
-      console.warn('Failed to render data-explorer', e);
-    }
-  }
-} catch (err) {
-  _didIteratorError = true;
-  _iteratorError = err;
-} finally {
   try {
-    if (!_iteratorNormalCompletion && _iterator.return != null) {
-      _iterator.return();
+    for (var _iterator = instances[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var instance = _step.value;
+
+      try {
+        var props = JSON.parse(instance.getAttribute('data-datapackage'));
+
+        var datapackage = props.datapackage,
+            rest = _objectWithoutProperties(props, ["datapackage"]);
+
+        _reactDom.default.render(_react.default.createElement(_AppWithProvider.default, _extends({
+          datapackage: datapackage
+        }, rest)), document.getElementById(instance.id));
+      } catch (e) {
+        console.warn('Failed to render data-explorer', e);
+      }
     }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
   } finally {
-    if (_didIteratorError) {
-      throw _iteratorError;
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
     }
   }
-}
-
+});
 serviceWorker.unregister();
