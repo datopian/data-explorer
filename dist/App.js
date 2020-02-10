@@ -84,7 +84,7 @@ var App = function App(props) {
     className: "data-explorer"
   }, _react.default.createElement("div", {
     className: "total-rows"
-  }, props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount.toLocaleString() : ''), _react.default.createElement("div", {
+  }, props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : ''), _react.default.createElement("div", {
     className: "datastore-query-builder"
   }, props.datapackage.resources[0].datastore_active ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
