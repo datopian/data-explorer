@@ -1,6 +1,5 @@
 import "../../i18n/i18n";
 import React from 'react'
-import ReactDom from 'react-dom'
 
 import { useTranslation } from "react-i18next";
 
