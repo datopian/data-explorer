@@ -3,7 +3,8 @@ import LanguageDetector from "i18next-browser-languagedetector"
 import {initReactI18next} from "react-i18next"
 
 
-i18n
+export const initTranslations = async () => {
+  await i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   // init i18next
@@ -61,5 +62,4 @@ i18n
       escapeValue: false
     }
   })
-
-export default i18n
+}
