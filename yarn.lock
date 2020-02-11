@@ -861,9 +861,15 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.4":
   version "7.7.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.6.tgz#d18c511121aff1b4f2cd1d452f1bac9601dd830f"
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6":
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -920,16 +926,30 @@
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
 
-"@datopian/datapackage-views-js@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.0.tgz#c329b7963b68b4dbb9e4b0ed2e8f80b6554a5a37"
+"@datopian/chart-builder@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@datopian/chart-builder/-/chart-builder-0.1.1.tgz#c586168d4e15a1eb56205eb70db6063c8f56d272"
+  dependencies:
+    formik "^1.5.8"
+    i18next "^19.0.3"
+    i18next-browser-languagedetector "^4.0.1"
+    react "^16.9.0"
+    react-dom "^16.9.0"
+    react-i18next "^11.3.0"
+
+"@datopian/datapackage-views-js@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.2.tgz#f67ccd29309f12914eb15390f2cbcd2d874eb6a1"
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
+    i18next "^19.0.3"
+    i18next-browser-languagedetector "^4.0.1"
     leaflet "^1.5.1"
     plotly.js-basic-dist "^1.49.2"
     react "^16.8.6"
     react-csv "^1.1.1"
     react-dom "^16.8.6"
+    react-i18next "^11.2.7"
     react-leaflet "^2.4.0"
     react-loader-spinner "^2.3.0"
     react-pdf-js "^5.1.0"
@@ -939,14 +959,28 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
-"@datopian/datastore-query-builder@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.0.tgz#069472f9253caf5fe8f428536e5cc444420b751c"
+"@datopian/datastore-query-builder@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.1.tgz#73c3e39ea70193f41c5b3156c7bee695b6631f38"
   dependencies:
     formik "^1.5.8"
+    i18next "^19.0.3"
+    i18next-browser-languagedetector "^4.0.1"
     react "^16.8.6"
     react-date-picker "^7.7.0"
     react-dom "^16.8.6"
+    react-i18next "^11.3.0"
+
+"@datopian/map-builder@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.1.tgz#4a0452b244d0cde2e87441b06e24300d33f877dd"
+  dependencies:
+    formik "^1.5.8"
+    i18next "^19.0.3"
+    i18next-browser-languagedetector "^4.0.1"
+    react "^16.9.0"
+    react-dom "^16.9.0"
+    react-i18next "^11.3.0"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -2360,14 +2394,6 @@ chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
 
-"chart-builder@git+https://github.com/datopian/chart-builder.git":
-  version "0.0.1"
-  resolved "git+https://github.com/datopian/chart-builder.git#b5c45915af98cdb5a3bddf66ebe4b36df75d29da"
-  dependencies:
-    formik "^1.5.8"
-    react "^16.9.0"
-    react-dom "^16.9.0"
-
 chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.4, chokidar@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
@@ -3061,12 +3087,12 @@ d3-force@^1.1.0:
     d3-timer "1"
 
 d3-format@1, d3-format@^1.3.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.2.tgz#2a8c0ebf500f315981c2110eaaf70b82f472cb2b"
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.3.tgz#4e8eb4dff3fdcb891a8489ec6e698601c41b96f1"
 
 d3-geo-projection@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/d3-geo-projection/-/d3-geo-projection-2.7.1.tgz#bcac6a9ac9d77786c97dab3f3f556913fd6db202"
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/d3-geo-projection/-/d3-geo-projection-2.8.1.tgz#80447ef6cc6ab561646d251c20f4882c81879938"
   dependencies:
     commander "2"
     d3-array "1"
@@ -3122,8 +3148,8 @@ d3-shape@^1.2.2:
     d3-path "1"
 
 d3-time-format@2, d3-time-format@^2.1.3:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.2.2.tgz#187597ffc6a0f37cb36bb7a1d7167cdc887ecda0"
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.2.3.tgz#0c9a12ee28342b2037e5ea1cf0b9eb4dd75f29cb"
   dependencies:
     d3-time "1"
 
@@ -4032,6 +4058,10 @@ fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
 
+fast-deep-equal@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
+
 fast-glob@^2.0.2, fast-glob@^2.2.6:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.7.tgz#6953857c3afa475fff92ee6015d52da70a4cd39d"
@@ -4652,8 +4682,8 @@ hmac-drbg@^1.0.0:
     minimalistic-crypto-utils "^1.0.1"
 
 hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#101685d3aff3b23ea213163f6e8e12f4f111e19f"
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   dependencies:
     react-is "^16.7.0"
 
@@ -4709,6 +4739,12 @@ html-minifier@^3.5.20:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "3.4.x"
+
+html-parse-stringify2@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/html-parse-stringify2/-/html-parse-stringify2-2.0.1.tgz#dc5670b7292ca158b7bc916c9a6735ac8872834a"
+  dependencies:
+    void-elements "^2.0.1"
 
 html-webpack-plugin@4.0.0-beta.5:
   version "4.0.0-beta.5"
@@ -4797,6 +4833,18 @@ http-signature@~1.2.0:
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
+
+i18next-browser-languagedetector@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-4.0.1.tgz#6a0b44a93835146287130da36ce3d04a1836879f"
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+
+i18next@^19.0.3:
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.1.0.tgz#fe1a1da3d208872946307c7d2d115da45d46159f"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
 
 iconv-lite@0.4, iconv-lite@0.4.24, iconv-lite@^0.4.19, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"
@@ -6118,14 +6166,6 @@ map-age-cleaner@^0.1.1:
   dependencies:
     p-defer "^1.0.0"
 
-"map-builder@git+https://github.com/datopian/map-builder.git":
-  version "0.0.1"
-  resolved "git+https://github.com/datopian/map-builder.git#ac811be13c429b2ef2d17b1e19b55c3864f3480d"
-  dependencies:
-    formik "^1.5.8"
-    react "^16.9.0"
-    react-dom "^16.9.0"
-
 map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
@@ -7061,8 +7101,8 @@ pkg-up@2.0.0:
     find-up "^2.1.0"
 
 plotly.js-basic-dist@^1.49.2:
-  version "1.51.2"
-  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.51.2.tgz#08f166c76523835ba98468b55cfba21546d11ade"
+  version "1.52.2"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.52.2.tgz#8176dde1a373865d9aff53cc5fbc687391b356fc"
 
 pn@^1.1.0:
   version "1.1.0"
@@ -8090,8 +8130,8 @@ react-csv@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-csv/-/react-csv-1.1.2.tgz#6cb47e625f51878d24bb68a120efb45a30ad243a"
 
 react-date-picker@^7.7.0:
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-7.9.0.tgz#728cf4a7d47c5fa9c669f648bc7e7bdc55a1c79e"
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-7.10.0.tgz#890f37684da5087c80d63132b4e77e3d0677b332"
   dependencies:
     "@wojtekmaj/date-utils" "^1.0.0"
     get-user-locale "^1.2.0"
@@ -8197,16 +8237,23 @@ react-fit@^1.0.3:
     detect-element-overflow "^1.1.1"
     prop-types "^15.6.0"
 
+react-i18next@^11.2.7, react-i18next@^11.3.0:
+  version "11.3.1"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.3.1.tgz#9269282c3f566015f0bdf8fdbf46782bbe50f5a7"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    html-parse-stringify2 "2.0.1"
+
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
 
 react-leaflet@^2.4.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-2.6.0.tgz#517348b6c8588ce9f33137021900d826e542ac55"
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-2.6.1.tgz#e5d6514d2358c51a28e614b8a0ddf8dca56e7179"
   dependencies:
-    "@babel/runtime" "^7.7.2"
-    fast-deep-equal "^2.0.1"
+    "@babel/runtime" "^7.7.6"
+    fast-deep-equal "^3.1.1"
     hoist-non-react-statics "^3.3.1"
     warning "^4.0.3"
 
@@ -8618,7 +8665,13 @@ resolve@1.10.0:
   dependencies:
     path-parse "^1.0.6"
 
-resolve@^1.1.10, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1, resolve@^1.9.0:
+resolve@^1.1.10:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.15.1.tgz#27bdcdeffeaf2d6244b95bb0f9f4b4653451f3e8"
+  dependencies:
+    path-parse "^1.0.6"
+
+resolve@^1.1.7, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.5.0, resolve@^1.8.1, resolve@^1.9.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.13.1.tgz#be0aa4c06acd53083505abb35f4d66932ab35d16"
   dependencies:
@@ -9694,8 +9747,8 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 ua-parser-js@^0.7.18:
-  version "0.7.20"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"
+  version "0.7.21"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
 
 uglify-js@3.4.x:
   version "3.4.10"
@@ -9783,8 +9836,8 @@ upath@^1.1.1:
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
 
 update-input-width@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/update-input-width/-/update-input-width-1.1.1.tgz#075cad85e20f542a5eccc216937ab8d57a1ab892"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/update-input-width/-/update-input-width-1.2.1.tgz#769d6182413590c3b50b52ffa9c65d79e2c17f95"
 
 upper-case@^1.1.1:
   version "1.1.3"
@@ -10038,8 +10091,8 @@ vega-scenegraph@^3.2.3:
     vega-util "^1.7.0"
 
 vega-statistics@^1.2.1, vega-statistics@^1.2.3:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/vega-statistics/-/vega-statistics-1.7.1.tgz#ce55893d0a0b94932b51175083bf4d77f8f147d4"
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/vega-statistics/-/vega-statistics-1.7.2.tgz#0bd01b52aee294915f2c3f82cb80a82501592ad9"
   dependencies:
     d3-array "^2.4.0"
 
@@ -10053,14 +10106,14 @@ vega-transforms@^2.3.1:
     vega-util "^1.7.0"
 
 vega-typings@*:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/vega-typings/-/vega-typings-0.12.0.tgz#bf998252b7f72bb2f22d6d5a02813e0bd3685562"
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/vega-typings/-/vega-typings-0.12.3.tgz#fc5f00219a0d99d3df5b19c563be77800c157cf0"
   dependencies:
     vega-util "^1.12.1"
 
 vega-util@^1.11.0, vega-util@^1.12.1, vega-util@^1.7.0:
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/vega-util/-/vega-util-1.12.1.tgz#ade1c27ab30e6e330d4d3a99d108d2365ac08db0"
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/vega-util/-/vega-util-1.12.2.tgz#4997a50e56fa4be05046966568aed72246a40e27"
 
 vega-view-transforms@^2.0.3:
   version "2.0.3"
@@ -10115,6 +10168,10 @@ verror@1.10.0:
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
+
+void-elements@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"

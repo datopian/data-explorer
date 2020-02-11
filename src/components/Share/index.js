@@ -1,5 +1,7 @@
+import "../../i18n/i18n";
 import React from 'react'
-import ReactDom from 'react-dom'
+
+import { useTranslation } from "react-i18next";
 
 const MAX_LEN = 1500
 const slimProps = ['archiver', 'schema', 'shareLink', 'iframeText']
@@ -15,6 +17,9 @@ const slim = serializedState => {
 }
 
 export default props => {
+
+  const { t } = useTranslation();
+
   const serializedState = slim(props.serializedState)
   // TODO this is a stub for montreal -- need to pass origin as props
   const shareLink = `localhost:4000/data-explorer?explorer=${serializedState}`
@@ -39,22 +44,22 @@ export default props => {
   }
 
   return (
-  <div>
-    {shareable &&
-      <div className="dx-share-container">
-        <div className="m-4">
-          <input id="share-link" className="border-solid border-4 border-gray-600 w-1/2 px-2" value={shareLink} />
-          <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>copy share link</i></a>
+      <div>
+        {shareable &&
+        <div className="dx-share-container">
+          <div className="m-4">
+            <input id="share-link" className="border-solid border-4 border-gray-600 w-1/2 px-2" value={shareLink} />
+            <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>{t("copy share link")}</i></a>
+          </div>
+          <div className="m-4">
+            <input id="embed" className="border-solid border-4 border-gray-600 px-2 w-1/2" value={iframe} />
+            <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>{t("copy embed text")}</i></a>
+          </div>
         </div>
-        <div className="m-4">
-          <input id="embed" className="border-solid border-4 border-gray-600 px-2 w-1/2" value={iframe} />
-          <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>copy embed text</i></a>
-        </div>
+        }
+        {!shareable &&
+        <p>{t('No share link available')}</p>
+        }
       </div>
-    }
-    {!shareable &&
-      <p>No share link available</p>
-    }
-    </div>
   )
 }
