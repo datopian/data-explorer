@@ -27,19 +27,19 @@ export const initTranslations = async () => {
       en: {
         translation: {
           ...require('./locales/en/translation.json'),
-          ...require('chart-builder/src/i18n/locales/en/translation.json'),
-          ...require('map-builder/src/i18n/locales/en/translation.json'),
-          ...require('datapackage-views-js/src/i18n/locales/en/translation.json'),
-          ...require('datastore-query-builder/src/i18n/locales/en/translation.json'),
+          ...require('@datopian/chart-builder/src/i18n/locales/en/translation.json'),
+          ...require('@datopian/map-builder/src/i18n/locales/en/translation.json'),
+          ...require('@datopian/datapackage-views-js/src/i18n/locales/en/translation.json'),
+          ...require('@datopian/datastore-query-builder/src/i18n/locales/en/translation.json'),
         }
       },
       da: {
         translation: {
           ...require('./locales/da/translation.json'),
-          ...require('chart-builder/src/i18n/locales/da/translation.json'),
-          ...require('map-builder/src/i18n/locales/da/translation.json'),
-          ...require('datapackage-views-js/src/i18n/locales/da/translation.json'),
-          ...require('datastore-query-builder/src/i18n/locales/da/translation.json'),
+          ...require('@datopian/chart-builder/src/i18n/locales/da/translation.json'),
+          ...require('@datopian/map-builder/src/i18n/locales/da/translation.json'),
+          ...require('@datopian/datapackage-views-js/src/i18n/locales/da/translation.json'),
+          ...require('@datopian/datastore-query-builder/src/i18n/locales/da/translation.json'),
         }
       },
     },
