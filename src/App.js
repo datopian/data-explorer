@@ -24,11 +24,11 @@ export const App = props => {
   })
 
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
-  const tabLinks = props.widgets.map((widget) => {
-    return <TabLink to={widget.name} className='mr-4'>{widget.name}</TabLink>
+  const tabLinks = props.widgets.map((widget, index) => {
+    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{widget.name}</TabLink>
   })
-  const tabContents = props.widgets.map((widget) => {
-    return <TabContent for={widget.name}>
+  const tabContents = props.widgets.map((widget, index) => {
+    return <TabContent for={widget.name} key={`tabContent-${index}`}>
       <div className="container flex py-6">
         <div className="w-3/4 py-3 mr-4">
           <DataView {...widget} />
