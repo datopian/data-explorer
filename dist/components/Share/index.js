@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("../../i18n/i18n");
+
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _reactI18next = require("react-i18next");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,6 +28,9 @@ var slim = function slim(serializedState) {
 };
 
 var _default = function _default(props) {
+  var _useTranslation = (0, _reactI18next.useTranslation)(),
+      t = _useTranslation.t;
+
   var serializedState = slim(props.serializedState); // TODO this is a stub for montreal -- need to pass origin as props
 
   var shareLink = "localhost:4000/data-explorer?explorer=".concat(serializedState);
@@ -67,7 +72,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(shareLink);
     }
-  }, _react.default.createElement("i", null, "copy share link"))), _react.default.createElement("div", {
+  }, _react.default.createElement("i", null, t("copy share link")))), _react.default.createElement("div", {
     className: "m-4"
   }, _react.default.createElement("input", {
     id: "embed",
@@ -80,7 +85,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(iframe);
     }
-  }, _react.default.createElement("i", null, "copy embed text")))), !shareable && _react.default.createElement("p", null, "No share link available"));
+  }, _react.default.createElement("i", null, t("copy embed text"))))), !shareable && _react.default.createElement("p", null, t('No share link available')));
 };
 
 exports.default = _default;
