@@ -40,10 +40,10 @@ var initTranslations = function initTranslations() {
             },
             resources: {
               en: {
-                translation: _objectSpread({}, require('./locales/en/translation.json'), {}, require('chart-builder/src/i18n/locales/en/translation.json'), {}, require('map-builder/src/i18n/locales/en/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/en/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/en/translation.json'))
+                translation: _objectSpread({}, require('./locales/en/translation.json'), {}, require('@datopian/chart-builder/src/i18n/locales/en/translation.json'), {}, require('@datopian/map-builder/src/i18n/locales/en/translation.json'), {}, require('@datopian/datapackage-views-js/src/i18n/locales/en/translation.json'), {}, require('@datopian/datastore-query-builder/src/i18n/locales/en/translation.json'))
               },
               da: {
-                translation: _objectSpread({}, require('./locales/da/translation.json'), {}, require('chart-builder/src/i18n/locales/da/translation.json'), {}, require('map-builder/src/i18n/locales/da/translation.json'), {}, require('datapackage-views-js/src/i18n/locales/da/translation.json'), {}, require('datastore-query-builder/src/i18n/locales/da/translation.json'))
+                translation: _objectSpread({}, require('./locales/da/translation.json'), {}, require('@datopian/chart-builder/src/i18n/locales/da/translation.json'), {}, require('@datopian/map-builder/src/i18n/locales/da/translation.json'), {}, require('@datopian/datapackage-views-js/src/i18n/locales/da/translation.json'), {}, require('@datopian/datastore-query-builder/src/i18n/locales/da/translation.json'))
               }
             },
             react: {

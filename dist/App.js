@@ -13,15 +13,15 @@ var _reactRedux = require("react-redux");
 
 require("./App.css");
 
-var _datastoreQueryBuilder = require("datastore-query-builder");
+var _datastoreQueryBuilder = require("@datopian/datastore-query-builder");
 
 var _DataView = _interopRequireDefault(require("./components/DataView"));
 
 var _Share = _interopRequireDefault(require("./components/Share"));
 
-var _chartBuilder = require("chart-builder");
+var _chartBuilder = require("@datopian/chart-builder");
 
-var _mapBuilder = require("map-builder");
+var _mapBuilder = require("@datopian/map-builder");
 
 var _reactTabsRedux = require("react-tabs-redux");
 
@@ -53,15 +53,17 @@ var App = function App(props) {
     return widget.active;
   });
   var selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name;
-  var tabLinks = props.widgets.map(function (widget) {
+  var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
       to: widget.name,
-      className: "mr-4"
+      className: "mr-4",
+      key: "tabLink-".concat(index)
     }, widget.name);
   });
-  var tabContents = props.widgets.map(function (widget) {
+  var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
-      for: widget.name
+      for: widget.name,
+      key: "tabContent-".concat(index)
     }, _react.default.createElement("div", {
       className: "container flex py-6"
     }, _react.default.createElement("div", {
