@@ -7,6 +7,7 @@ import Share from './components/Share'
 import { ChartBuilder } from '@datopian/chart-builder'
 import { MapBuilder } from '@datopian/map-builder'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
+import ReactPaginate from 'react-paginate'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
 import { getResourceForFiltering } from './utils'
 
@@ -18,6 +19,27 @@ export const App = props => {
     }
     props.fetchDataAction(payload)
   }, [])
+
+  function handlePageClick (data) {
+    const selected = data.selected
+    const offset = Math.ceil(selected * 100)
+    const resource = JSON.parse(JSON.stringify(props.datapackage.resources[0]))
+    const urlObj = new URL(resource.api)
+    if (resource.api.includes('datastore_search?')) {
+      urlObj.searchParams.set('offset', offset)
+    } else if (resource.api.includes('datastore_search_sql?')) {
+      const sql = urlObj.searchParams.get('sql')
+      const regex = /OFFSET(%20|\s)\d+/
+      if (regex.test(sql)) {
+        urlObj.searchParams.set('sql', sql.replace(regex, `OFFSET ${offset}`))
+      } else {
+        urlObj.searchParams.set('sql', sql + ` OFFSET ${offset}`)
+      }
+      resource.api = resource.api.includes('offset')
+    }
+    resource.api = urlObj.href
+    props.filterUIAction(resource)
+  }
 
   const activeWidget = props.widgets.find(widget => {
     return widget.active
@@ -87,6 +109,23 @@ export const App = props => {
           {tabLinks}
           {tabContents}
       </Tabs>
+
+      {/* Pagination for DataStore resources */}
+      {props.datapackage.resources[0].datastore_active
+        ? <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={Math.ceil(props.datapackage.resources[0].totalrowcount/100)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+        />
+        : <div class="no-pagination not-datastore-resource"></div>
+      }
+      {/* End of Pagination */}
+
       <Share serializedState={props.serializedState} />
       {/* End of Widgets */}
      </div>
