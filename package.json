@@ -17,6 +17,7 @@
     "react-dom": "^16.9.0",
     "react-i18next": "^11.2.7",
     "react-loader": "^2.4.5",
+    "react-paginate": "^6.3.2",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "react-tabs-redux": "^4.0.0",
@@ -39,6 +40,7 @@
   "scripts": {
     "css": "postcss src/css/index.css -o src/App.css",
     "start": "yarn css && PORT=5000 react-scripts start",
+    "dev": "yarn cosmos",
     "build": "yarn css && react-scripts build",
     "build:package": "rm -rf dist/ && mkdir dist && NODE_ENV=production npx babel src/ -d dist/ --copy-files",
     "test": "react-scripts test",

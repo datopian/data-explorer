@@ -4,6 +4,7 @@ import './App.css'
 import { QueryBuilder } from '@datopian/datastore-query-builder'
 import DataView from './components/DataView'
 import Share from './components/Share'
+import Pagination from './components/Pagination'
 import { ChartBuilder } from '@datopian/chart-builder'
 import { MapBuilder } from '@datopian/map-builder'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
@@ -87,6 +88,14 @@ export const App = props => {
           {tabLinks}
           {tabContents}
       </Tabs>
+
+      {/* Pagination for DataStore resources */}
+      {props.datapackage.resources[0].datastore_active
+        ? <Pagination datapackage={props.datapackage} updateAction={props.filterUIAction} />
+        : <div class="no-pagination not-datastore-resource"></div>
+      }
+      {/* End of Pagination */}
+
       <Share serializedState={props.serializedState} />
       {/* End of Widgets */}
      </div>
