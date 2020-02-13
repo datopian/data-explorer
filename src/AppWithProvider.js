@@ -4,9 +4,15 @@ import configureStore from './store'
 import './App.css'
 import App from './App'
 
+import "./i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 export default props => {
+
+  const { t } = useTranslation();
+
   let datapackage
-  
+
   // Allow datapackage json or obj
   if (typeof props.datapackage === 'string') {
     try {
@@ -19,9 +25,9 @@ export default props => {
   } else if (typeof props.datapackage === 'object') {
     datapackage = props.datapackage
   }
-  
+
   let views
-  
+
   try {
     views = JSON.parse(JSON.stringify(datapackage.views))
     delete datapackage.views
@@ -31,10 +37,10 @@ export default props => {
 
   const widgetsFromViews = (views) => {
     const widgetNames = {
-      'table': 'Table',
-      'tabularmap': 'Map',
-      'map': 'Map',
-      'simple': 'Chart'
+      'table': t('Table'),
+      'tabularmap': t('Map'),
+      'map': t('Map'),
+      'simple': t('Chart')
     }
 
     return views.map((view, index) => {

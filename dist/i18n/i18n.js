@@ -50,7 +50,7 @@ var initTranslations = function initTranslations() {
               useSuspense: false
             },
             initImmediate: false,
-            debug: true,
+            debug: false,
             // allow keys to be phrases having `:`, `.`
             nsSeparator: false,
             keySeparator: false,

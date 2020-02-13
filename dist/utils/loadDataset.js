@@ -54,7 +54,7 @@ var _callee2 = function _callee2(dpID) {
 
                   case 4:
                     if (!(file.descriptor.api && file.descriptor.api.includes('datastore_search'))) {
-                      _context.next = 24;
+                      _context.next = 25;
                       break;
                     }
 
@@ -96,33 +96,41 @@ var _callee2 = function _callee2(dpID) {
                     });
                     headers = Object.keys(file.descriptor.data[0]);
                     fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data);
-                    _context.next = 21;
-                    return regeneratorRuntime.awrap(fileInline.addSchema());
 
-                  case 21:
-                    file.descriptor.schema = fileInline.descriptor.schema;
-                    _context.next = 67;
-                    break;
-
-                  case 24:
-                    if (!(file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format))) {
-                      _context.next = 43;
+                    if (file.descriptor.schema) {
+                      _context.next = 23;
                       break;
                     }
 
-                    _context.prev = 25;
-                    _context.next = 28;
+                    _context.next = 22;
+                    return regeneratorRuntime.awrap(fileInline.addSchema());
+
+                  case 22:
+                    file.descriptor.schema = fileInline.descriptor.schema;
+
+                  case 23:
+                    _context.next = 68;
+                    break;
+
+                  case 25:
+                    if (!(file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format))) {
+                      _context.next = 44;
+                      break;
+                    }
+
+                    _context.prev = 26;
+                    _context.next = 29;
                     return regeneratorRuntime.awrap(file.rows({
                       size: 100,
                       keyed: true
                     }));
 
-                  case 28:
+                  case 29:
                     rowStream = _context.sent;
-                    _context.next = 31;
+                    _context.next = 32;
                     return regeneratorRuntime.awrap(toArray(rowStream));
 
-                  case 31:
+                  case 32:
                     data = _context.sent;
 
                     if (data.length > 0) {
@@ -131,88 +139,88 @@ var _callee2 = function _callee2(dpID) {
                       file.descriptor.unavailable = true;
                     }
 
-                    _context.next = 35;
+                    _context.next = 36;
                     return regeneratorRuntime.awrap(file.addSchema());
 
-                  case 35:
-                    _context.next = 41;
+                  case 36:
+                    _context.next = 42;
                     break;
 
-                  case 37:
-                    _context.prev = 37;
-                    _context.t0 = _context["catch"](25);
+                  case 38:
+                    _context.prev = 38;
+                    _context.t0 = _context["catch"](26);
                     console.warn(_context.t0);
                     file.descriptor.unavailable = true;
 
-                  case 41:
-                    _context.next = 67;
+                  case 42:
+                    _context.next = 68;
                     break;
 
-                  case 43:
+                  case 44:
                     if (!file.descriptor.format.toLowerCase().includes('json')) {
-                      _context.next = 62;
+                      _context.next = 63;
                       break;
                     }
 
-                    _context.next = 46;
+                    _context.next = 47;
                     return regeneratorRuntime.awrap(fetch(file.descriptor.path));
 
-                  case 46:
+                  case 47:
                     _response = _context.sent;
 
                     if (_response.ok) {
-                      _context.next = 50;
+                      _context.next = 51;
                       break;
                     }
 
                     file.descriptor.unavailable = true;
                     return _context.abrupt("return");
 
-                  case 50:
-                    _context.next = 52;
+                  case 51:
+                    _context.next = 53;
                     return regeneratorRuntime.awrap(_response.json());
 
-                  case 52:
+                  case 53:
                     _result = _context.sent;
                     // The '.json' files can contain geo data - check by its 'type' property
                     geoJsonTypes = ['Feature', 'FeatureCollection', 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
 
                     if (!geoJsonTypes.includes(_result.type)) {
-                      _context.next = 58;
+                      _context.next = 59;
                       break;
                     }
 
                     file.descriptor.data = _result;
-                    _context.next = 60;
+                    _context.next = 61;
                     break;
 
-                  case 58:
+                  case 59:
                     // It isn't a valid GeoJSON
                     file.descriptor.unavailable = true;
                     return _context.abrupt("return");
 
-                  case 60:
-                    _context.next = 67;
+                  case 61:
+                    _context.next = 68;
                     break;
 
-                  case 62:
+                  case 63:
                     if (!(file.descriptor.format.toLowerCase() === 'pdf')) {
-                      _context.next = 66;
+                      _context.next = 67;
                       break;
                     }
 
                     return _context.abrupt("return");
 
-                  case 66:
+                  case 67:
                     // We can't load any other data types for now.
                     file.descriptor.unavailable = true;
 
-                  case 67:
+                  case 68:
                   case "end":
                     return _context.stop();
                 }
               }
-            }, null, null, [[25, 37]]);
+            }, null, null, [[26, 38]]);
           })));
 
         case 8:
