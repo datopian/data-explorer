@@ -31,10 +31,11 @@ var _default = function _default(props) {
   var _useTranslation = (0, _reactI18next.useTranslation)(),
       t = _useTranslation.t;
 
-  var serializedState = slim(props.serializedState); // TODO this is a stub for montreal -- need to pass origin as props
-
-  var shareLink = "localhost:4000/data-explorer?explorer=".concat(serializedState);
-  var iframe = "<iframe src=\"localhost:4000/data-explorer?explorer=".concat(serializedState, "\" />");
+  var serializedState = slim(props.serializedState);
+  var urlObj = new URL(window.location.href);
+  urlObj.searchParams.set('explorer', serializedState);
+  var shareLink = urlObj.href;
+  var iframe = "<iframe src=\"".concat(urlObj.href, "\" />");
   var shareable = shareLink.length < 2000;
 
   var copy = function copy(str) {
@@ -57,9 +58,9 @@ var _default = function _default(props) {
     document.body.removeChild(el);
   };
 
-  return _react.default.createElement("div", null, shareable && _react.default.createElement("div", {
+  return _react.default.createElement("div", {
     className: "dx-share-container"
-  }, _react.default.createElement("div", {
+  }, shareable ? _react.default.createElement("div", null, _react.default.createElement("div", {
     className: "m-4"
   }, _react.default.createElement("input", {
     id: "share-link",
@@ -85,7 +86,20 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(iframe);
     }
-  }, _react.default.createElement("i", null, t("copy embed text"))))), !shareable && _react.default.createElement("p", null, t('No share link available')));
+  }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", null, t('No share link available')), props.apiUri && _react.default.createElement("div", {
+    className: "m-4"
+  }, _react.default.createElement("input", {
+    id: "apiUri",
+    className: "border-solid border-4 border-gray-600 px-2 w-1/2",
+    value: props.apiUri
+  }), _react.default.createElement("a", {
+    href: "#/",
+    id: "copy-share-link",
+    className: "m-4",
+    onClick: function onClick() {
+      copy(props.apiUri);
+    }
+  }, _react.default.createElement("i", null, t("copy API URI")))));
 };
 
 exports.default = _default;

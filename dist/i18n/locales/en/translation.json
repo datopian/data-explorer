@@ -1,6 +1,12 @@
 {
   "copy share link": "copy share link",
   "copy embed text": "copy embed text",
+  "copy API URI": "copy API URI",
   "No share link available": "No share link available",
-  "UPDATE CHART": "UPDATE CHART"
+  "UPDATE CHART": "UPDATE CHART",
+  "Next": "Next",
+  "Previous": "Previous",
+  "Table": "Table",
+  "Map": "Map",
+  "Chart": "Chart"
 }

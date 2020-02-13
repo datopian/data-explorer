@@ -15,11 +15,18 @@ require("./App.css");
 
 var _App2 = _interopRequireDefault(require("./App"));
 
+require("./i18n/i18n");
+
+var _reactI18next = require("react-i18next");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var _default = function _default(props) {
+  var _useTranslation = (0, _reactI18next.useTranslation)(),
+      t = _useTranslation.t;
+
   var datapackage; // Allow datapackage json or obj
 
   if (typeof props.datapackage === 'string') {
@@ -45,10 +52,10 @@ var _default = function _default(props) {
 
   var widgetsFromViews = function widgetsFromViews(views) {
     var widgetNames = {
-      'table': 'Table',
-      'tabularmap': 'Map',
-      'map': 'Map',
-      'simple': 'Chart'
+      'table': t('Table'),
+      'tabularmap': t('Map'),
+      'map': t('Map'),
+      'simple': t('Chart')
     };
     return views.map(function (view, index) {
       return {

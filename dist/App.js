@@ -19,6 +19,8 @@ var _DataView = _interopRequireDefault(require("./components/DataView"));
 
 var _Share = _interopRequireDefault(require("./components/Share"));
 
+var _Pagination = _interopRequireDefault(require("./components/Pagination"));
+
 var _chartBuilder = require("@datopian/chart-builder");
 
 var _mapBuilder = require("@datopian/map-builder");
@@ -64,7 +66,11 @@ var App = function App(props) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
       for: widget.name,
       key: "tabContent-".concat(index)
+    }, widget.datapackage.views[0].specType === 'table' ? _react.default.createElement("div", {
+      className: "container flex py-6"
     }, _react.default.createElement("div", {
+      className: "w-full py-3 mr-4"
+    }, _react.default.createElement(_DataView.default, widget))) : _react.default.createElement("div", {
       className: "container flex py-6"
     }, _react.default.createElement("div", {
       className: "w-3/4 py-3 mr-4"
@@ -97,8 +103,14 @@ var App = function App(props) {
       props.selectTabAction(selectedTab);
     },
     selectedTab: selectedTab
-  }, tabLinks, tabContents), _react.default.createElement(_Share.default, {
-    serializedState: props.serializedState
+  }, tabLinks, tabContents), props.datapackage.resources[0].datastore_active ? _react.default.createElement(_Pagination.default, {
+    datapackage: props.datapackage,
+    updateAction: props.filterUIAction
+  }) : _react.default.createElement("div", {
+    class: "no-pagination not-datastore-resource"
+  }), _react.default.createElement(_Share.default, {
+    serializedState: props.serializedState,
+    apiUri: props.datapackage.resources[0].api
   }));
 };
 
