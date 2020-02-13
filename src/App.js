@@ -9,7 +9,7 @@ import { ChartBuilder } from '@datopian/chart-builder'
 import { MapBuilder } from '@datopian/map-builder'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
-import { getResourceForFiltering } from './utils'
+import { getResourceForFiltering, showQueryBuilder } from './utils'
 
 export const App = props => {
   useEffect(() => {
@@ -79,7 +79,7 @@ export const App = props => {
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
-          props.datapackage.resources[0].datastore_active
+          showQueryBuilder(props)
           ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
           : ''
         }
