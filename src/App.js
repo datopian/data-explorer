@@ -31,7 +31,7 @@ export const App = props => {
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name} key={`tabContent-${index}`}>
         {
-          widget.datapackage.views[0].specType === 'table'
+          (['table', 'web'].includes(widget.datapackage.views[0].specType))
           ? <div className="container flex py-6">
               <div className="w-full py-3">
                 <DataView {...widget} />
@@ -92,6 +92,7 @@ export const App = props => {
         handleSelect={(selectedTab) => {
           props.selectTabAction(selectedTab)
         }}
+        className="data-explorer-content"
         selectedTab={selectedTab}>
           {tabLinks}
           {tabContents}
