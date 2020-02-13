@@ -104,7 +104,7 @@ export const App = props => {
       }
       {/* End of Pagination */}
 
-      <Share serializedState={props.serializedState} />
+      <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
       {/* End of Widgets */}
      </div>
   )
