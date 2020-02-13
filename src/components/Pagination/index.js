@@ -40,6 +40,8 @@ export default props => {
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       onPageChange={handlePageClick}
+      containerClassName={'pagination'}
+      activeClassName={'active'}
     />
   )
 }

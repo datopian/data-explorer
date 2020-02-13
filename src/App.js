@@ -33,7 +33,7 @@ export const App = props => {
         {
           widget.datapackage.views[0].specType === 'table'
           ? <div className="container flex py-6">
-              <div className="w-full py-3 mr-4">
+              <div className="w-full py-3">
                 <DataView {...widget} />
               </div>
             </div>
