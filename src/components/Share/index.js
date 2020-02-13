@@ -21,9 +21,10 @@ export default props => {
   const { t } = useTranslation();
 
   const serializedState = slim(props.serializedState)
-  // TODO this is a stub for montreal -- need to pass origin as props
-  const shareLink = `localhost:4000/data-explorer?explorer=${serializedState}`
-  const iframe = `<iframe src="localhost:4000/data-explorer?explorer=${serializedState}" />`
+  const urlObj = new URL(window.location.href)
+  urlObj.searchParams.set('explorer', serializedState)
+  const shareLink = urlObj.href
+  const iframe = `<iframe src="${urlObj.href}" />`
   const shareable = shareLink.length < 2000
 
   const copy = (str) => {
