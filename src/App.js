@@ -30,27 +30,35 @@ export const App = props => {
   })
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name} key={`tabContent-${index}`}>
-      <div className="container flex py-6">
-        <div className="w-3/4 py-3 mr-4">
-          <DataView {...widget} />
-        </div>
-        <div className="w-1/4">
-          <div className="w-full">
-            <div className="p-4 mr-4">
-              {
-                widget.datapackage.views[0].specType === 'simple'
-                ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
-                : ''
-              }
-              {
-                widget.datapackage.views[0].specType === 'tabularmap'
-                ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
-                : ''
-              }
+        {
+          widget.datapackage.views[0].specType === 'table'
+          ? <div className="container flex py-6">
+              <div className="w-full py-3 mr-4">
+                <DataView {...widget} />
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+          : <div className="container flex py-6">
+              <div className="w-3/4 py-3 mr-4">
+                <DataView {...widget} />
+              </div>
+              <div className="w-1/4">
+                <div className="w-full">
+                  <div className="p-4 mr-4">
+                    {
+                      widget.datapackage.views[0].specType === 'simple'
+                      ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                      : ''
+                    }
+                    {
+                      widget.datapackage.views[0].specType === 'tabularmap'
+                      ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
+                      : ''
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+        }
     </TabContent>
   })
 
