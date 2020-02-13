@@ -41,8 +41,10 @@ export default async dpID => {
         })
         const headers = Object.keys(file.descriptor.data[0])
         fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data)
-        await fileInline.addSchema()
-        file.descriptor.schema = fileInline.descriptor.schema
+        if (!file.descriptor.schema) {
+          await fileInline.addSchema()
+          file.descriptor.schema = fileInline.descriptor.schema
+        }
       } else if (file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format)) {
         // Tabular data
         try {
