@@ -1,6 +1,7 @@
 {
   "copy share link": "kopier delingslink",
   "copy embed text": "kopier indlejret tekst",
+  "copy API URI": "kopier API URI",
   "No share link available": "Der er ikke noget link tilgængeligt",
   "UPDATE CHART": "OPDATER DIAGRAM",
   "Next": "Næste",
