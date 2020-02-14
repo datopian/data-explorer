@@ -9,7 +9,7 @@ import { ChartBuilder } from '@datopian/chart-builder'
 import { MapBuilder } from '@datopian/map-builder'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
-import { getResourceForFiltering } from './utils'
+import { getResourceForFiltering, showQueryBuilder } from './utils'
 
 export const App = props => {
   useEffect(() => {
@@ -31,7 +31,7 @@ export const App = props => {
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name} key={`tabContent-${index}`}>
         {
-          widget.datapackage.views[0].specType === 'table'
+          (['table', 'web'].includes(widget.datapackage.views[0].specType))
           ? <div className="container flex py-6">
               <div className="w-full py-3">
                 <DataView {...widget} />
@@ -79,7 +79,7 @@ export const App = props => {
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
-          props.datapackage.resources[0].datastore_active
+          showQueryBuilder(props)
           ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
           : ''
         }
@@ -92,6 +92,7 @@ export const App = props => {
         handleSelect={(selectedTab) => {
           props.selectTabAction(selectedTab)
         }}
+        className="data-explorer-content"
         selectedTab={selectedTab}>
           {tabLinks}
           {tabContents}

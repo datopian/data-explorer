@@ -41,6 +41,21 @@ export const getDataViewChartBuilderView = (datapackage) => {
   }
 }
 
+export const showQueryBuilder = (props) => {
+  const activeWidget = props.widgets.find(widget => widget.active)
+  let isWebView = false
+
+  try {
+    isWebView = activeWidget.datapackage.views[0].view_type === 'webpage_view'
+  } catch {
+    // just continue -- not a web view
+  }
+  
+  if (isWebView) return false
+
+  return props.datapackage.resources[0].datastore_active
+}
+
 export const getDataViewMapBuilderView = (datapackage) => {
   if (!datapackage) return {}
 
