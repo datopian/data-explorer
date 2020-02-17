@@ -32,17 +32,17 @@ export default async dpID => {
         const result = await response.json()
         // Remove fields that start with `_` as we don't want to display internal values,
         // e.g., `_id`, `_full_text` and `_count`
-        file.descriptor.data = result.result.records.map(({ _id, _full_text, _count, ...etc }) => etc)
-        file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count
-        // If schema exists, use it to order columns. This is needed since order
-        // of columns shuffled when calling `datastore_search_sql` API vs `datastore_search`.
-        if (file.descriptor.schema) {
-          file.descriptor.data = file.descriptor.data.map((unordered, index) => {
+        file.descriptor.data = result.result.records.map(({ _id, _full_text, _count, ...etc }, index) => {
+          if (file.descriptor.schema) {
+            // If schema exists, use it to order columns. This is needed since order
+            // of columns shuffled when calling `datastore_search_sql` API vs `datastore_search`.
             const ordered = {}
-            file.descriptor.schema.fields.forEach(field => ordered[field.name] = unordered[field.name])
+            file.descriptor.schema.fields.forEach(field => ordered[field.name] = etc[field.name])
             return ordered
-          })
-        }
+          }
+          return etc
+        })
+        file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count
         // Infer schema but re-open the file as it is now "inlined":
         const fileInline = open({
           data: file.descriptor.data.map(Object.values),
