@@ -52,6 +52,8 @@ Run `yarn cosmos`
 You should see:
 ![alt text](https://imgur.com/a/GSN7tST)
 
+For development you can save your configs in `__fixtures__/projects/`
+
 
 ## Fixtures
 
