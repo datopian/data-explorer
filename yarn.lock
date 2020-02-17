@@ -937,9 +937,9 @@
     react-dom "^16.9.0"
     react-i18next "^11.3.0"
 
-"@datopian/datapackage-views-js@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.2.tgz#f67ccd29309f12914eb15390f2cbcd2d874eb6a1"
+"@datopian/datapackage-views-js@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.4.tgz#0b4d11625a5c6d49ae10fdb8681a379631212507"
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
     i18next "^19.0.3"
@@ -959,9 +959,9 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
-"@datopian/datastore-query-builder@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.2.tgz#01bb3ff5cf2d8028570c7b9e24b4771f589c8a3d"
+"@datopian/datastore-query-builder@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.3.tgz#b05851ea154722219d473e7e12b519a849f492cf"
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
