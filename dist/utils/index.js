@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deepClone = exports.getResourceForFiltering = exports.getDataViewMapBuilderView = exports.getDataViewChartBuilderView = exports.getEmptyView = exports.unloadDatapackage = void 0;
+exports.deepClone = exports.getResourceForFiltering = exports.getDataViewMapBuilderView = exports.showQueryBuilder = exports.getDataViewChartBuilderView = exports.getEmptyView = exports.unloadDatapackage = void 0;
 
 var unloadDatapackage = function unloadDatapackage(datapackage) {
   var unloadedDatapackage = deepClone(datapackage);
@@ -56,6 +56,23 @@ var getDataViewChartBuilderView = function getDataViewChartBuilderView(datapacka
 };
 
 exports.getDataViewChartBuilderView = getDataViewChartBuilderView;
+
+var showQueryBuilder = function showQueryBuilder(props) {
+  var activeWidget = props.widgets.find(function (widget) {
+    return widget.active;
+  });
+  var isWebView = false;
+
+  try {
+    isWebView = activeWidget.datapackage.views[0].view_type === 'webpage_view';
+  } catch (_unused) {// just continue -- not a web view
+  }
+
+  if (isWebView) return false;
+  return props.datapackage.resources[0].datastore_active;
+};
+
+exports.showQueryBuilder = showQueryBuilder;
 
 var getDataViewMapBuilderView = function getDataViewMapBuilderView(datapackage) {
   if (!datapackage) return {};

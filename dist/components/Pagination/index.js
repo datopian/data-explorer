@@ -52,7 +52,9 @@ var _default = function _default(props) {
     pageCount: Math.ceil(props.datapackage.resources[0].totalrowcount / 100),
     marginPagesDisplayed: 2,
     pageRangeDisplayed: 5,
-    onPageChange: handlePageClick
+    onPageChange: handlePageClick,
+    containerClassName: 'pagination',
+    activeClassName: 'active'
   });
 };
 

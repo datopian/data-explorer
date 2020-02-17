@@ -66,10 +66,10 @@ var App = function App(props) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
       for: widget.name,
       key: "tabContent-".concat(index)
-    }, widget.datapackage.views[0].specType === 'table' ? _react.default.createElement("div", {
+    }, ['table', 'web'].includes(widget.datapackage.views[0].specType) ? _react.default.createElement("div", {
       className: "container flex py-6"
     }, _react.default.createElement("div", {
-      className: "w-full py-3 mr-4"
+      className: "w-full py-3"
     }, _react.default.createElement(_DataView.default, widget))) : _react.default.createElement("div", {
       className: "container flex py-6"
     }, _react.default.createElement("div", {
@@ -94,7 +94,7 @@ var App = function App(props) {
     className: "total-rows"
   }, props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : ''), _react.default.createElement("div", {
     className: "datastore-query-builder"
-  }, props.datapackage.resources[0].datastore_active ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
+  }, (0, _utils.showQueryBuilder)(props) ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
     filterBuilderAction: props.filterUIAction
   }) : ''), _react.default.createElement(_reactTabsRedux.Tabs, {
@@ -102,6 +102,7 @@ var App = function App(props) {
     handleSelect: function handleSelect(selectedTab) {
       props.selectTabAction(selectedTab);
     },
+    className: "data-explorer-content",
     selectedTab: selectedTab
   }, tabLinks, tabContents), props.datapackage.resources[0].datastore_active ? _react.default.createElement(_Pagination.default, {
     datapackage: props.datapackage,

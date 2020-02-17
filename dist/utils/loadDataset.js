@@ -80,11 +80,21 @@ var _callee2 = function _callee2(dpID) {
                     result = _context.sent;
                     // Remove fields that start with `_` as we don't want to display internal values,
                     // e.g., `_id`, `_full_text` and `_count`
-                    file.descriptor.data = result.result.records.map(function (_ref) {
+                    file.descriptor.data = result.result.records.map(function (_ref, index) {
                       var _id = _ref._id,
                           _full_text = _ref._full_text,
                           _count = _ref._count,
                           etc = _objectWithoutProperties(_ref, ["_id", "_full_text", "_count"]);
+
+                      if (file.descriptor.schema) {
+                        // If schema exists, use it to order columns. This is needed since order
+                        // of columns shuffled when calling `datastore_search_sql` API vs `datastore_search`.
+                        var ordered = {};
+                        file.descriptor.schema.fields.forEach(function (field) {
+                          return ordered[field.name] = etc[field.name];
+                        });
+                        return ordered;
+                      }
 
                       return etc;
                     });

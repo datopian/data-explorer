@@ -61,10 +61,10 @@ var _default = function _default(props) {
   return _react.default.createElement("div", {
     className: "dx-share-container"
   }, shareable ? _react.default.createElement("div", null, _react.default.createElement("div", {
-    className: "m-4"
+    className: "m-4 ml-0"
   }, _react.default.createElement("input", {
     id: "share-link",
-    className: "border-solid border-4 border-gray-600 w-1/2 px-2",
+    className: "border-solid border-2 border-gray-600 w-1/2 px-2",
     value: shareLink
   }), _react.default.createElement("a", {
     href: "#/",
@@ -74,10 +74,10 @@ var _default = function _default(props) {
       copy(shareLink);
     }
   }, _react.default.createElement("i", null, t("copy share link")))), _react.default.createElement("div", {
-    className: "m-4"
+    className: "m-4 ml-0"
   }, _react.default.createElement("input", {
     id: "embed",
-    className: "border-solid border-4 border-gray-600 px-2 w-1/2",
+    className: "border-solid border-2 border-gray-600 px-2 w-1/2",
     value: iframe
   }), _react.default.createElement("a", {
     href: "#/",
@@ -86,11 +86,13 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(iframe);
     }
-  }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", null, t('No share link available')), props.apiUri && _react.default.createElement("div", {
-    className: "m-4"
+  }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", {
+    className: "no-share-link-message"
+  }, t('No share link available')), props.apiUri && _react.default.createElement("div", {
+    className: "m-4 ml-0"
   }, _react.default.createElement("input", {
     id: "apiUri",
-    className: "border-solid border-4 border-gray-600 px-2 w-1/2",
+    className: "border-solid border-2 border-gray-600 px-2 w-1/2",
     value: props.apiUri
   }), _react.default.createElement("a", {
     href: "#/",
