@@ -959,9 +959,9 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
-"@datopian/datastore-query-builder@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.3.tgz#b05851ea154722219d473e7e12b519a849f492cf"
+"@datopian/datastore-query-builder@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.4.tgz#67c2fb7f652c5e06d0f7225e9f89f506fa12cd1b"
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
