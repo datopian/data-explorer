@@ -42,6 +42,15 @@ export const initTranslations = async () => {
           ...require('@datopian/datastore-query-builder/src/i18n/locales/da/translation.json'),
         }
       },
+      fr: {
+        translation: {
+          ...require('./locales/fr/translation.json'),
+          ...require('@datopian/chart-builder/src/i18n/locales/fr/translation.json'),
+          ...require('@datopian/map-builder/src/i18n/locales/fr/translation.json'),
+          ...require('@datopian/datapackage-views-js/src/i18n/locales/fr/translation.json'),
+          ...require('@datopian/datastore-query-builder/src/i18n/locales/fr/translation.json'),
+        },
+      },
     },
 
     react: {
