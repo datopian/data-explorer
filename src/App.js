@@ -71,6 +71,10 @@ export const App = props => {
 
   return (
     <div className="data-explorer">
+      {totalRows && (<div className="total-rows">
+        <span className="total-rows-label">Total Rows</span>: <span className="total-rows-value">{totalRows}</span>
+      </div>)
+      }
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
@@ -82,10 +86,6 @@ export const App = props => {
       {/* End of Data Editor */}
       
       {/* Number of total rows available */}
-      {totalRows && (<div className="total-rows">
-        <span className="total-rows-label">Total Rows</span>: <span className="total-rows-value">{totalRows}</span>
-      </div>)
-      }
       {/* End of Number of total rows available */}
 
       {/* Widgets (aka Views and Controls/Builders) */}
