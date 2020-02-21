@@ -24,6 +24,13 @@ export const App = props => {
     return widget.active
   })
 
+  const totalRows = 
+        props.datapackage.resources[0].datastore_active
+          ? props.datapackage.resources[0].totalrowcount
+            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
+            : ''
+          : ''
+
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
   const tabLinks = props.widgets.map((widget, index) => {
     return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{widget.name}</TabLink>
@@ -64,18 +71,6 @@ export const App = props => {
 
   return (
     <div className="data-explorer">
-      {/* Number of total rows available. */}
-      <div className="total-rows">
-        {
-          props.datapackage.resources[0].datastore_active
-          ? props.datapackage.resources[0].totalrowcount
-            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
-            : ''
-          : ''
-        }
-      </div>
-      {/* End of Number of total rows available. */}
-
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
@@ -85,6 +80,13 @@ export const App = props => {
         }
       </div>
       {/* End of Data Editor */}
+      
+      {/* Number of total rows available */}
+      {totalRows && (<div className="total-rows">
+        <span className="total-rows-label">Total Rows</span>: <span className="total-rows-value">{totalRows}</span>
+      </div>)
+      }
+      {/* End of Number of total rows available */}
 
       {/* Widgets (aka Views and Controls/Builders) */}
       <Tabs
