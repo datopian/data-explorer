@@ -84,7 +84,6 @@ export const App = props => {
         }
       </div>
       {/* End of Data Editor */}
-      
       {/* Widgets (aka Views and Controls/Builders) */}
       <Tabs
         renderActiveTabContentOnly={true}
