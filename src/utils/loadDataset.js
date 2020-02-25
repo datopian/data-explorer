@@ -37,7 +37,22 @@ export default async dpID => {
             // If schema exists, use it to order columns. This is needed since order
             // of columns shuffled when calling `datastore_search_sql` API vs `datastore_search`.
             const ordered = {}
-            file.descriptor.schema.fields.forEach(field => ordered[field.name] = etc[field.name])
+            file.descriptor.schema.fields.forEach(field => {
+              ordered[field.name] = etc[field.name]
+              // If field display attributes exist (these can be custom, eg, in
+              // EDS, we use 'size' attribute which isn't part of tableschema spec)
+              // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
+              if (field.size) {
+                const sizeParts = field.size.toString().split('.')
+                if (sizeParts[1]) {
+                  sizeParts[1] = parseInt(sizeParts[1])
+                  ordered[field.name] = (Math.round(ordered[field.name] * 100) / 100).toFixed(sizeParts[1])
+                } else {
+                  sizeParts[0] = parseInt(sizeParts[0])
+                  ordered[field.name] = ordered[field.name].slice(0, sizeParts[0])
+                }
+              }
+            })
             return ordered
           }
           return etc
