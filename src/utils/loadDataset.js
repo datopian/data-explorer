@@ -51,8 +51,16 @@ export default async dpID => {
                 } else {
                   sizeParts[0] = parseInt(sizeParts[0])
                   ordered[field.name] = ordered[field.name] && ordered[field.name].toString().slice(0, sizeParts[0])
+                  if (field.type === 'integer') {
+                    ordered[field.name] = parseInt(ordered[field.name])
+                  } else if (field.type === 'number') {
+                    ordered[field.name] = parseFloat(ordered[field.name])
+                  }
                 }
               }
+              ordered[field.name] = ordered[field.name]
+                ? ordered[field.name].toLocaleString() // Apply thousand separator to numbers
+                : ordered[field.name]
             })
             return ordered
           }
