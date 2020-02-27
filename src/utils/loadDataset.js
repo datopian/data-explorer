@@ -42,8 +42,9 @@ export default async dpID => {
               // If field display attributes exist (these can be custom, eg, in
               // EDS, we use 'size' attribute which isn't part of tableschema spec)
               // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
-              if (field.size) {
-                const sizeParts = field.size.toString().split('.')
+              const fieldSize = field.size || field.constraints && field.constraints.size
+              if (fieldSize) {
+                const sizeParts = fieldSize.toString().split('.')
                 if (sizeParts[1]) {
                   sizeParts[1] = parseInt(sizeParts[1])
                   ordered[field.name] = (Math.round(ordered[field.name] * 100) / 100).toFixed(sizeParts[1])

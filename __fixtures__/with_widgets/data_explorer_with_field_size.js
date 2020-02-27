@@ -51,7 +51,10 @@ const datapackage = {
             },
             {
               "type": "number",
-              "name": "EMBEDDED_WIND_CAPACITY"
+              "name": "EMBEDDED_WIND_CAPACITY",
+              "constraints": {
+                "size": 6.1
+              }
             },
             {
               "type": "number",
