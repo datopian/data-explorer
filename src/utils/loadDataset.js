@@ -50,7 +50,7 @@ export default async dpID => {
                   ordered[field.name] = (Math.round(ordered[field.name] * 100) / 100).toFixed(sizeParts[1])
                 } else {
                   sizeParts[0] = parseInt(sizeParts[0])
-                  ordered[field.name] = ordered[field.name].slice(0, sizeParts[0])
+                  ordered[field.name] = ordered[field.name] && ordered[field.name].toString().slice(0, sizeParts[0])
                 }
               }
             })
