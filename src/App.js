@@ -106,11 +106,17 @@ export const App = props => {
       {/* Pagination for DataStore resources */}
       {props.datapackage.resources[0].datastore_active && datastoreComponents
         ? <Pagination datapackage={props.datapackage} updateAction={props.filterUIAction} />
-        : <div class="no-pagination not-datastore-resource"></div>
+      : <div className="no-pagination not-datastore-resource"></div>
       }
       {/* End of Pagination */}
 
-      <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
+      {/* Share feature */}
+      {datastoreComponents
+        ? <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
+        : <div className="no-share-feature"></div>
+      }
+      {/* End of Share feature */}
+
       {/* End of Widgets */}
      </div>
   )
