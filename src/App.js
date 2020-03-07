@@ -104,7 +104,7 @@ export const App = props => {
       </Tabs>
 
       {/* Pagination for DataStore resources */}
-      {props.datapackage.resources[0].datastore_active
+      {props.datapackage.resources[0].datastore_active && datastoreComponents
         ? <Pagination datapackage={props.datapackage} updateAction={props.filterUIAction} />
         : <div class="no-pagination not-datastore-resource"></div>
       }
