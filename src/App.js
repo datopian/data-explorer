@@ -24,7 +24,14 @@ export const App = props => {
     return widget.active
   })
 
-  const totalRows = 
+  // Check if any of widgets requires datastore specific components:
+  const nonDataStoreViewTypes = ['web', 'document']
+  const datastoreComponents = props.widgets.find(widget => {
+    return widget.datapackage.views
+      .find(view => !nonDataStoreViewTypes.includes(view.specType))
+  })
+
+  const totalRows =
         props.datapackage.resources[0].datastore_active
           ? props.datapackage.resources[0].totalrowcount
             ? props.datapackage.resources[0].totalrowcount.toLocaleString()
@@ -71,7 +78,7 @@ export const App = props => {
 
   return (
     <div className="data-explorer">
-      {totalRows && (<div className="total-rows">
+      {totalRows && datastoreComponents && (<div className="total-rows">
         <span className="total-rows-label">Total Rows</span>: <span className="total-rows-value">{totalRows}</span>
       </div>)
       }
