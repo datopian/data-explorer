@@ -1,6 +1,6 @@
 {
   "name": "@datopian/data-explorer",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "private": false,
   "main": "/dist/AppWithProvider.js",
   "module": "/dist/AppWithProvider.js",
