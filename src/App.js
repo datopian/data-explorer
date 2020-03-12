@@ -46,8 +46,8 @@ export const App = props => {
   const viewGuidingText = (specType) => {
     return (
     <div className="dx-guiding-text"> 
-      {specType === 'simple' ? <p>Select chart type, group column (ordinate x-axis) and series (abscissa y-axis) on the right hand side panel.</p>: '' }  
-      {specType === 'tabularmap' ? <p>Select geo data field on the right hand side panel.</p>: '' }  
+      {specType === 'simple' ? <p>Select chart type, group column (ordinate x-axis) and series (abscissa y-axis) on the right hand side panel.</p> : '' }  
+      {specType === 'tabularmap' ? <p>Select geo data field on the right hand side panel.</p> : '' }  
     </div>
     )}
 
