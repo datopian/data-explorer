@@ -42,6 +42,15 @@ export const App = props => {
   const tabLinks = props.widgets.map((widget, index) => {
     return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{widget.name}</TabLink>
   })
+
+  const viewGuidedMessage = (specType) => {
+    return (
+    <div> 
+      {specType === 'simple' ? <p>Select chart type, group column and series from the right side pane in order to build a chart.</p>: '' }  
+      {specType === 'tabularmap' ? <p>Select geo data from the right side panel inorder to build a chart.</p>: '' }  
+    </div>
+    )}
+
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name} key={`tabContent-${index}`}>
         {
@@ -53,12 +62,13 @@ export const App = props => {
             </div>
           : <div className="container flex py-6">
               <div className="w-3/4 py-3 mr-4">
-                <DataView {...widget} />
+              {!widget.datapackage.views[0].spec ? <div>{viewGuidedMessage(widget.datapackage.views[0].specType)}</div> : ''}
+              <DataView {...widget} />
               </div>
               <div className="w-1/4">
                 <div className="w-full">
                   <div className="p-4 mr-4">
-                    {
+                   {
                       widget.datapackage.views[0].specType === 'simple'
                       ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
                       : ''
