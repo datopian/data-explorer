@@ -6,7 +6,7 @@
   "module": "/dist/AppWithProvider.js",
   "dependencies": {
     "@datopian/chart-builder": "^0.1.2",
-    "@datopian/datapackage-views-js": "^1.3.12",
+    "@datopian/datapackage-views-js": "^1.3.14",
     "@datopian/datastore-query-builder": "^0.4.5",
     "@datopian/map-builder": "^0.1.2",
     "data.js": "^0.12.11",
