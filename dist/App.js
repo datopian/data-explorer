@@ -31,6 +31,10 @@ var _actions = require("./actions/");
 
 var _utils = require("./utils");
 
+require("./i18n/i18n");
+
+var _reactI18next = require("react-i18next");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -53,7 +57,11 @@ var App = function App(props) {
   }, []);
   var activeWidget = props.widgets.find(function (widget) {
     return widget.active;
-  }); // Check if any of widgets requires datastore specific components:
+  });
+
+  var _useTranslation = (0, _reactI18next.useTranslation)(),
+      t = _useTranslation.t; // Check if any of widgets requires datastore specific components:
+
 
   var nonDataStoreViewTypes = ['web', 'document'];
   var datastoreComponents = props.widgets.find(function (widget) {
@@ -68,7 +76,7 @@ var App = function App(props) {
       to: widget.name,
       className: "mr-4",
       key: "tabLink-".concat(index)
-    }, widget.name);
+    }, t(widget.name));
   });
   var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
@@ -102,7 +110,7 @@ var App = function App(props) {
     className: "total-rows"
   }, _react.default.createElement("span", {
     className: "total-rows-label"
-  }, "Total Rows"), ": ", _react.default.createElement("span", {
+  }, t('Total rows')), ": ", _react.default.createElement("span", {
     className: "total-rows-value"
   }, totalRows)), _react.default.createElement("div", {
     className: "datastore-query-builder"
