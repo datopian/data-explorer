@@ -11,6 +11,9 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
 import { getResourceForFiltering, showQueryBuilder } from './utils'
 
+import "./i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 export const App = props => {
   useEffect(() => {
     const payload = {
@@ -23,6 +26,8 @@ export const App = props => {
   const activeWidget = props.widgets.find(widget => {
     return widget.active
   })
+
+  const { t } = useTranslation();
 
   // Check if any of widgets requires datastore specific components:
   const nonDataStoreViewTypes = ['web', 'document']
@@ -40,7 +45,7 @@ export const App = props => {
 
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
   const tabLinks = props.widgets.map((widget, index) => {
-    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{widget.name}</TabLink>
+    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
   })
 
 
@@ -81,7 +86,7 @@ export const App = props => {
   return (
     <div className="data-explorer">
       {totalRows && datastoreComponents && (<div className="total-rows">
-        <span className="total-rows-label">Total Rows</span>: <span className="total-rows-value">{totalRows}</span>
+        <span className="total-rows-label">{t('Total rows')}</span>: <span className="total-rows-value">{totalRows}</span>
       </div>)
       }
       {/* Data Editor (aka filters / datastore query builder) */}
