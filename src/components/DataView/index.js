@@ -1,15 +1,19 @@
+import "../../i18n/i18n";
 import React from 'react'
 import Loader from 'react-loader'
 import { DataView } from '@datopian/datapackage-views-js'
+import { useTranslation } from "react-i18next";
 
 export default props => {
+  const { t } = useTranslation();
+
   const views = props.datapackage.views
 
   const showGuideText = (specType) => {
     return (
       <div className="dx-guiding-text">
-        {specType === 'simple' ? <p>Select chart type, group column (ordinate x-axis) and series (abscissa y-axis) on the right hand side panel.</p> : '' }
-        {specType === 'tabularmap' ? <p>Select geo data column on the right hand side panel.</p> : '' }
+        {specType === 'simple' ? <p>{t('Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.')}</p> : '' }
+        {specType === 'tabularmap' ? <p>{t('Select geo data column on the right hand side panel.')}</p> : '' }
       </div>
     )
   }
