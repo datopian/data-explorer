@@ -926,10 +926,10 @@
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
 
-"@datopian/chart-builder@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@datopian/chart-builder/-/chart-builder-0.1.2.tgz#86e34876a2e710f2a0207618f4103bfff12ada99"
-  integrity sha512-cTxYnq5fVC8RMbJo1FDCAeG6tdNe+EZtJw3aE/xvANwcp6IkChAypXzDtFCltlKICcDpKaSUAuuv2z7mpukz5Q==
+"@datopian/chart-builder@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@datopian/chart-builder/-/chart-builder-0.1.4.tgz#5216a41d74dc84881b108cbf463ded6349dddd83"
+  integrity sha512-tz0f9TdjUsIrL67D5HR4rtqdzuAHCJd79rJn6KUkI4Q9xC7QKIWDlHIfw0KQn75zd7mn3g5znsT/O9BkoE+hTQ==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -974,10 +974,10 @@
     react-dom "^16.8.6"
     react-i18next "^11.3.0"
 
-"@datopian/map-builder@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.4.tgz#56c39c227d5a5f6a3a46615f38e7079bb96340dd"
-  integrity sha512-gfBhvXo1Ypa3i90ABqJGFWY3jOc8ekdGCBBxmPsgHTgY7YJ7hsRbUX2qOXK4iyjdtd+RI1EqGwCDVAvg/4XpRw==
+"@datopian/map-builder@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.7.tgz#91648fb1c383841309de637620064f47845a4151"
+  integrity sha512-whqJUgCpzBdP6KhXYvJ5zC/wP8LtBT0orQFYuAm9Qr7fN6BLUV0B0/yVveHauoWieOVwd1n1gtRCQEMKHSFsLw==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
