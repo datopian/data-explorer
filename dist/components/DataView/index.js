@@ -5,21 +5,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("../../i18n/i18n");
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactLoader = _interopRequireDefault(require("react-loader"));
 
 var _datapackageViewsJs = require("@datopian/datapackage-views-js");
 
+var _reactI18next = require("react-i18next");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
+  var _useTranslation = (0, _reactI18next.useTranslation)(),
+      t = _useTranslation.t;
+
   var views = props.datapackage.views;
 
   var showGuideText = function showGuideText(specType) {
     return _react.default.createElement("div", {
       className: "dx-guiding-text"
-    }, specType === 'simple' ? _react.default.createElement("p", null, "Select chart type, group column (ordinate x-axis) and series (abscissa y-axis) on the right hand side panel.") : '', specType === 'tabularmap' ? _react.default.createElement("p", null, "Select geo data column on the right hand side panel.") : '');
+    }, specType === 'simple' ? _react.default.createElement("p", null, t('Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.')) : '', specType === 'tabularmap' ? _react.default.createElement("p", null, t('Select geo data column on the right hand side panel.')) : '');
   };
 
   var checkIfGuideIsNeeded = function checkIfGuideIsNeeded(view) {
