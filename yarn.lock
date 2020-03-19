@@ -938,10 +938,10 @@
     react-dom "^16.9.0"
     react-i18next "^11.3.0"
 
-"@datopian/datapackage-views-js@^1.3.14":
-  version "1.3.14"
-  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.14.tgz#84e21a3c4e416aae7cfe72f6b447e253be6a27f2"
-  integrity sha512-81IjDu3JVoRyO+XhijgXaIdypnpqxf5gPCIV9n9Xmvy/Itca9ZdhpnXm+N4Y19ZRu+dFtJDnggES7bLgbxl3zg==
+"@datopian/datapackage-views-js@^1.3.15":
+  version "1.3.15"
+  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.15.tgz#86b24c02c1e6dc6910e4e732be9b58446efe9106"
+  integrity sha512-e0BnnSbq3ZB/6EFRMr0vkNTZ650gaAfK4fFaaf/vHBOKPW1APYpC1C9jd1i7bHAYJdeXyCcNPlcTkoXqiZERsA==
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
     i18next "^19.0.3"
