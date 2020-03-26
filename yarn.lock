@@ -961,10 +961,10 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
-"@datopian/datastore-query-builder@^0.4.9":
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.9.tgz#ee8c034dd95ab6fbed1994c576d2fd0122beb814"
-  integrity sha512-zvzLi14O7KE3Uy0Zcp72wKNml0VTGJcwiK8RhE9KK5VVOoF/9ryPow62O2P20B34NUsztxBzerX/mMITI6EpKw==
+"@datopian/datastore-query-builder@^0.4.10":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.10.tgz#f74bfae3b4d26d9f2ecbc2710fd73b7d13707c14"
+  integrity sha512-wwdWiQlWD5IzRgy3lLr8eUxYxnCE4HmVkjSf/P7LaxjBt5FixHtFiKcgw9qrAF9VBzcoRi73VguxPXgHHLqpfw==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
