@@ -11,6 +11,9 @@ import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
 import { filterUIAction, fetchDataAction, dataViewBuilderAction, selectTabAction } from './actions/'
 import { getResourceForFiltering, showQueryBuilder } from './utils'
 
+import "./i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 export const App = props => {
   useEffect(() => {
     const payload = {
@@ -24,10 +27,28 @@ export const App = props => {
     return widget.active
   })
 
+  const { t } = useTranslation();
+
+  // Check if any of widgets requires datastore specific components:
+  const nonDataStoreViewTypes = ['web', 'document']
+  const datastoreComponents = props.widgets.find(widget => {
+    return widget.datapackage.views
+      .find(view => !nonDataStoreViewTypes.includes(view.specType))
+  })
+
+  const totalRows =
+        props.datapackage.resources[0].datastore_active
+          ? props.datapackage.resources[0].totalrowcount
+            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
+            : ''
+          : ''
+
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
   const tabLinks = props.widgets.map((widget, index) => {
-    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{widget.name}</TabLink>
+    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
   })
+
+
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={widget.name} key={`tabContent-${index}`}>
         {
@@ -44,7 +65,7 @@ export const App = props => {
               <div className="w-1/4">
                 <div className="w-full">
                   <div className="p-4 mr-4">
-                    {
+                   {
                       widget.datapackage.views[0].specType === 'simple'
                       ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
                       : ''
@@ -64,18 +85,10 @@ export const App = props => {
 
   return (
     <div className="data-explorer">
-      {/* Number of total rows available. */}
-      <div className="total-rows">
-        {
-          props.datapackage.resources[0].datastore_active
-          ? props.datapackage.resources[0].totalrowcount
-            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
-            : ''
-          : ''
-        }
-      </div>
-      {/* End of Number of total rows available. */}
-
+      {totalRows && datastoreComponents && (<div className="total-rows">
+        <span className="total-rows-label">{t('Total rows')}</span>: <span className="total-rows-value">{totalRows}</span>
+      </div>)
+      }
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
@@ -85,7 +98,6 @@ export const App = props => {
         }
       </div>
       {/* End of Data Editor */}
-
       {/* Widgets (aka Views and Controls/Builders) */}
       <Tabs
         renderActiveTabContentOnly={true}
@@ -99,13 +111,19 @@ export const App = props => {
       </Tabs>
 
       {/* Pagination for DataStore resources */}
-      {props.datapackage.resources[0].datastore_active
+      {props.datapackage.resources[0].datastore_active && datastoreComponents
         ? <Pagination datapackage={props.datapackage} updateAction={props.filterUIAction} />
-        : <div class="no-pagination not-datastore-resource"></div>
+      : <div className="no-pagination not-datastore-resource"></div>
       }
       {/* End of Pagination */}
 
-      <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
+      {/* Share feature */}
+      {datastoreComponents
+        ? <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
+        : <div className="no-share-feature"></div>
+      }
+      {/* End of Share feature */}
+
       {/* End of Widgets */}
      </div>
   )

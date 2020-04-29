@@ -8,5 +8,8 @@
   "Previous": "Previous",
   "Table": "Table",
   "Map": "Map",
-  "Chart": "Chart"
+  "Chart": "Chart",
+  "Total rows": "Total rows",
+  "Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.": "Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.",
+  "Select geo data column on the right hand side panel.": "Select geo data column on the right hand side panel."
 }

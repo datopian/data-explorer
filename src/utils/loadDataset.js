@@ -71,14 +71,15 @@ export default async dpID => {
         } else {
           file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count
         }
-        // Infer schema but re-open the file as it is now "inlined":
-        const fileInline = open({
-          data: file.descriptor.data.map(Object.values),
-          format: 'csv'
-        })
-        const headers = Object.keys(file.descriptor.data[0] || {})
-        fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data)
+
         if (!file.descriptor.schema) {
+          // Infer schema but re-open the file as it is now "inlined":
+          const fileInline = open({
+            data: file.descriptor.data.map(Object.values),
+            format: 'csv'
+          })
+          const headers = Object.keys(file.descriptor.data[0] || {})
+          fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data)
           await fileInline.addSchema()
           file.descriptor.schema = fileInline.descriptor.schema
         }

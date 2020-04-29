@@ -46,11 +46,12 @@ export const showQueryBuilder = (props) => {
   let isWebView = false
 
   try {
-    isWebView = activeWidget.datapackage.views[0].view_type === 'webpage_view'
+    const nonDataStoreViewTypes = ['web', 'document']
+    isWebView = nonDataStoreViewTypes.includes(activeWidget.datapackage.views[0].specType)
   } catch {
     // just continue -- not a web view
   }
-  
+
   if (isWebView) return false
 
   return props.datapackage.resources[0].datastore_active

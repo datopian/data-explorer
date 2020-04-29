@@ -926,9 +926,10 @@
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
 
-"@datopian/chart-builder@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@datopian/chart-builder/-/chart-builder-0.1.2.tgz#86e34876a2e710f2a0207618f4103bfff12ada99"
+"@datopian/chart-builder@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@datopian/chart-builder/-/chart-builder-0.1.4.tgz#5216a41d74dc84881b108cbf463ded6349dddd83"
+  integrity sha512-tz0f9TdjUsIrL67D5HR4rtqdzuAHCJd79rJn6KUkI4Q9xC7QKIWDlHIfw0KQn75zd7mn3g5znsT/O9BkoE+hTQ==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -937,9 +938,10 @@
     react-dom "^16.9.0"
     react-i18next "^11.3.0"
 
-"@datopian/datapackage-views-js@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.5.tgz#e1e69aa9481bebad190963e30c8c63dcbb7caed0"
+"@datopian/datapackage-views-js@^1.3.15":
+  version "1.3.15"
+  resolved "https://registry.yarnpkg.com/@datopian/datapackage-views-js/-/datapackage-views-js-1.3.15.tgz#86b24c02c1e6dc6910e4e732be9b58446efe9106"
+  integrity sha512-e0BnnSbq3ZB/6EFRMr0vkNTZ650gaAfK4fFaaf/vHBOKPW1APYpC1C9jd1i7bHAYJdeXyCcNPlcTkoXqiZERsA==
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
     i18next "^19.0.3"
@@ -959,9 +961,10 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
-"@datopian/datastore-query-builder@^0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.8.tgz#6ceecbfc61fc26922b28aa276dc9668d17bc56b5"
+"@datopian/datastore-query-builder@^0.4.10":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.10.tgz#f74bfae3b4d26d9f2ecbc2710fd73b7d13707c14"
+  integrity sha512-wwdWiQlWD5IzRgy3lLr8eUxYxnCE4HmVkjSf/P7LaxjBt5FixHtFiKcgw9qrAF9VBzcoRi73VguxPXgHHLqpfw==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -971,9 +974,10 @@
     react-dom "^16.8.6"
     react-i18next "^11.3.0"
 
-"@datopian/map-builder@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.2.tgz#3d0281d1f75af5d4aba7e26ab196a73cc1a2922c"
+"@datopian/map-builder@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.7.tgz#91648fb1c383841309de637620064f47845a4151"
+  integrity sha512-whqJUgCpzBdP6KhXYvJ5zC/wP8LtBT0orQFYuAm9Qr7fN6BLUV0B0/yVveHauoWieOVwd1n1gtRCQEMKHSFsLw==
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -1538,8 +1542,9 @@ acorn-walk@^6.0.1:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-6.2.0.tgz#123cb8f3b84c2171f1f7fb252615b1c78a6b1a8c"
 
 acorn@^5.5.3:
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
+  integrity sha512-1D++VG7BhrtvQpNbBzovKNc1FLGGEE/oGe7b9xJm/RFHMBeUaUGpluV9RLjZa47YFdPcDAenEYuq9pQPcMdLJg==
 
 acorn@^6.0.1, acorn@^6.0.4, acorn@^6.0.5, acorn@^6.0.7:
   version "6.4.0"

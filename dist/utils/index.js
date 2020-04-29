@@ -64,7 +64,8 @@ var showQueryBuilder = function showQueryBuilder(props) {
   var isWebView = false;
 
   try {
-    isWebView = activeWidget.datapackage.views[0].view_type === 'webpage_view';
+    var nonDataStoreViewTypes = ['web', 'document'];
+    isWebView = nonDataStoreViewTypes.includes(activeWidget.datapackage.views[0].specType);
   } catch (_unused) {// just continue -- not a web view
   }
 

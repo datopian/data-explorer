@@ -8,5 +8,8 @@
   "Previous": "Précédent",
   "Table": "Tableau",
   "Map": "Carte",
-  "Chart": "Graphique"
+  "Chart": "Graphique",
+  "Total rows": "Entrées totales",
+  "Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.": "Sélectionner le type de graphe, la colonne de groupement (axe horizontal) et la série (axe vertical) dans le panneau de droite",
+  "Select geo data column on the right hand side panel.": "Sélectionner la colonne de type géographique dans le panneau de droite"
 }

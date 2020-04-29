@@ -31,6 +31,10 @@ var _actions = require("./actions/");
 
 var _utils = require("./utils");
 
+require("./i18n/i18n");
+
+var _reactI18next = require("react-i18next");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -54,13 +58,25 @@ var App = function App(props) {
   var activeWidget = props.widgets.find(function (widget) {
     return widget.active;
   });
+
+  var _useTranslation = (0, _reactI18next.useTranslation)(),
+      t = _useTranslation.t; // Check if any of widgets requires datastore specific components:
+
+
+  var nonDataStoreViewTypes = ['web', 'document'];
+  var datastoreComponents = props.widgets.find(function (widget) {
+    return widget.datapackage.views.find(function (view) {
+      return !nonDataStoreViewTypes.includes(view.specType);
+    });
+  });
+  var totalRows = props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : '';
   var selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name;
   var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
       to: widget.name,
       className: "mr-4",
       key: "tabLink-".concat(index)
-    }, widget.name);
+    }, t(widget.name));
   });
   var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
@@ -90,9 +106,13 @@ var App = function App(props) {
   });
   return _react.default.createElement("div", {
     className: "data-explorer"
-  }, _react.default.createElement("div", {
+  }, totalRows && datastoreComponents && _react.default.createElement("div", {
     className: "total-rows"
-  }, props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : ''), _react.default.createElement("div", {
+  }, _react.default.createElement("span", {
+    className: "total-rows-label"
+  }, t('Total rows')), ": ", _react.default.createElement("span", {
+    className: "total-rows-value"
+  }, totalRows)), _react.default.createElement("div", {
     className: "datastore-query-builder"
   }, (0, _utils.showQueryBuilder)(props) ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
@@ -104,14 +124,16 @@ var App = function App(props) {
     },
     className: "data-explorer-content",
     selectedTab: selectedTab
-  }, tabLinks, tabContents), props.datapackage.resources[0].datastore_active ? _react.default.createElement(_Pagination.default, {
+  }, tabLinks, tabContents), props.datapackage.resources[0].datastore_active && datastoreComponents ? _react.default.createElement(_Pagination.default, {
     datapackage: props.datapackage,
     updateAction: props.filterUIAction
   }) : _react.default.createElement("div", {
-    class: "no-pagination not-datastore-resource"
-  }), _react.default.createElement(_Share.default, {
+    className: "no-pagination not-datastore-resource"
+  }), datastoreComponents ? _react.default.createElement(_Share.default, {
     serializedState: props.serializedState,
     apiUri: props.datapackage.resources[0].api
+  }) : _react.default.createElement("div", {
+    className: "no-share-feature"
   }));
 };
 
