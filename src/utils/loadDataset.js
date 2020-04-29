@@ -43,7 +43,14 @@ export default async dpID => {
               // EDS, we use 'size' attribute which isn't part of tableschema spec)
               // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
               const fieldSize = field.size || field.constraints && field.constraints.size
-              if (fieldSize) {
+              if (field.type === 'datetime') {
+                // Format datetime values according to EDS requirements
+                if (field.name.includes('UTC') && ordered[field.name]) {
+                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})\+\d{2}:\d{2}/, '$1 $2Z')
+                } else if (field.name.includes('DK') && ordered[field.name]) {
+                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})/, '$1 $2')
+                }
+              } else if (fieldSize) {
                 const sizeParts = fieldSize.toString().split('.')
                 if (sizeParts[1]) {
                   sizeParts[1] = parseInt(sizeParts[1])
