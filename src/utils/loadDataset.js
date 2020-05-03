@@ -46,7 +46,7 @@ export default async dpID => {
               if (field.type === 'datetime') {
                 // Format datetime values according to EDS requirements
                 if (field.name.includes('UTC') && ordered[field.name]) {
-                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})\+\d{2}:\d{2}/, '$1 $2Z')
+                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})(\+\d{2}:\d{2})*/, '$1 $2Z')
                 } else if (field.name.includes('DK') && ordered[field.name]) {
                   ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})/, '$1 $2')
                 }
