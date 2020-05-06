@@ -46,19 +46,6 @@ export default props => {
 
   return (
       <div className="dx-share-container">
-        {shareable
-          ? <div>
-              <div className="m-4 ml-0">
-                <input id="share-link" className="border-solid border-2 border-gray-600 w-1/2 px-2" value={shareLink} />
-                <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(shareLink)}}><i>{t("copy share link")}</i></a>
-              </div>
-              <div className="m-4 ml-0">
-                <input id="embed" className="border-solid border-2 border-gray-600 px-2 w-1/2" value={iframe} />
-                <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(iframe)}}><i>{t("copy embed text")}</i></a>
-              </div>
-            </div>
-          : <p className="no-share-link-message">{t('No share link available')}</p>
-        }
         {props.apiUri
           && <div className="m-4 ml-0">
                 <input id="apiUri" className="border-solid border-2 border-gray-600 px-2 w-1/2" value={props.apiUri} />
