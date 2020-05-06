@@ -961,6 +961,20 @@
     react-vega "4.0.2"
     vega-lib "4.4.0"
 
+"@datopian/datapackage-views-js@https://github.com/datopian/datapackage-views-js.git#EDS":
+  version "1.3.15"
+  resolved "https://github.com/datopian/datapackage-views-js.git#cd1b4d64faca0b19b5dbd27fd58205fce4c0bacf"
+  dependencies:
+    datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
+    i18next "^19.0.3"
+    i18next-browser-languagedetector "^4.0.1"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+    react-i18next "^11.2.7"
+    react-loader-spinner "^2.3.0"
+    react-scripts "3.0.1"
+    react-table-v6 "^6.8.6"
+
 "@datopian/datastore-query-builder@^0.4.10":
   version "0.4.10"
   resolved "https://registry.yarnpkg.com/@datopian/datastore-query-builder/-/datastore-query-builder-0.4.10.tgz#f74bfae3b4d26d9f2ecbc2710fd73b7d13707c14"
