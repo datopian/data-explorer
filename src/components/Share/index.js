@@ -3,29 +3,9 @@ import React from 'react'
 
 import { useTranslation } from "react-i18next";
 
-const MAX_LEN = 1500
-const slimProps = ['archiver', 'schema', 'shareLink', 'iframeText']
-const slim = serializedState => {
-  if (serializedState.length <= MAX_LEN) return serializedState
-  const state = JSON.parse(serializedState)
-  state.datapackage.resources.forEach(resource => {
-    for (const prop in slimProps) {
-      if (resource[slimProps[prop]]) delete resource[slimProps[prop]]
-    }
-  })
-  return JSON.stringify(state)
-}
-
 export default props => {
 
   const { t } = useTranslation();
-
-  const serializedState = slim(props.serializedState)
-  const urlObj = new URL(window.location.href)
-  urlObj.searchParams.set('explorer', serializedState)
-  const shareLink = urlObj.href
-  const iframe = `<iframe src="${urlObj.href}" />`
-  const shareable = shareLink.length < 2000
 
   const copy = (str) => {
     // Create new element
@@ -48,8 +28,8 @@ export default props => {
       <div className="dx-share-container">
         {props.apiUri
           && <div className="m-4 ml-0">
-                <input id="apiUri" className="border-solid border-2 border-gray-600 px-2 w-1/2" value={props.apiUri} />
-                <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(props.apiUri)}}><i>{t("copy API URI")}</i></a>
+                <input id="apiUri" className="border-solid border-2 border-gray-600 px-2 w-1/2" value={decodeURIComponent(props.apiUri)} />
+                <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(decodeURIComponent(props.apiUri))}}><i>{t("copy API URI")}</i></a>
              </div>
         }
       </div>
