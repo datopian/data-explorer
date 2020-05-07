@@ -119,7 +119,7 @@ export const App = props => {
 
       {/* Share feature */}
       {datastoreComponents
-        ? <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
+        ? <Share resourceId={props.datapackage.resources[0].id} apiUri={props.datapackage.resources[0].api} />
         : <div className="no-share-feature"></div>
       }
       {/* End of Share feature */}
