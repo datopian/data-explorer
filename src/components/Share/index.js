@@ -32,9 +32,12 @@ export default props => {
       downloadJsonApiUri = `${window.location.origin}/download/datastore_search_sql${uriObj.search}`
       uriObj.searchParams.set('format', 'csv')
       downloadCsvApiUri = `${window.location.origin}/download/datastore_search_sql${uriObj.search}`
-    } else {
-      downloadJsonApiUri = `${window.location.origin}/download/datastore/dump/${props.resourceId}?format=json`
-      downloadCsvApiUri = `${window.location.origin}/download/datastore/dump/${props.resourceId}`
+
+      const ul = document.getElementById('downloads')
+      const csvLink = ul.children[0].children[0]
+      csvLink.setAttribute('href', downloadCsvApiUri)
+      const jsonLink = ul.children[2].children[0]
+      jsonLink.setAttribute('href', downloadJsonApiUri)
     }
   }
 
@@ -42,26 +45,6 @@ export default props => {
       <div className="dx-share-container">
         {props.apiUri
           && <div className="m-4 ml-0">
-                <div class="btn-group data-explorer-download mb-12">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="fa fa-download"></span><span class="fa-label">Filtered data</span>&nbsp;<span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href={downloadCsvApiUri} class="data-extract-btn" data-format="CSV">CSV</a>
-                    </li>
-                    <li>
-                      <a href={downloadJsonApiUri} class="data-extract-btn" data-format="JSON">JSON</a>
-                    </li>
-                    <br />
-                    <li class="text-gray-600 text-sm border-t">
-                      <div class="px-8 py-3">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Downloads are limited to the top 100 000 rows.
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <br />
                 <input id="apiUri" className="border-solid border-2 border-gray-600 px-2 w-1/2" value={decodeURI(parsedApiUri)} />
                 <a href="#/" id="copy-share-link" className="m-4" onClick={() => {copy(decodeURI(parsedApiUri))}}><i>{t("copy API URI")}</i></a>
              </div>
