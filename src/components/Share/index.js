@@ -27,6 +27,10 @@ export default props => {
   let parsedApiUri, downloadCsvApiUri, downloadJsonApiUri;
   if (props.apiUri) {
     parsedApiUri = props.apiUri.replace('COUNT(*)%20OVER%20()%20AS%20_count,%20', '')
+    if (props.schema) {
+      const fieldNames = props.schema.fields.map(field => field.name)
+      parsedApiUri = parsedApiUri.replace('SELECT%20*%20FROM', `SELECT%20"${fieldNames.join('", "')}"%20FROM`)
+    }
     let uriObj = new URL(parsedApiUri)
     if (uriObj.pathname.split('/')[3] === 'datastore_search_sql') {
       downloadJsonApiUri = `${window.location.origin}/download/datastore_search_sql${uriObj.search}`
