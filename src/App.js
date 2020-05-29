@@ -85,15 +85,11 @@ export const App = props => {
 
   return (
     <div className="data-explorer">
-      {totalRows && datastoreComponents && (<div className="total-rows">
-        <span className="total-rows-label">{t('Total rows')}</span>: <span className="total-rows-value">{totalRows}</span>
-      </div>)
-      }
       {/* Data Editor (aka filters / datastore query builder) */}
       <div className="datastore-query-builder">
         {
           showQueryBuilder(props)
-          ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+          ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} totalRows={totalRows} />
           : ''
         }
       </div>
@@ -116,13 +112,6 @@ export const App = props => {
       : <div className="no-pagination not-datastore-resource"></div>
       }
       {/* End of Pagination */}
-
-      {/* Share feature */}
-      {datastoreComponents
-        ? <Share resourceId={props.datapackage.resources[0].id} schema={props.datapackage.resources[0].schema} apiUri={props.datapackage.resources[0].api} />
-        : <div className="no-share-feature"></div>
-      }
-      {/* End of Share feature */}
 
       {/* End of Widgets */}
      </div>
