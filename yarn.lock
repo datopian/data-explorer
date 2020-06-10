@@ -950,7 +950,7 @@
 
 "@datopian/datastore-query-builder@https://github.com/datopian/datastore-query-builder.git#EDS":
   version "0.4.10"
-  resolved "https://github.com/datopian/datastore-query-builder.git#d75fc35742ac12c7d79997609b0e772429aa6a49"
+  resolved "https://github.com/datopian/datastore-query-builder.git#c132a6dac7637690bc5fbc10108b9606c79c49c4"
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
