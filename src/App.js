@@ -39,8 +39,6 @@ export const App = props => {
   const totalRows =
         props.datapackage.resources[0].datastore_active
           ? props.datapackage.resources[0].totalrowcount
-            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
-            : ''
           : ''
 
   const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
