@@ -39,35 +39,6 @@ export default async dpID => {
             const ordered = {}
             file.descriptor.schema.fields.forEach(field => {
               ordered[field.name] = etc[field.name]
-              // If field display attributes exist (these can be custom, eg, in
-              // EDS, we use 'size' attribute which isn't part of tableschema spec)
-              // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
-              const fieldSize = field.size || field.constraints && field.constraints.size
-              if (field.type === 'datetime') {
-                // Format datetime values according to EDS requirements
-                if (field.name.includes('UTC') && ordered[field.name]) {
-                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})(\+\d{2}:\d{2})*/, '$1 $2Z')
-                } else if (field.name.includes('DK') && ordered[field.name]) {
-                  ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})/, '$1 $2')
-                }
-              } else if (fieldSize && ordered[field.name] !== null) {
-                const sizeParts = fieldSize.toString().split('.')
-                if (sizeParts[1]) {
-                  sizeParts[1] = parseInt(sizeParts[1])
-                  ordered[field.name] = (Math.round(ordered[field.name] * 100) / 100).toFixed(sizeParts[1])
-                } else {
-                  sizeParts[0] = parseInt(sizeParts[0])
-                  ordered[field.name] = ordered[field.name] && ordered[field.name].toString().slice(0, sizeParts[0])
-                  if (field.type === 'integer') {
-                    ordered[field.name] = parseInt(ordered[field.name])
-                  } else if (field.type === 'number') {
-                    ordered[field.name] = parseFloat(ordered[field.name])
-                  }
-                }
-              }
-              ordered[field.name] = ordered[field.name]
-                ? ordered[field.name].toLocaleString() // Apply thousand separator to numbers
-                : ordered[field.name]
             })
             return ordered
           }
