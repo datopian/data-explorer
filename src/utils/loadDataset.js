@@ -50,7 +50,7 @@ export default async dpID => {
                 } else if (field.name.includes('DK') && ordered[field.name]) {
                   ordered[field.name] = ordered[field.name].replace(/(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}):(\d{2})/, '$1 $2')
                 }
-              } else if (fieldSize) {
+              } else if (fieldSize && ordered[field.name] !== null) {
                 const sizeParts = fieldSize.toString().split('.')
                 if (sizeParts[1]) {
                   sizeParts[1] = parseInt(sizeParts[1])
