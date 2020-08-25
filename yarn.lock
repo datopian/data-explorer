@@ -936,7 +936,7 @@
 
 "@datopian/datapackage-views-js@https://github.com/datopian/datapackage-views-js.git#EDS":
   version "1.3.15"
-  resolved "https://github.com/datopian/datapackage-views-js.git#41d7798703d938bf8a08890a1b085e7825fde13b"
+  resolved "https://github.com/datopian/datapackage-views-js.git#78e34924420c561a5b84f2580361d420c4ee4d67"
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
     i18next "^19.0.3"
