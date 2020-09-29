@@ -950,7 +950,7 @@
 
 "@datopian/datastore-query-builder@https://github.com/datopian/datastore-query-builder.git#EDS":
   version "0.4.10"
-  resolved "https://github.com/datopian/datastore-query-builder.git#c2a90881f1281ea6e4f73606986e07597b311d50"
+  resolved "https://github.com/datopian/datastore-query-builder.git#2dd2b90c94bd2e3ea8c8f6068684d803a7aee97b"
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -960,6 +960,7 @@
     react-date-picker "^7.7.0"
     react-dom "^16.8.6"
     react-i18next "^11.3.0"
+    react-tooltip "^4.2.10"
 
 "@datopian/map-builder@^0.1.7":
   version "0.1.7"
@@ -8225,6 +8226,14 @@ react-tabs-redux@^4.0.0:
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
+react-tooltip@^4.2.10:
+  version "4.2.10"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.10.tgz#ed1a1acd388940c96f4b6309f4fd4dcce5e01bdc"
+  integrity sha512-D7ZLx6/QwpUl0SZRek3IZy/HWpsEEp0v3562tcT8IwZgu8IgV7hY5ZzniTkHyRcuL+IQnljpjj7A7zCgl2+T3w==
+  dependencies:
+    prop-types "^15.7.2"
+    uuid "^7.0.3"
+
 react@^16.8.6, react@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
@@ -9754,6 +9763,11 @@ utils-merge@1.0.1:
 uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
+
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
