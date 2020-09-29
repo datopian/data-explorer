@@ -69,7 +69,7 @@ var App = function App(props) {
       return !nonDataStoreViewTypes.includes(view.specType);
     });
   });
-  var totalRows = props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : '';
+  var totalRows = props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount : '';
   var selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name;
   var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
@@ -106,17 +106,12 @@ var App = function App(props) {
   });
   return _react.default.createElement("div", {
     className: "data-explorer"
-  }, totalRows && datastoreComponents && _react.default.createElement("div", {
-    className: "total-rows"
-  }, _react.default.createElement("span", {
-    className: "total-rows-label"
-  }, t('Total rows')), ": ", _react.default.createElement("span", {
-    className: "total-rows-value"
-  }, totalRows)), _react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "datastore-query-builder"
   }, (0, _utils.showQueryBuilder)(props) ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
-    filterBuilderAction: props.filterUIAction
+    filterBuilderAction: props.filterUIAction,
+    totalRows: totalRows
   }) : ''), _react.default.createElement(_reactTabsRedux.Tabs, {
     renderActiveTabContentOnly: true,
     handleSelect: function handleSelect(selectedTab) {
@@ -129,11 +124,6 @@ var App = function App(props) {
     updateAction: props.filterUIAction
   }) : _react.default.createElement("div", {
     className: "no-pagination not-datastore-resource"
-  }), datastoreComponents ? _react.default.createElement(_Share.default, {
-    serializedState: props.serializedState,
-    apiUri: props.datapackage.resources[0].api
-  }) : _react.default.createElement("div", {
-    className: "no-share-feature"
   }));
 };
 

@@ -86,6 +86,16 @@ var _callee2 = function _callee2(dpID) {
                           _count = _ref._count,
                           etc = _objectWithoutProperties(_ref, ["_id", "_full_text", "_count"]);
 
+                      if (file.descriptor.schema) {
+                        // If schema exists, use it to order columns. This is needed since order
+                        // of columns shuffled when calling `datastore_search_sql` API vs `datastore_search`.
+                        var ordered = {};
+                        file.descriptor.schema.fields.forEach(function (field) {
+                          ordered[field.name] = etc[field.name];
+                        });
+                        return ordered;
+                      }
+
                       return etc;
                     });
 
