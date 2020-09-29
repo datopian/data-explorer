@@ -13,30 +13,9 @@ var _reactI18next = require("react-i18next");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MAX_LEN = 1500;
-var slimProps = ['archiver', 'schema', 'shareLink', 'iframeText'];
-
-var slim = function slim(serializedState) {
-  if (serializedState.length <= MAX_LEN) return serializedState;
-  var state = JSON.parse(serializedState);
-  state.datapackage.resources.forEach(function (resource) {
-    for (var prop in slimProps) {
-      if (resource[slimProps[prop]]) delete resource[slimProps[prop]];
-    }
-  });
-  return JSON.stringify(state);
-};
-
 var _default = function _default(props) {
   var _useTranslation = (0, _reactI18next.useTranslation)(),
       t = _useTranslation.t;
-
-  var serializedState = slim(props.serializedState);
-  var urlObj = new URL(window.location.href);
-  urlObj.searchParams.set('explorer', serializedState);
-  var shareLink = urlObj.href;
-  var iframe = "<iframe src=\"".concat(urlObj.href, "\" />");
-  var shareable = shareLink.length < 2000;
 
   var copy = function copy(str) {
     // Create new element
@@ -58,48 +37,46 @@ var _default = function _default(props) {
     document.body.removeChild(el);
   };
 
+  var parsedApiUri, downloadCsvApiUri, downloadJsonApiUri;
+
+  if (props.apiUri) {
+    parsedApiUri = props.apiUri.replace('COUNT(*)%20OVER%20()%20AS%20_count,%20', '');
+
+    if (props.schema) {
+      var fieldNames = props.schema.fields.map(function (field) {
+        return field.name;
+      });
+      parsedApiUri = parsedApiUri.replace('SELECT%20*%20FROM', "SELECT%20\"".concat(fieldNames.join('", "'), "\"%20FROM"));
+    }
+
+    var uriObj = new URL(parsedApiUri);
+
+    if (uriObj.pathname.split('/')[3] === 'datastore_search_sql') {
+      downloadJsonApiUri = "".concat(window.location.origin, "/download/datastore_search_sql").concat(uriObj.search);
+      uriObj.searchParams.set('format', 'csv');
+      downloadCsvApiUri = "".concat(window.location.origin, "/download/datastore_search_sql").concat(uriObj.search);
+      var ul = document.getElementById('downloads');
+      var csvLink = ul.children[0].children[0];
+      csvLink.setAttribute('href', downloadCsvApiUri);
+      var jsonLink = ul.children[2].children[0];
+      jsonLink.setAttribute('href', downloadJsonApiUri);
+    }
+  }
+
   return _react.default.createElement("div", {
     className: "dx-share-container"
-  }, shareable ? _react.default.createElement("div", null, _react.default.createElement("div", {
-    className: "m-4 ml-0"
-  }, _react.default.createElement("input", {
-    id: "share-link",
-    className: "border-solid border-2 border-gray-600 w-1/2 px-2",
-    value: shareLink
-  }), _react.default.createElement("a", {
-    href: "#/",
-    id: "copy-share-link",
-    className: "m-4",
-    onClick: function onClick() {
-      copy(shareLink);
-    }
-  }, _react.default.createElement("i", null, t("copy share link")))), _react.default.createElement("div", {
-    className: "m-4 ml-0"
-  }, _react.default.createElement("input", {
-    id: "embed",
-    className: "border-solid border-2 border-gray-600 px-2 w-1/2",
-    value: iframe
-  }), _react.default.createElement("a", {
-    href: "#/",
-    id: "copy-share-link",
-    className: "m-4",
-    onClick: function onClick() {
-      copy(iframe);
-    }
-  }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", {
-    className: "no-share-link-message"
-  }, t('No share link available')), props.apiUri && _react.default.createElement("div", {
+  }, props.apiUri && _react.default.createElement("div", {
     className: "m-4 ml-0"
   }, _react.default.createElement("input", {
     id: "apiUri",
     className: "border-solid border-2 border-gray-600 px-2 w-1/2",
-    value: props.apiUri
+    value: decodeURI(parsedApiUri)
   }), _react.default.createElement("a", {
     href: "#/",
     id: "copy-share-link",
     className: "m-4",
     onClick: function onClick() {
-      copy(props.apiUri);
+      copy(decodeURI(parsedApiUri));
     }
   }, _react.default.createElement("i", null, t("copy API URI")))));
 };
