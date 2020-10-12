@@ -948,20 +948,6 @@
     react-scripts "3.0.1"
     react-table-v6 "^6.8.6"
 
-"@datopian/datastore-query-builder@https://github.com/datopian/datastore-query-builder.git#EDS":
-  version "0.4.10"
-  resolved "https://github.com/datopian/datastore-query-builder.git#2dd2b90c94bd2e3ea8c8f6068684d803a7aee97b"
-  dependencies:
-    formik "^1.5.8"
-    i18next "^19.0.3"
-    i18next-browser-languagedetector "^4.0.1"
-    react "^16.8.6"
-    react-copy-to-clipboard "^5.0.2"
-    react-date-picker "^7.7.0"
-    react-dom "^16.8.6"
-    react-i18next "^11.3.0"
-    react-tooltip "^4.2.10"
-
 "@datopian/map-builder@^0.1.7":
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@datopian/map-builder/-/map-builder-0.1.7.tgz#91648fb1c383841309de637620064f47845a4151"
@@ -1317,6 +1303,11 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
 
+"@types/react-calendar@^3.0.0":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-calendar/-/react-calendar-3.1.2.tgz#a8afe394aadd639cfee7f0441bc3ced4fa0092f3"
+  integrity sha512-QZ8EMG2P3230GQNEMXtSJq8v8zJkJqs8xpbohMbBefYG7i1MX2YzOsDoBWF2dpq36mrkXpoNgmmeVnXIT0DYtw==
+
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
@@ -1483,9 +1474,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wojtekmaj/date-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.0.0.tgz#97aebf5ab317cf40d56492642f921480d4f89342"
+"@wojtekmaj/date-utils@^1.0.2", "@wojtekmaj/date-utils@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.0.3.tgz#2dcfd92881425c5923e429c2aec86fb3609032a1"
+  integrity sha512-1VPkkTBk07gMR1fjpBtse4G+oJqpmE+0gUFB0dg3VIL7qJmUVaBoD/vlzMm/jNeOPfvlmerl1lpnsZyBUFIRuw==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -3233,9 +3225,10 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-detect-element-overflow@^1.1.1:
+detect-element-overflow@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/detect-element-overflow/-/detect-element-overflow-1.2.0.tgz#86e504292ffedc3aef813395fbdf0261aaf6afa9"
+  integrity sha512-Jtr9ivYPhpd9OJux+hjL0QjUKiS1Ghgy8tvIufUjFslQgIWvgGr4mn57H190APbKkiOmXnmtMI6ytaKzMusecg==
 
 detect-libc@^1.0.2:
   version "1.0.3"
@@ -4289,8 +4282,9 @@ get-stream@^4.0.0:
     pump "^3.0.0"
 
 get-user-locale@^1.2.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-1.3.0.tgz#21ea740e413541281ae7b2b42e70ee523b7725b2"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-1.4.0.tgz#a2c4b5da46feec9f03c9b07d197b1620490a5370"
+  integrity sha512-gQo03lP1OArHLKlnoglqrGGl7b04u2EP9Xutmp72cMdtrrSD7ZgIsCsUKZynYWLDkVJW33Cj3pliP7uP0UonHQ==
   dependencies:
     lodash.once "^4.1.1"
 
@@ -5931,6 +5925,7 @@ lodash.omit@^4.5.0:
 lodash.once@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
+  integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -6019,6 +6014,7 @@ make-dir@^2.0.0, make-dir@^2.1.0:
 make-event-props@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/make-event-props/-/make-event-props-1.2.0.tgz#96b87d88919533b8f8934b58b4c3d5679459a0cf"
+  integrity sha512-BmWFkm/jZzVH9A0tEBdkjAARUz/eha+5IRyfOndeSMKRadkgR5DawoBHoRwLxkYmjJOI5bHkXKpaZocxj+dKgg==
 
 makeerror@1.0.x:
   version "1.0.11"
@@ -6091,6 +6087,7 @@ memory-fs@^0.5.0:
 merge-class-names@^1.1.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/merge-class-names/-/merge-class-names-1.3.0.tgz#c4cdc1a981a81dd9afc27aa4287e912a337c5dee"
+  integrity sha512-k0Qaj36VBpKgdc8c188LEZvo6v/zzry/FUufwopWbMSp6/knfVFU/KIB55/hJjeIpg18IH2WskXJCRnM/1BrdQ==
 
 merge-deep@^3.0.2:
   version "3.0.2"
@@ -7854,14 +7851,15 @@ react-app-polyfill@^1.0.1:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-calendar@^2.19.1:
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-2.19.2.tgz#496e78eb11a00aee1ae6b5d02d221ed1ca2db952"
+react-calendar@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-3.1.0.tgz#7a384a70f98e02177d176c45f6918fb6a15ce41f"
+  integrity sha512-xoKdRe6FrnZ30LD9pyr20fhet1uwSbc6srLGm1ib7G4b7tAXniZrwzrJ4YV/Hbmmwf/zAFGyXtBzLAIV1KNvuA==
   dependencies:
+    "@wojtekmaj/date-utils" "^1.0.2"
     get-user-locale "^1.2.0"
     merge-class-names "^1.1.1"
     prop-types "^15.6.0"
-    react-lifecycles-compat "^3.0.4"
 
 react-copy-to-clipboard@^5.0.2:
   version "5.0.2"
@@ -7999,18 +7997,19 @@ react-cosmos@^4.8.1:
     webpack-hot-middleware "^2.24.3"
     yargs "^12.0.5"
 
-react-date-picker@^7.7.0:
-  version "7.10.0"
-  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-7.10.0.tgz#890f37684da5087c80d63132b4e77e3d0677b332"
+react-date-picker@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-8.0.3.tgz#6814e3b5f8ce0ffa9e12bbc932ab852389c56b11"
+  integrity sha512-X6uy0VSgW9uqYk2IaB8Y+a7IRD8JBY0Pl9kwxWepp838+ykcy/roXKZUEuW7VYQ+QUy3Vo5zUEKmeUxo56sw/A==
   dependencies:
-    "@wojtekmaj/date-utils" "^1.0.0"
+    "@types/react-calendar" "^3.0.0"
+    "@wojtekmaj/date-utils" "^1.0.3"
     get-user-locale "^1.2.0"
     make-event-props "^1.1.0"
     merge-class-names "^1.1.1"
     prop-types "^15.6.0"
-    react-calendar "^2.19.1"
+    react-calendar "^3.0.0"
     react-fit "^1.0.3"
-    react-lifecycles-compat "^3.0.4"
     update-input-width "^1.1.1"
 
 react-dev-utils@^6.1.1:
@@ -8101,10 +8100,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
 
 react-fit@^1.0.3:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-fit/-/react-fit-1.0.5.tgz#971490a2e15613712596d9fdad549293d3d30684"
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-fit/-/react-fit-1.3.1.tgz#850cb5d554fdfa4b27891f62a9d290d3e7eda57b"
+  integrity sha512-MmVk/SXyVbxiz9peAeD7fWxFdGLoy/sCxte01M3w74regPIVkLqc2yT0wUAGRd1MNP1fQ40MqYKNBLpbK/aI1w==
   dependencies:
-    detect-element-overflow "^1.1.1"
+    detect-element-overflow "^1.2.0"
     prop-types "^15.6.0"
 
 react-i18next@^11.2.7, react-i18next@^11.3.0:
@@ -8117,10 +8117,6 @@ react-i18next@^11.2.7, react-i18next@^11.3.0:
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
-
-react-lifecycles-compat@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
 react-loader-spinner@^2.3.0:
   version "2.3.0"
@@ -9684,6 +9680,7 @@ upath@^1.1.1:
 update-input-width@^1.1.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/update-input-width/-/update-input-width-1.2.1.tgz#769d6182413590c3b50b52ffa9c65d79e2c17f95"
+  integrity sha512-zygDshqDb2C2/kgfoD423n5htv/3OBF7aTaz2u2zZy998EJki8njOHOeZjKEd8XSYeDziIX1JXfMsKaIRJeJ/Q==
 
 upper-case@^1.1.1:
   version "1.1.3"

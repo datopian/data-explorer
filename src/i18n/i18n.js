@@ -30,7 +30,6 @@ export const initTranslations = async () => {
           ...require('@datopian/chart-builder/src/i18n/locales/en/translation.json'),
           ...require('@datopian/map-builder/src/i18n/locales/en/translation.json'),
           ...require('@datopian/datapackage-views-js/src/i18n/locales/en/translation.json'),
-          ...require('@datopian/datastore-query-builder/src/i18n/locales/en/translation.json'),
         }
       },
       da: {
@@ -39,7 +38,6 @@ export const initTranslations = async () => {
           ...require('@datopian/chart-builder/src/i18n/locales/da/translation.json'),
           ...require('@datopian/map-builder/src/i18n/locales/da/translation.json'),
           ...require('@datopian/datapackage-views-js/src/i18n/locales/da/translation.json'),
-          ...require('@datopian/datastore-query-builder/src/i18n/locales/da/translation.json'),
         }
       },
       fr: {
@@ -48,7 +46,6 @@ export const initTranslations = async () => {
           ...require('@datopian/chart-builder/src/i18n/locales/fr/translation.json'),
           ...require('@datopian/map-builder/src/i18n/locales/fr/translation.json'),
           ...require('@datopian/datapackage-views-js/src/i18n/locales/fr/translation.json'),
-          ...require('@datopian/datastore-query-builder/src/i18n/locales/fr/translation.json'),
         },
       },
     },
