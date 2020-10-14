@@ -90,7 +90,7 @@ const copiedDatapackage = {
         "resource_type":null,
         "alias":"electricitysupplierspergridarea",
         "apiBase":"https://www.energidataservice.dk/proxy/api/",
-        "api":"https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql=SELECT COUNT(*) OVER () AS _count, \"Month\", \"GridCompany\", \"ActiveSupplierPerGridArea\" FROM \"electricitysupplierspergridarea\" ORDER BY \"Month\" DESC LIMIT 100",
+        "api":"https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql=SELECT \"Month\", \"GridCompany\", \"ActiveSupplierPerGridArea\" FROM \"electricitysupplierspergridarea\" ORDER BY \"Month\" DESC LIMIT 100",
         "views":[
           {
             "id":1,

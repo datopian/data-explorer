@@ -18,6 +18,8 @@ export const QueryBuilder = (props) => {
     } else {
       apiUrl = (new URL(resource.path)).origin + '/api/3/action/'
     }
+
+    // TODO: remove rowcout?
     return (
       <div className="App">
         <DatastoreSearchSql

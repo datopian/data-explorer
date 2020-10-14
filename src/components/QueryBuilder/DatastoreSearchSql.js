@@ -31,10 +31,9 @@ function DatastoreSearchSql(props) {
 
   function handleSubmit(values) {
     const clonedValues = JSON.parse(JSON.stringify(values))
-    // Convert query to SQL string. Note we're adding 'COUNT(*) OVER()' so that
-    // we get number of total rows info.
+    // Convert query to SQL string
     const fieldNames = resource.schema.fields.map(field => field.name)
-    let sqlQueryString = `SELECT COUNT(*) OVER () AS _count, "${fieldNames.join('", "')}" FROM "${resource.alias || resource.id}"`
+    let sqlQueryString = `SELECT "${fieldNames.join('", "')}" FROM "${resource.alias || resource.id}"`
     if (clonedValues.date.startDate) {
       const rule = {combinator: 'AND', field: clonedValues.date.fieldName, operator: '>=', value: clonedValues.date.startDate}
       let localDateTime = new Date(clonedValues.date.startDate);
@@ -74,12 +73,12 @@ function DatastoreSearchSql(props) {
     // Trigger Redux action
     resource.api = encodeURI(datastoreUrl)
     props.action(resource)
-    setDatastoreUrl(datastoreUrl.replace('COUNT(*) OVER () AS _count, ', ''))
+    // setDatastoreUrl(datastoreUrl.replace('COUNT(*) OVER () AS _count, ', ''))
 
     // Update download links
     let downloadCsvApiUri, downloadJsonApiUri, downloadExcelApiUri
     const downloadUrl = datastoreUrl
-      .replace('COUNT(*) OVER () AS _count, ', '')
+      // .replace('COUNT(*) OVER () AS _count, ', '')
       .replace(' LIMIT 100', '')
     let uriObj = new URL(downloadUrl)
     if (resource.alias) {
@@ -126,7 +125,13 @@ function DatastoreSearchSql(props) {
         <Form className="form-inline dq-main-container" onChange={handleChange}>
           <div className="dq-heading">
             <div className="dq-heading-main"></div>
-            <div className="dq-heading-total-rows">{props.totalRows && parseInt(props.totalRows).toLocaleString()}</div>
+            <div className="dq-heading-total-rows">{
+              props.totalRows 
+              ?
+              props.totalRows
+              :
+              '-'
+            }</div>
           </div>
           {defaultDateFieldName ? (
             <div className="dq-date-picker">
