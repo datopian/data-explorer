@@ -20,10 +20,6 @@ export default props => {
     setCurrentPage(targetPage)
 
     console.log('Pagination handlePageClick data:\n' + JSON.stringify(targetPage, null, 2))
-    // zero based selected
-    // {
-    //   "selected": 59
-    // }
 
     const offset = Math.ceil(targetPage * ROWS_PER_PAGE)
     const urlObj = new URL(resource.api)

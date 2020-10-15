@@ -1,6 +1,6 @@
 import "../../i18n/i18n"
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {Formik, Form, FieldArray, Field} from 'formik'
 import DatePicker from 'react-date-picker'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
@@ -126,9 +126,9 @@ function DatastoreSearchSql(props) {
           <div className="dq-heading">
             <div className="dq-heading-main"></div>
             <div className="dq-heading-total-rows">{
-              props.totalRows 
+              props.totalRows && parseInt(props.totalRows).toLocaleString()
               ?
-              props.totalRows
+              parseInt(props.totalRows).toLocaleString()
               :
               '-'
             }</div>

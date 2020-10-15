@@ -10,6 +10,48 @@ function parseDatapackageIdentifier(stringOrJSON) {
   }
 }
 
+
+/**
+ * Counts rows in a SQL query (removes limit). Counts rows using Index Only Scan
+ * for queries having no WHERE clause.
+ * 
+ * @param {String} apiUrl should use datstore_search_sql and have teh initial query
+ * @param {String} name table name / alias
+ */
+async function countRows(apiUrl, name) {
+  console.log(`api: ` + apiUrl)
+
+  try {
+
+    let rowCountSql
+
+    if (apiUrl && apiUrl.includes('WHERE')) {
+
+      const originalSqlNoLimit = apiUrl
+        .replace(/.*sql=/gi, '')
+        .replace(/LIMIT.*/gi, '')
+      rowCountSql = `SELECT COUNT(*) AS _count FROM (${originalSqlNoLimit}) t`
+
+    } else {
+
+      // this query is for optimizing the row-count calculation for non-filtered data only
+      // more on how it works here https://www.citusdata.com/blog/2016/10/12/count-performance/#distinct_counts_exact_index
+      rowCountSql = `SELECT COUNT(*) AS _count FROM (SELECT DISTINCT "_id" FROM "${name}") t`
+
+    }
+
+    // console.log(`rowCountSql: ` + rowCountSql)
+
+    const rowCountResponse = await fetch(apiUrl.replace(/sql=.*/gi, `sql=${rowCountSql}`))
+    const rowCountResponseJson = await rowCountResponse.json()
+    return rowCountResponseJson.result.records[0]._count
+  } catch (e) {
+    console.error(e)
+    return '-'
+  }
+}
+
+
 // needs to be encapsulated
 // should be library code
 export default async dpID => {
@@ -18,6 +60,8 @@ export default async dpID => {
 
   try {
     const dataset = await Dataset.load(DP_ID)
+
+    // console.log('dataset: ' + JSON.stringify(dataset, null, 2))
 
     await Promise.all(dataset.resources.map(async (file) => {
       if (file.displayName === 'FileInline') {
@@ -46,12 +90,8 @@ export default async dpID => {
           return etc
         })
 
-        // TODO: get row count in another query
-        // if (result.result.records.length === 0) {
-        //   file.descriptor.totalrowcount = 0
-        // } else {
-        //   file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count
-        // }
+        // TODO: move out of dataset loading action
+        file.descriptor.totalrowcount = await countRows(file.descriptor.api, file.descriptor.name)
 
         if (!file.descriptor.schema) {
           // Infer schema but re-open the file as it is now "inlined":
