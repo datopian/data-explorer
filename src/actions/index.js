@@ -1,4 +1,5 @@
 import loadDataset from '../utils/loadDataset'
+import { countRows } from '../utils/countRows';
 import { compileView } from 'datapackage-render';
 
 export const selectTabAction = (payload) => (dispatch, getState) => {
@@ -45,6 +46,12 @@ export const filterUIAction = (payload) => async (dispatch, getState) => {
       return widget
     })
   dispatch(fetchDataSuccess({widgets}))
+
+  // add row count to first resource
+  const datapackageWithRowCount = await countRows(
+    JSON.parse(JSON.stringify(getState().datapackage))
+  )
+  dispatch(fetchRowCountSuccess({datapackage: datapackageWithRowCount}))
 }
 
 export const dataViewBuilderAction = (payload) => dispatch => {
@@ -77,6 +84,15 @@ export const fetchDataAction = payload => async dispatch => {
       return widget
     })
   dispatch(fetchDataSuccess({widgets}))
+
+  console.log(widgets)
+
+  // add row count to first resource
+  const datapackageWithRowCount = await countRows(
+    JSON.parse(JSON.stringify(payload.datapackage))
+  )
+  dispatch(fetchRowCountSuccess({datapackage: datapackageWithRowCount}))
+  
 }
 
 const selectTab = res => ({
@@ -102,4 +118,9 @@ const fetchDataSuccess = res => ({
 const fetchDataFailure = err => ({
   type: 'FETCH_DATA_FAILURE',
   payload: { err }
+})
+
+const fetchRowCountSuccess = res => ({
+  type: 'FETCH_ROW_COUNT_SUCCESS',
+  payload: { ...res }
 })
