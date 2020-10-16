@@ -23,6 +23,29 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <ul class="dropdown-menu" id="downloads">
+
+      <li>
+        <a href="https://www.energidataservice.dk/download/datastore_search_sql?sql=SELECT &quot;Month&quot;, &quot;GridCompany&quot;, &quot;ActiveSupplierPerGridArea&quot; FROM &quot;electricitysupplierspergridarea&quot; ORDER BY &quot;Month&quot; DESC LIMIT 100000&amp;alias=electricitysupplierspergridarea&amp;format=csv" class="data-extract-btn" data-format="CSV" onclick="sendGAEvent('electricitysupplierspergridarea', 'electricitysupplierspergridarea', 'download', 'CSV')">CSV</a>
+      </li>
+      <br>
+
+      <li>
+        <a href="https://www.energidataservice.dk/download/datastore_search_sql?sql=SELECT &quot;Month&quot;, &quot;GridCompany&quot;, &quot;ActiveSupplierPerGridArea&quot; FROM &quot;electricitysupplierspergridarea&quot; ORDER BY &quot;Month&quot; DESC LIMIT 100000&amp;alias=electricitysupplierspergridarea" class="data-extract-btn" data-format="JSON" onclick="sendGAEvent('electricitysupplierspergridarea', 'electricitysupplierspergridarea', 'download', 'JSON')">JSON</a>
+      </li>
+      <br>
+
+      <li>
+        <a href="https://www.energidataservice.dk/download/datastore_search_sql?sql=SELECT &quot;Month&quot;, &quot;GridCompany&quot;, &quot;ActiveSupplierPerGridArea&quot; FROM &quot;electricitysupplierspergridarea&quot; ORDER BY &quot;Month&quot; DESC LIMIT 100000&amp;alias=electricitysupplierspergridarea&amp;format=xlsx" class="data-extract-btn" data-format="Excel (XLSX)" onclick="sendGAEvent('electricitysupplierspergridarea', 'electricitysupplierspergridarea', 'download', 'Excel (XLSX)')">Excel (XLSX)</a>
+      </li>
+      <br>
+
+      <li class="text-gray-600 text-sm border-t">
+        <div class="px-8 py-3">
+          <i class="fa fa-info-circle" aria-hidden="true"></i> Downloads are limited to the top 100 000 rows.
+        </div>
+      </li>
+    </ul>
     <div class="data-explorer" id="data-explorer-1" data-datapackage='{"widgets":[{"name":"Table","active":true,"datapackage":{"views":[{"id":"9fd8ec8f-b80d-41f5-9b26-00290322166d","specType":"table"}]}},{"name":"Chart","active":false,"datapackage":{"views":[{"id":"9fd8ec8f-b80d-41f5-9b26-00290322166d","specType":"simple"}]}},{"name":"Map","active":false,"datapackage":{"views":[{"id":"9fd8ec8f-b80d-41f5-9b26-00290322166d","specType":"tabularmap"}]}}],"datapackage":{"resources":[{"views":[{"description":"","title":"Example view of FES data","resource_id":"1fb65a34-25b1-44c8-b819-a22890b4c764","view_type":"recline_view","id":"9fd8ec8f-b80d-41f5-9b26-00290322166d","package_id":"fe924436-de78-429a-96a8-f6594d5ea338","specType":"dataExplorer","spec":{"widgets":[{"specType":"table"},{"specType":"simple"},{"specType":"tabularmap"}]}}],"schema":{"fields":[{"name":"Tab","type":"string"},{"name":"Data item","type":"string"},{"name":"Unit","type":"string"},{"name":"Scenario","type":"string"},{"name":"Fuel","type":"string"},{"name":"Peak/Annual/Minimum","type":"string"},{"name":"2018","type":"string"},{"name":"2019","type":"string"},{"name":"2020","type":"string"},{"name":"2021","type":"string"},{"name":"2022","type":"string"},{"name":"2023","type":"string"},{"name":"2024","type":"string"},{"name":"2025","type":"string"},{"name":"2026","type":"string"},{"name":"2027","type":"string"},{"name":"2028","type":"string"},{"name":"2029","type":"string"},{"name":"2030","type":"string"},{"name":"2031","type":"string"},{"name":"2032","type":"string"},{"name":"2033","type":"string"},{"name":"2034","type":"string"},{"name":"2035","type":"string"},{"name":"2036","type":"string"},{"name":"2037","type":"string"},{"name":"2038","type":"string"},{"name":"2039","type":"string"},{"name":"2040","type":"string"},{"name":"2041","type":"string"},{"name":"2042","type":"string"},{"name":"2043","type":"string"},{"name":"2044","type":"string"},{"name":"2045","type":"string"},{"name":"2046","type":"string"},{"name":"2047","type":"string"},{"name":"2048","type":"string"},{"name":"2049","type":"string"},{"name":"2050","type":"string"},{"name":"2051","type":"any"}]},"cache_last_updated":null,"package_id":"fe924436-de78-429a-96a8-f6594d5ea338","validation_status":"success","datastore_active":true,"id":"1fb65a34-25b1-44c8-b819-a22890b4c764","size":null,"validation_timestamp":"2020-03-12T11:25:18.980201","state":"active","hash":"","description":"An example of how a csv can be visualised and accessed via API on the data portal.","format":"csv","last_modified":"2020-03-12T10:31:53.452809","url_type":"upload","mimetype":"text/csv","cache_url":null,"name":"fes_csv_example","created":"2020-03-11T15:12:51.184704","mimetype_inner":null,"position":2,"revision_id":"fabef700-f347-46fc-a659-9ae108dd0faf","resource_type":null,"title":"FES CSV example","path":"https://national-grid-admin-staging.ckan.io/dataset/fe924436-de78-429a-96a8-f6594d5ea338/resource/1fb65a34-25b1-44c8-b819-a22890b4c764/download/fes-data-workbook-csv-example.csv","descriptionHtml":"<p>An example of how a csv can be visualised and accessed via API on the data portal.</p>\n","api":"https://national-grid-admin-staging.ckan.io/api/3/action/datastore_search?resource_id=1fb65a34-25b1-44c8-b819-a22890b4c764&sort=_id desc"}]}}'></div>
   </body>
 </html>

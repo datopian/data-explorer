@@ -40,6 +40,8 @@ var _default = function _default(props) {
   var parsedApiUri, downloadCsvApiUri, downloadJsonApiUri;
 
   if (props.apiUri) {
+    // TODO: (maybe) remove? because row count is not in the query any more
+    // leaving it here in case 
     parsedApiUri = props.apiUri.replace('COUNT(*)%20OVER%20()%20AS%20_count,%20', '');
 
     if (props.schema) {

@@ -7,6 +7,8 @@ exports.fetchDataAction = exports.dataViewBuilderAction = exports.filterUIAction
 
 var _loadDataset = _interopRequireDefault(require("../utils/loadDataset"));
 
+var _countRows = require("../utils/countRows");
+
 var _datapackageRender = require("datapackage-render");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37,7 +39,7 @@ exports.selectTabAction = selectTabAction;
 
 var filterUIAction = function filterUIAction(payload) {
   return function _callee(dispatch, getState) {
-    var datapackage, newResource, updatedDatapackage, loadingWidgets, loadedDataset, widgets;
+    var datapackage, newResource, updatedDatapackage, loadingWidgets, loadedDataset, widgets, datapackageWithRowCount;
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -88,9 +90,18 @@ var filterUIAction = function filterUIAction(payload) {
             });
             dispatch(fetchDataSuccess({
               widgets: widgets
+            })); // add row count to first resource
+
+            _context.next = 16;
+            return regeneratorRuntime.awrap((0, _countRows.countRows)(JSON.parse(JSON.stringify(getState().datapackage))));
+
+          case 16:
+            datapackageWithRowCount = _context.sent;
+            dispatch(fetchRowCountSuccess({
+              datapackage: datapackageWithRowCount
             }));
 
-          case 14:
+          case 18:
           case "end":
             return _context.stop();
         }
@@ -122,7 +133,7 @@ exports.dataViewBuilderAction = dataViewBuilderAction;
 
 var fetchDataAction = function fetchDataAction(payload) {
   return function _callee2(dispatch) {
-    var loadingWidgets, datapackage, loadedDataset, widgets;
+    var loadingWidgets, datapackage, loadedDataset, widgets, datapackageWithRowCount;
     return regeneratorRuntime.async(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -152,8 +163,18 @@ var fetchDataAction = function fetchDataAction(payload) {
             dispatch(fetchDataSuccess({
               widgets: widgets
             }));
+            console.log(widgets); // add row count to first resource
 
-          case 9:
+            _context2.next = 12;
+            return regeneratorRuntime.awrap((0, _countRows.countRows)(JSON.parse(JSON.stringify(payload.datapackage))));
+
+          case 12:
+            datapackageWithRowCount = _context2.sent;
+            dispatch(fetchRowCountSuccess({
+              datapackage: datapackageWithRowCount
+            }));
+
+          case 14:
           case "end":
             return _context2.stop();
         }
@@ -198,5 +219,12 @@ var fetchDataFailure = function fetchDataFailure(err) {
     payload: {
       err: err
     }
+  };
+};
+
+var fetchRowCountSuccess = function fetchRowCountSuccess(res) {
+  return {
+    type: 'FETCH_ROW_COUNT_SUCCESS',
+    payload: _objectSpread({}, res)
   };
 };

@@ -32,6 +32,7 @@ export default async dpID => {
         const result = await response.json()
         // Remove fields that start with `_` as we don't want to display internal values,
         // e.g., `_id`, `_full_text` and `_count`
+        // TODO: (maybe) remove _count (we don't use it in the query for data any longer)
         file.descriptor.data = result.result.records.map(({ _id, _full_text, _count, ...etc }, index) => {
           if (file.descriptor.schema) {
             // If schema exists, use it to order columns. This is needed since order
@@ -44,11 +45,6 @@ export default async dpID => {
           }
           return etc
         })
-        if (result.result.records.length === 0) {
-          file.descriptor.totalrowcount = 0
-        } else {
-          file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count
-        }
 
         if (!file.descriptor.schema) {
           // Infer schema but re-open the file as it is now "inlined":

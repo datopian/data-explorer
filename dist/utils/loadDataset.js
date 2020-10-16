@@ -54,7 +54,7 @@ var _callee2 = function _callee2(dpID) {
 
                   case 4:
                     if (!(file.descriptor.api && file.descriptor.api.includes('datastore_search'))) {
-                      _context.next = 25;
+                      _context.next = 24;
                       break;
                     }
 
@@ -80,6 +80,7 @@ var _callee2 = function _callee2(dpID) {
                     result = _context.sent;
                     // Remove fields that start with `_` as we don't want to display internal values,
                     // e.g., `_id`, `_full_text` and `_count`
+                    // TODO: (maybe) remove _count (we don't use it in the query for data any longer)
                     file.descriptor.data = result.result.records.map(function (_ref, index) {
                       var _id = _ref._id,
                           _full_text = _ref._full_text,
@@ -99,14 +100,8 @@ var _callee2 = function _callee2(dpID) {
                       return etc;
                     });
 
-                    if (result.result.records.length === 0) {
-                      file.descriptor.totalrowcount = 0;
-                    } else {
-                      file.descriptor.totalrowcount = result.result.total || result.result.records[0]._count;
-                    }
-
                     if (file.descriptor.schema) {
-                      _context.next = 23;
+                      _context.next = 22;
                       break;
                     }
 
@@ -117,35 +112,35 @@ var _callee2 = function _callee2(dpID) {
                     });
                     headers = Object.keys(file.descriptor.data[0] || {});
                     fileInline.descriptor.data = [headers].concat(fileInline.descriptor.data);
-                    _context.next = 22;
+                    _context.next = 21;
                     return regeneratorRuntime.awrap(fileInline.addSchema());
 
-                  case 22:
+                  case 21:
                     file.descriptor.schema = fileInline.descriptor.schema;
 
-                  case 23:
-                    _context.next = 68;
+                  case 22:
+                    _context.next = 67;
                     break;
 
-                  case 25:
+                  case 24:
                     if (!(file.displayName === "FileRemote" && tabularFormats.includes(file.descriptor.format))) {
-                      _context.next = 44;
+                      _context.next = 43;
                       break;
                     }
 
-                    _context.prev = 26;
-                    _context.next = 29;
+                    _context.prev = 25;
+                    _context.next = 28;
                     return regeneratorRuntime.awrap(file.rows({
                       size: 100,
                       keyed: true
                     }));
 
-                  case 29:
+                  case 28:
                     rowStream = _context.sent;
-                    _context.next = 32;
+                    _context.next = 31;
                     return regeneratorRuntime.awrap(toArray(rowStream));
 
-                  case 32:
+                  case 31:
                     data = _context.sent;
 
                     if (data.length > 0) {
@@ -154,88 +149,88 @@ var _callee2 = function _callee2(dpID) {
                       file.descriptor.unavailable = true;
                     }
 
-                    _context.next = 36;
+                    _context.next = 35;
                     return regeneratorRuntime.awrap(file.addSchema());
 
-                  case 36:
-                    _context.next = 42;
+                  case 35:
+                    _context.next = 41;
                     break;
 
-                  case 38:
-                    _context.prev = 38;
-                    _context.t0 = _context["catch"](26);
+                  case 37:
+                    _context.prev = 37;
+                    _context.t0 = _context["catch"](25);
                     console.warn(_context.t0);
                     file.descriptor.unavailable = true;
 
-                  case 42:
-                    _context.next = 68;
+                  case 41:
+                    _context.next = 67;
                     break;
 
-                  case 44:
+                  case 43:
                     if (!file.descriptor.format.toLowerCase().includes('json')) {
-                      _context.next = 63;
+                      _context.next = 62;
                       break;
                     }
 
-                    _context.next = 47;
+                    _context.next = 46;
                     return regeneratorRuntime.awrap(fetch(file.descriptor.path));
 
-                  case 47:
+                  case 46:
                     _response = _context.sent;
 
                     if (_response.ok) {
-                      _context.next = 51;
+                      _context.next = 50;
                       break;
                     }
 
                     file.descriptor.unavailable = true;
                     return _context.abrupt("return");
 
-                  case 51:
-                    _context.next = 53;
+                  case 50:
+                    _context.next = 52;
                     return regeneratorRuntime.awrap(_response.json());
 
-                  case 53:
+                  case 52:
                     _result = _context.sent;
                     // The '.json' files can contain geo data - check by its 'type' property
                     geoJsonTypes = ['Feature', 'FeatureCollection', 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
 
                     if (!geoJsonTypes.includes(_result.type)) {
-                      _context.next = 59;
+                      _context.next = 58;
                       break;
                     }
 
                     file.descriptor.data = _result;
-                    _context.next = 61;
+                    _context.next = 60;
                     break;
 
-                  case 59:
+                  case 58:
                     // It isn't a valid GeoJSON
                     file.descriptor.unavailable = true;
                     return _context.abrupt("return");
 
-                  case 61:
-                    _context.next = 68;
+                  case 60:
+                    _context.next = 67;
                     break;
 
-                  case 63:
+                  case 62:
                     if (!(file.descriptor.format.toLowerCase() === 'pdf')) {
-                      _context.next = 67;
+                      _context.next = 66;
                       break;
                     }
 
                     return _context.abrupt("return");
 
-                  case 67:
+                  case 66:
                     // We can't load any other data types for now.
                     file.descriptor.unavailable = true;
 
-                  case 68:
+                  case 67:
                   case "end":
                     return _context.stop();
                 }
               }
-            }, null, null, [[26, 38]]);
+            }, null, null, [[25, 37]]);
           })));
 
         case 8:

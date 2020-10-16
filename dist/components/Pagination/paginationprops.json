@@ -1,0 +1,590 @@
+{
+  "datapackage": {
+    "resources": [
+      {
+        "path": "https://www.energidataservice.dk/datastore/dump/5eb19b81-59c7-495c-90c3-acb3fe3cc5ba",
+        "pathType": "remote",
+        "name": "electricitysupplierspergridarea",
+        "format": "data",
+        "cache_last_updated": null,
+        "package_id": "electricitysupplierspergridarea",
+        "datastore_active": true,
+        "id": "5eb19b81-59c7-495c-90c3-acb3fe3cc5ba",
+        "size": null,
+        "title": "Active Electricity Suppliers per Grid Area Data",
+        "state": "active",
+        "schema": {
+          "fields": [
+            {
+              "comment": "-",
+              "description": "Year and month",
+              "title": "Month",
+              "property_constraint": "",
+              "name": "Month",
+              "validation_rules": "",
+              "type": "date",
+              "example": "2017-01",
+              "unit": "Months",
+              "size": "7"
+            },
+            {
+              "comment": "-",
+              "description": "Grid company number according to Danish Energy. Dan-ish Energy is a non-commercial lobby organization for Danish energy companies. Read more about Danish Ener-gy here: https://www.danskenergi.dk/about-danish-energy",
+              "title": "Grid company",
+              "property_constraint": "",
+              "format": "",
+              "name": "GridCompany",
+              "validation_rules": ">000 and <= 999",
+              "type": "string",
+              "example": "031",
+              "unit": "text",
+              "size": "3"
+            },
+            {
+              "comment": "Since an electricity supplier can appear in more than one grid area it is not possible to make a sum of this column (\"Active electricity suppliers\") to get the total number of active electricity suppliers nationally. Instead the Grid company called \"DK\" shows the total number of active electricity suppliers nationally. ",
+              "description": "Number of active electricity suppliers per grid area. ",
+              "title": "Active electricity suppliers",
+              "property_constraint": "",
+              "format": "/d{4}",
+              "name": "ActiveSupplierPerGridArea",
+              "validation_rules": "",
+              "type": "integer",
+              "example": "46",
+              "unit": "Number",
+              "size": "4"
+            }
+          ],
+          "primary_key": [
+            "Month",
+            "GridCompany"
+          ]
+        },
+        "hash": "",
+        "description": "",
+        "last_modified": "2020-10-06T03:17:11.269993",
+        "url_type": "datastore",
+        "attributes": "[]",
+        "mimetype": null,
+        "cache_url": null,
+        "created": "2020-01-17T20:28:29.256612",
+        "mimetype_inner": null,
+        "position": 0,
+        "revision_id": "3cc8df00-a3a1-4fe4-b47e-5bc09b2c1d5a",
+        "resource_type": null,
+        "alias": "electricitysupplierspergridarea",
+        "apiBase": "https://www.energidataservice.dk/proxy/api/",
+        "api": "https://www.energidataservice.dk/proxy/api/datastore_search_sql?sql=SELECT COUNT(*) OVER () AS _count, \"Month\", \"GridCompany\", \"ActiveSupplierPerGridArea\" FROM \"electricitysupplierspergridarea\" ORDER BY \"Month\" DESC LIMIT 100",
+        "views": [
+          {
+            "id": 1,
+            "specType": "table"
+          }
+        ],
+        "encoding": "utf-8",
+        "data": [
+          {
+            "Month": "2020-10",
+            "GridCompany": "DK",
+            "ActiveSupplierPerGridArea": "53"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "911",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "860",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "854",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "853",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "791",
+            "ActiveSupplierPerGridArea": "50"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "757",
+            "ActiveSupplierPerGridArea": "35"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "755",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "740",
+            "ActiveSupplierPerGridArea": "45"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "584",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "543",
+            "ActiveSupplierPerGridArea": "45"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "533",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "532",
+            "ActiveSupplierPerGridArea": "32"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "531",
+            "ActiveSupplierPerGridArea": "32"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "398",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "396",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "385",
+            "ActiveSupplierPerGridArea": "29"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "384",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "381",
+            "ActiveSupplierPerGridArea": "29"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "371",
+            "ActiveSupplierPerGridArea": "27"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "370",
+            "ActiveSupplierPerGridArea": "29"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "357",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "351",
+            "ActiveSupplierPerGridArea": "41"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "348",
+            "ActiveSupplierPerGridArea": "43"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "347",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "344",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "342",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "341",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "331",
+            "ActiveSupplierPerGridArea": "40"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "245",
+            "ActiveSupplierPerGridArea": "43"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "244",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "233",
+            "ActiveSupplierPerGridArea": "45"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "154",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "152",
+            "ActiveSupplierPerGridArea": "40"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "151",
+            "ActiveSupplierPerGridArea": "45"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "141",
+            "ActiveSupplierPerGridArea": "33"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "131",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "085",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "084",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "051",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "042",
+            "ActiveSupplierPerGridArea": "35"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "031",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-10",
+            "GridCompany": "016",
+            "ActiveSupplierPerGridArea": "26"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "DK",
+            "ActiveSupplierPerGridArea": "53"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "911",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "860",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "854",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "853",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "791",
+            "ActiveSupplierPerGridArea": "50"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "757",
+            "ActiveSupplierPerGridArea": "35"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "755",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "740",
+            "ActiveSupplierPerGridArea": "45"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "584",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "543",
+            "ActiveSupplierPerGridArea": "44"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "533",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "532",
+            "ActiveSupplierPerGridArea": "32"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "531",
+            "ActiveSupplierPerGridArea": "32"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "398",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "396",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "385",
+            "ActiveSupplierPerGridArea": "29"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "384",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "381",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "371",
+            "ActiveSupplierPerGridArea": "27"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "370",
+            "ActiveSupplierPerGridArea": "29"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "357",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "351",
+            "ActiveSupplierPerGridArea": "41"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "348",
+            "ActiveSupplierPerGridArea": "43"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "347",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "344",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "342",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "341",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "331",
+            "ActiveSupplierPerGridArea": "40"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "245",
+            "ActiveSupplierPerGridArea": "43"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "244",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "233",
+            "ActiveSupplierPerGridArea": "44"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "154",
+            "ActiveSupplierPerGridArea": "36"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "152",
+            "ActiveSupplierPerGridArea": "39"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "151",
+            "ActiveSupplierPerGridArea": "44"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "141",
+            "ActiveSupplierPerGridArea": "33"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "131",
+            "ActiveSupplierPerGridArea": "46"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "085",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "084",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "051",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "042",
+            "ActiveSupplierPerGridArea": "34"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "031",
+            "ActiveSupplierPerGridArea": "47"
+          },
+          {
+            "Month": "2020-09",
+            "GridCompany": "016",
+            "ActiveSupplierPerGridArea": "26"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "DK",
+            "ActiveSupplierPerGridArea": "52"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "911",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "860",
+            "ActiveSupplierPerGridArea": "32"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "854",
+            "ActiveSupplierPerGridArea": "33"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "853",
+            "ActiveSupplierPerGridArea": "30"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "791",
+            "ActiveSupplierPerGridArea": "50"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "757",
+            "ActiveSupplierPerGridArea": "33"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "755",
+            "ActiveSupplierPerGridArea": "33"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "740",
+            "ActiveSupplierPerGridArea": "44"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "584",
+            "ActiveSupplierPerGridArea": "28"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "543",
+            "ActiveSupplierPerGridArea": "44"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "533",
+            "ActiveSupplierPerGridArea": "37"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "532",
+            "ActiveSupplierPerGridArea": "31"
+          },
+          {
+            "Month": "2020-08",
+            "GridCompany": "531",
+            "ActiveSupplierPerGridArea": "32"
+          }
+        ],
+        "totalrowcount": "5949"
+      }
+    ]
+  }
+}

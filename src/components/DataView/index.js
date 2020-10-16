@@ -1,7 +1,7 @@
 import "../../i18n/i18n";
 import React from 'react'
 import Loader from 'react-loader'
-import { DataView } from '@datopian/datapackage-views-js'
+import { DataView } from './DataView'
 import { useTranslation } from "react-i18next";
 
 export default props => {

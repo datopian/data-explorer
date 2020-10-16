@@ -13,11 +13,9 @@ var _reactRedux = require("react-redux");
 
 require("./App.css");
 
-var _datastoreQueryBuilder = require("@datopian/datastore-query-builder");
+var _QueryBuilder = require("./components/QueryBuilder/QueryBuilder");
 
 var _DataView = _interopRequireDefault(require("./components/DataView"));
-
-var _Share = _interopRequireDefault(require("./components/Share"));
 
 var _Pagination = _interopRequireDefault(require("./components/Pagination"));
 
@@ -108,7 +106,7 @@ var App = function App(props) {
     className: "data-explorer"
   }, _react.default.createElement("div", {
     className: "datastore-query-builder"
-  }, (0, _utils.showQueryBuilder)(props) ? _react.default.createElement(_datastoreQueryBuilder.QueryBuilder, {
+  }, (0, _utils.showQueryBuilder)(props) ? _react.default.createElement(_QueryBuilder.QueryBuilder, {
     resource: (0, _utils.getResourceForFiltering)(props.datapackage),
     filterBuilderAction: props.filterUIAction,
     totalRows: totalRows
