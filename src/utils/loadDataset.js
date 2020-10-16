@@ -19,8 +19,6 @@ export default async dpID => {
   try {
     const dataset = await Dataset.load(DP_ID)
 
-    // console.log('dataset: ' + JSON.stringify(dataset, null, 2))
-
     await Promise.all(dataset.resources.map(async (file) => {
       if (file.displayName === 'FileInline') {
         return

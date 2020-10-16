@@ -35,7 +35,6 @@ export const App = props => {
       .find(view => !nonDataStoreViewTypes.includes(view.specType))
   })
 
-  //TODO: remove rowcount?
   const totalRows =
         props.datapackage.resources[0].datastore_active
           ? props.datapackage.resources[0].totalrowcount
