@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactLoader = _interopRequireDefault(require("react-loader"));
 
-var _datapackageViewsJs = require("@datopian/datapackage-views-js");
+var _DataView = require("./DataView");
 
 var _reactI18next = require("react-i18next");
 
@@ -43,7 +43,7 @@ var _default = function _default(props) {
       position: "relative"
     }
   }, _react.default.createElement("div", null, checkIfGuideIsNeeded(views[0]) ? showGuideText(views[0].specType) : views.map(function (view) {
-    return _react.default.createElement(_datapackageViewsJs.DataView, {
+    return _react.default.createElement(_DataView.DataView, {
       key: Math.random(),
       datapackage: {
         views: [view]
