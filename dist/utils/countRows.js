@@ -48,8 +48,9 @@ function countRows(datapackage) {
         case 15:
           _context.prev = 15;
           _context.t0 = _context["catch"](3);
-          console.error(_context.t0);
-          return _context.abrupt("return", '-');
+          console.error(_context.t0); // not changing anything in datapackage if row count query failed
+
+          return _context.abrupt("return", datapackage);
 
         case 19:
         case "end":
