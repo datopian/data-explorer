@@ -40,7 +40,8 @@ async function countRows(datapackage) {
     return datapackage
   } catch (e) {
     console.error(e)
-    return '-'
+    // not changing anything in datapackage if row count query failed
+    return datapackage
   }
 }
 
