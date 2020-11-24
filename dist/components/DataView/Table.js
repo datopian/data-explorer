@@ -79,8 +79,10 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      // prevent overrithting of data on rerender
+      var data = JSON.parse(JSON.stringify(this.state.data));
       return _react.default.createElement(_reactTableV.default, {
-        data: this.state.data.map(function (row) {
+        data: data.map(function (row) {
           // If field display attributes exist (these can be custom, eg, in
           // EDS, we use 'size' attribute which isn't part of tableschema spec)
           // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
