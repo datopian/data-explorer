@@ -32,10 +32,14 @@ export default class Table extends React.Component {
   }
 
   render() {
+
+    // prevent overrithting of data on rerender
+    const data = JSON.parse(JSON.stringify(this.state.data))
+
     return (
       <ReactTable
         data={
-          this.state.data.map(row => {
+          data.map(row => {
             // If field display attributes exist (these can be custom, eg, in
             // EDS, we use 'size' attribute which isn't part of tableschema spec)
             // use it to alter the data for presentation. Eg, "100.2312313" => "100.23".
