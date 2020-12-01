@@ -43,14 +43,22 @@ export const App = props => {
             : ''
           : ''
 
-  const selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
+  var distinguisher = '-' + Math.random().toString(36).slice(2,5)
+  const retrieveSelectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
+  let selectedTab
+
+  if (retrieveSelectedTab.includes('-')) {
+    selectedTab = retrieveSelectedTab
+  } else {
+    selectedTab = retrieveSelectedTab+distinguisher
+  }
+
   const tabLinks = props.widgets.map((widget, index) => {
-    return <TabLink to={widget.name} className='mr-4' key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
+    return <TabLink to={widget.name+distinguisher} className='mr-4' key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
   })
 
-
   const tabContents = props.widgets.map((widget, index) => {
-    return <TabContent for={widget.name} key={`tabContent-${index}`}>
+    return <TabContent for={widget.name+distinguisher} key={`tabContent-${index}`}>
         {
           (['table', 'web'].includes(widget.datapackage.views[0].specType))
           ? <div className="container flex py-6">

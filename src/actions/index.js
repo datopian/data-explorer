@@ -3,10 +3,17 @@ import { compileView } from 'datapackage-render';
 
 export const selectTabAction = (payload) => (dispatch, getState) => {
   const widgets = JSON.parse(JSON.stringify(getState().widgets))
+
   widgets.forEach((widget, index) => {
     widgets[index].active = false
     if (widget.name === payload) {
       widgets[index].active = true
+    }
+    if (payload.includes('-')) {
+      if (payload.split('-')[0] === widget.name) {
+        widget.name = payload
+        widgets[index].active = true
+      }
     }
   })
   dispatch(selectTab({widgets}))
