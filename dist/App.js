@@ -70,17 +70,26 @@ var App = function App(props) {
     });
   });
   var totalRows = props.datapackage.resources[0].datastore_active ? props.datapackage.resources[0].totalrowcount ? props.datapackage.resources[0].totalrowcount.toLocaleString() : '' : '';
-  var selectedTab = activeWidget ? activeWidget.name : props.widgets[0].name;
+  var distinguisher = '-' + Math.random().toString(36).slice(2, 5);
+  var retrieveSelectedTab = activeWidget ? activeWidget.name : props.widgets[0].name;
+  var selectedTab;
+
+  if (retrieveSelectedTab.includes('-')) {
+    selectedTab = retrieveSelectedTab;
+  } else {
+    selectedTab = retrieveSelectedTab + distinguisher;
+  }
+
   var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
-      to: widget.name,
+      to: widget.name + distinguisher,
       className: "mr-4",
       key: "tabLink-".concat(index)
     }, t(widget.name));
   });
   var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
-      for: widget.name,
+      for: widget.name + distinguisher,
       key: "tabContent-".concat(index)
     }, ['table', 'web'].includes(widget.datapackage.views[0].specType) ? _react.default.createElement("div", {
       className: "container flex py-6"
