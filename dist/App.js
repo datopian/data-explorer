@@ -80,16 +80,17 @@ var App = function App(props) {
     selectedTab = retrieveSelectedTab + distinguisher;
   }
 
+  selectedTab = selectedTab.replace(/([^a-z0-9]+)/gi, "-");
   var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
-      to: widget.name + distinguisher,
+      to: (widget.name + distinguisher).replace(/([^a-z0-9]+)/gi, "-"),
       className: "mr-4 tab-".concat(widget.name.toLowerCase()),
       key: "tabLink-".concat(index)
     }, t(widget.name));
   });
   var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
-      for: widget.name + distinguisher,
+      for: (widget.name + distinguisher).replace(/([^a-z0-9]+)/gi, "-"),
       className: "mr-4 tabpanel-".concat(widget.name.toLowerCase()),
       key: "tabContent-".concat(index)
     }, ['table', 'web'].includes(widget.datapackage.views[0].specType) ? _react.default.createElement("div", {
