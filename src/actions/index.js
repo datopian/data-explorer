@@ -6,14 +6,9 @@ export const selectTabAction = (payload) => (dispatch, getState) => {
 
   widgets.forEach((widget, index) => {
     widgets[index].active = false
-    if (widget.name === payload) {
+    if (widget.name === payload ||
+      (payload.includes('-') && payload.split('-')[0] === widget.name)) {
       widgets[index].active = true
-    }
-    if (payload.includes('-')) {
-      if (payload.split('-')[0] === widget.name) {
-        widget.name = payload
-        widgets[index].active = true
-      }
     }
   })
   dispatch(selectTab({widgets}))
