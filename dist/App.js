@@ -83,13 +83,14 @@ var App = function App(props) {
   var tabLinks = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabLink, {
       to: widget.name + distinguisher,
-      className: "mr-4",
+      className: "mr-4 tab-".concat(widget.name.toLowerCase()),
       key: "tabLink-".concat(index)
     }, t(widget.name));
   });
   var tabContents = props.widgets.map(function (widget, index) {
     return _react.default.createElement(_reactTabsRedux.TabContent, {
       for: widget.name + distinguisher,
+      className: "mr-4 tabpanel-".concat(widget.name.toLowerCase()),
       key: "tabContent-".concat(index)
     }, ['table', 'web'].includes(widget.datapackage.views[0].specType) ? _react.default.createElement("div", {
       className: "container flex py-6"
