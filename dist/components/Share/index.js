@@ -61,27 +61,29 @@ var _default = function _default(props) {
   return _react.default.createElement("div", {
     className: "dx-share-container"
   }, shareable ? _react.default.createElement("div", null, _react.default.createElement("div", {
-    className: "m-4 ml-0"
+    className: "m-4 ml-0 dx-share-link"
   }, _react.default.createElement("input", {
-    id: "share-link",
+    id: "share-link-" + Math.random().toString(36).slice(2, 5),
+    title: "Share link",
     className: "border-solid border-2 border-gray-600 w-1/2 px-2",
     value: shareLink
   }), _react.default.createElement("a", {
     href: "#/",
-    id: "copy-share-link",
+    id: "copy-share-link-" + Math.random().toString(36).slice(2, 5),
     className: "m-4",
     onClick: function onClick() {
       copy(shareLink);
     }
   }, _react.default.createElement("i", null, t("copy share link")))), _react.default.createElement("div", {
-    className: "m-4 ml-0"
+    className: "m-4 ml-0 dx-embed-link"
   }, _react.default.createElement("input", {
-    id: "embed",
+    id: "embed-" + Math.random().toString(36).slice(2, 5),
+    title: "Embedded link",
     className: "border-solid border-2 border-gray-600 px-2 w-1/2",
     value: iframe
   }), _react.default.createElement("a", {
     href: "#/",
-    id: "copy-share-link",
+    id: "copy-share-link-" + Math.random().toString(36).slice(2, 5),
     className: "m-4",
     onClick: function onClick() {
       copy(iframe);
@@ -89,14 +91,15 @@ var _default = function _default(props) {
   }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", {
     className: "no-share-link-message"
   }, t('No share link available')), props.apiUri && _react.default.createElement("div", {
-    className: "m-4 ml-0"
+    className: "m-4 ml-0 dx-apiuri-link"
   }, _react.default.createElement("input", {
-    id: "apiUri",
+    id: "apiUri-" + Math.random().toString(36).slice(2, 5),
+    title: "API URI link",
     className: "border-solid border-2 border-gray-600 px-2 w-1/2",
     value: props.apiUri
   }), _react.default.createElement("a", {
     href: "#/",
-    id: "copy-share-link",
+    id: "copy-share-link-" + Math.random().toString(36).slice(2, 5),
     className: "m-4",
     onClick: function onClick() {
       copy(props.apiUri);

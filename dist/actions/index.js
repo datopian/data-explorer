@@ -23,7 +23,7 @@ var selectTabAction = function selectTabAction(payload) {
     widgets.forEach(function (widget, index) {
       widgets[index].active = false;
 
-      if (widget.name === payload) {
+      if (widget.name === payload || payload.includes('-') && payload.split('-')[0] === widget.name) {
         widgets[index].active = true;
       }
     });

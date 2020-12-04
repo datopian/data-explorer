@@ -3,9 +3,11 @@ import { compileView } from 'datapackage-render';
 
 export const selectTabAction = (payload) => (dispatch, getState) => {
   const widgets = JSON.parse(JSON.stringify(getState().widgets))
+
   widgets.forEach((widget, index) => {
     widgets[index].active = false
-    if (widget.name === payload) {
+    if (widget.name === payload ||
+      (payload.includes('-') && payload.split('-')[0] === widget.name)) {
       widgets[index].active = true
     }
   })
