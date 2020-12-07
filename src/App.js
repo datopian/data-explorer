@@ -52,13 +52,15 @@ export const App = props => {
   } else {
     selectedTab = retrieveSelectedTab+distinguisher
   }
+  var illegalCharacters = /\W+/gi
+  selectedTab = selectedTab.replace(illegalCharacters, "-")
 
   const tabLinks = props.widgets.map((widget, index) => {
-    return <TabLink to={widget.name + distinguisher} className={`mr-4 tab-${widget.name.toLowerCase()}`} key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
+    return <TabLink to={(widget.name + distinguisher).replace(illegalCharacters, "-")} className={`mr-4 tab-${widget.name.toLowerCase()}`} key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
   })
 
   const tabContents = props.widgets.map((widget, index) => {
-    return <TabContent for={widget.name + distinguisher} className={`mr-4 tabpanel-${widget.name.toLowerCase()}`} key={`tabContent-${index}`}>
+    return <TabContent for={(widget.name + distinguisher).replace(illegalCharacters, "-")} className={`mr-4 tabpanel-${widget.name.toLowerCase()}`} key={`tabContent-${index}`}>
         {
           (['table', 'web'].includes(widget.datapackage.views[0].specType))
           ? <div className="container flex py-6">
