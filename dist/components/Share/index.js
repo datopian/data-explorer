@@ -74,7 +74,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(shareLink);
     }
-  }, _react.default.createElement("i", null, t("copy share link")))), _react.default.createElement("div", {
+  }, _react.default.createElement("em", null, t("copy share link")))), _react.default.createElement("div", {
     className: "m-4 ml-0 dx-embed-link"
   }, _react.default.createElement("input", {
     id: "embed-" + Math.random().toString(36).slice(2, 5),
@@ -88,7 +88,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(iframe);
     }
-  }, _react.default.createElement("i", null, t("copy embed text"))))) : _react.default.createElement("p", {
+  }, _react.default.createElement("em", null, t("copy embed text"))))) : _react.default.createElement("p", {
     className: "no-share-link-message"
   }, t('No share link available')), props.apiUri && _react.default.createElement("div", {
     className: "m-4 ml-0 dx-apiuri-link"
@@ -104,7 +104,7 @@ var _default = function _default(props) {
     onClick: function onClick() {
       copy(props.apiUri);
     }
-  }, _react.default.createElement("i", null, t("copy API URI")))));
+  }, _react.default.createElement("em", null, t("copy API URI")))));
 };
 
 exports.default = _default;
