@@ -1,0 +1,15 @@
+{
+  "copy share link": "copiar link para compartilhar",
+  "copy embed text": "copiar código para incorporar",
+  "copy API URI": "copiar URI da API",
+  "No share link available": "Nenhum link link para compartilhar está disponível",
+  "UPDATE CHART": "ATUALIZAR GRÁFICO",
+  "Next": "Próximo",
+  "Previous": "Anterior",
+  "Table": "Tabela",
+  "Map": "Mapa",
+  "Chart": "Gráfico",
+  "Total rows": "Total de linhas",
+  "Select chart type, group column (abscissa x-axis) and series (ordinate y-axis) on the right hand side panel.": "Selecione o tipo de gráfico, a coluna de agrupamento (eixo x ou abcissa) e série (eixo y ou ordenada) no painel lateral direito.",
+  "Select geo data column on the right hand side panel.": "Selecione a coluna de dados geográficos no painel lateral direito."
+}
