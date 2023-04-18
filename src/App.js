@@ -62,7 +62,7 @@ export const App = props => {
   const tabContents = props.widgets.map((widget, index) => {
     return <TabContent for={(widget.name + distinguisher).replace(illegalCharacters, "-")} className={`mr-4 tabpanel-${widget.name.toLowerCase()}`} key={`tabContent-${index}`}>
         {
-          (['table', 'web'].includes(widget.datapackage.views[0].specType) || ['dataexplorer_map_view', 'dataexplorer_chart_view'].includes(widget.datapackage.views[0].view_type))
+          (['table', 'web', 'tabularmap'].includes(widget.datapackage.views[0].specType) || ['dataexplorer_map_view', 'dataexplorer_chart_view'].includes(widget.datapackage.views[0].view_type))
           ? <div className="container flex py-6">
               <div className="w-full py-3">
                 <DataView {...widget} />

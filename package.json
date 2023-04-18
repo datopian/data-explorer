@@ -6,8 +6,8 @@
   "module": "/dist/AppWithProvider.js",
   "dependencies": {
     "@datopian/chart-builder": "^0.1.6",
-    "@datopian/datapackage-views-js": "^1.4.4",
-    "@datopian/datastore-query-builder": "^0.4.15",
+    "@datopian/datapackage-views-js": "git+https://github.com/datopian/datapackage-views-js.git",
+    "@datopian/datastore-query-builder": "git+https://github.com/datopian/datastore-query-builder.git#feature/tools-integration",
     "@datopian/map-builder": "^0.1.9",
     "data.js": "^0.12.11",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
