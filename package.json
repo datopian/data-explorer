@@ -9,6 +9,8 @@
     "@datopian/datapackage-views-js": "git+https://github.com/datopian/datapackage-views-js.git",
     "@datopian/datastore-query-builder": "git+https://github.com/datopian/datastore-query-builder.git#feature/tools-integration",
     "@datopian/map-builder": "^0.1.9",
+    "@heroicons/react": "^2.1.3",
+    "@tanstack/react-table": "^8.15.0",
     "data.js": "^0.12.11",
     "datapackage-render": "git+https://github.com/frictionlessdata/datapackage-render-js.git",
     "i18next": "^19.0.3",
