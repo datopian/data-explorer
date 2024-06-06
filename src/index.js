@@ -8,7 +8,6 @@ import * as serviceWorker from './serviceWorker';
 
 const instances = document.getElementsByClassName('data-explorer')
 
-
 initTranslations().then(() => {
   for (const instance of instances) {
     try {

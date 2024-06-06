@@ -61,82 +61,58 @@ const datapackage = {
         "schema": {
           "fields": [
             {
-              "name": "Sett_Date",
-              "type": "date",
+              "name": "datetime",
+              "type": "",
               "constraints": {},
-              "comment": "Settlement Date",
-              "description": "The date of the metering",
-              "title": "Sett_Date",
-              "example": "01/04/2019",
-              "unit": "Date"
+              "comment": "",
+              "description": "",
+              "title": "",
+              "example": "",
+              "unit": ""
             },
             {
-              "name": "Sett_Period",
-              "type": "integer",
+              "name": "forecast",
+              "type": "",
               "constraints": {},
-              "comment": "Integer 1 to 48 per Settlement Date",
-              "description": "Settlement Period",
-              "title": "Sett_Period",
-              "example": "1",
-              "unit": "Settlement Period"
+              "comment": "",
+              "description": "",
+              "title": "",
+              "example": "",
+              "unit": ""
             },
             {
-              "name": "Scottish Wind Output",
-              "type": "number",
+              "name": "actual",
+              "type": "",
               "constraints": {},
-              "comment": "Number",
-              "description": "Operational Metered MW",
-              "title": "Scottish Wind Output",
-              "example": "614.578",
-              "unit": "MW"
+              "comment": "",
+              "description": "",
+              "title": "",
+              "example": "",
+              "unit": ""
             },
             {
-              "name": "England/Wales Wind Output",
-              "type": "number",
+              "name": "index",
+              "type": "",
               "constraints": {},
-              "comment": "Number",
-              "description": "Operational Metered MW",
-              "title": "England/Wales Wind Output",
-              "example": "1680.06",
-              "unit": "MW"
-            },
-            {
-              "name": "Total",
-              "type": "number",
-              "constraints": {},
-              "comment": "Number",
-              "description": "Total of Scotland and England/Wales Operational Metered MW",
-              "title": "Total",
-              "example": "2294.638",
-              "unit": "MW"
+              "comment": "",
+              "description": "",
+              "title": "",
+              "example": "",
+              "unit": ""
             }
           ]
         },
-        "force": "true",
-        "cache_last_updated": null,
-        "package_id": "7bf2e43d-1a24-4a0e-95b0-6ba4eba3daa9",
+        "package_id": "e01485d0-8d54-4301-ac36-ca18f527d5c2",
         "datastore_active": true,
-        "id": "a4cb1b3e-f5d5-435f-a937-a655868f4725",
-        "size": null,
-        "metadata_modified": "2023-08-22T10:40:29.036160",
+        "id": "5c71a1bc-6fdf-43bc-8b7b-45a04a0201f8",
         "state": "active",
         "hash": "",
-        "description": "NGESO's Network Transfer Capacity restrictions submitted to Day-ahead and Intraday auctions",
-        "format": "csv",
-        "mimetype_inner": null,
-        "url_type": "datastore",
-        "mimetype": null,
-        "cache_url": null,
-        "name": "nsl-dayahead-20230823-001",
-        "created": "2023-08-22T10:40:20.980233",
-        "last_modified": null,
-        "position": 300,
-        "revision_id": "562db330-e844-43f0-845f-908003cdfa03",
-        "resource_type": null,
-        "title": "NSL-DayAhead-20230823-001",
-        "path": "https://api.nationalgrideso.com/datastore/dump/a4cb1b3e-f5d5-435f-a937-a655868f4725",
-        "descriptionHtml": "<p>NGESO’s Network Transfer Capacity restrictions submitted to Day-ahead and Intraday auctions</p>\n",
-        "api": "https://api.nationalgrideso.com/api/3/action/datastore_search?resource_id=c47155bc-71b8-4b0a-aba3-0e2d1295daea\&sort=_id asc"
+        "description": "National Carbon Intensity Forecast ",
+        "name": "national_carbon_intensity_forecast_-_resource_update",
+        "title": "National Carbon Intensity Forecast - resource_update",
+        "path": "https://ckan.nationalgrid.staging.datopian.com/dataset/e01485d0-8d54-4301-ac36-ca18f527d5c2/resource/5c71a1bc-6fdf-43bc-8b7b-45a04a0201f8/download/gb_carbon_intensity.csv",
+        "descriptionHtml": "<p>National Carbon Intensity Forecast </p>\n",
+        "api": "https://ckan.nationalgrid.staging.datopian.com/api/3/action/datastore_search?resource_id=5c71a1bc-6fdf-43bc-8b7b-45a04a0201f8&sort=_id+asc"
       }
     ]
   }

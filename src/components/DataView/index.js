@@ -38,7 +38,7 @@ export default props => {
           // so we need to handle it separately
           if (view && view.specType === 'table'  ) {    
             if (view.resources && view.resources[0]) {
-              return <Table data={view.resources[0].data || []} schema={view.resources[0].schema} />
+              return <Table resource={view.resources[0]}  data={view.resources[0].data || []} schema={view.resources[0].schema} />
             }
           } else {
             return <DataView key={Math.random()} datapackage={{views: [view]}} />

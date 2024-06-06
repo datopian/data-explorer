@@ -11,12 +11,12 @@ import {
 
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
-function Table({data, schema}) {
+function Table({resource, data, schema}) {
   const fields = schema ? schema.fields : []
   const columns = fields.map((field) => {
     return {
       accessorKey: field.name,
-      header: field.title,
+      header: field.title || field.name,
       cell: (info) => info.getValue(),
       footer: (props) => props.column.id,
     }
@@ -96,6 +96,16 @@ function Table({data, schema}) {
           })}
         </tbody>
       </table>
+
+       {table.getRowModel().rows.length === 0 && (
+        <div className='no-data-message' style={{textAlign: 'center', padding:'4px' }}>
+          <p>Data view unavailable.</p>
+          <a href={resource.path} 
+          aria-label={resource.title} 
+          class="text-primary font-bold">Download the data.</a>
+        </div>
+      )}
+      
     </div>
   )
 }
