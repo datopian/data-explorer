@@ -127,13 +127,6 @@ export const App = props => {
       }
       {/* End of Pagination */}
 
-      {/* Share feature */}
-      {datastoreComponents
-        ? <Share serializedState={props.serializedState} apiUri={props.datapackage.resources[0].api} />
-        : <div className="no-share-feature"></div>
-      }
-      {/* End of Share feature */}
-
       {/* End of Widgets */}
      </div>
   )
