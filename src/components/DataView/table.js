@@ -11,13 +11,13 @@ import {
 
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
-function Table({resource, data, schema}) {
+function Table({ resource, data, schema }) {
   const fields = schema ? schema.fields : []
-  const columns = fields.map((field) => {
+  let columns = fields.map((field) => {
     return {
       accessorKey: field.name,
-      header: field.title || field.name,
-      cell: (info) => info.getValue(),
+      header: (field.title || field.name).replace(/\\\//g, '/'),
+      accessorFn: (d) => d[field.name],
       footer: (props) => props.column.id,
     }
   })
@@ -26,7 +26,7 @@ function Table({resource, data, schema}) {
     pageIndex: 0,
     pageSize: data.length
   })
-
+  
 
   const table = useReactTable({
     columns,
@@ -44,7 +44,7 @@ function Table({resource, data, schema}) {
   })
 
   return (
-    <div className="p-2 ReactTable" style={{overflow: 'scroll'}}>
+    <div className="p-2 ReactTable" style={{ overflow: 'scroll' }}>
       <div className="h-2" />
       <table>
         <thead>
@@ -53,7 +53,7 @@ function Table({resource, data, schema}) {
               {headerGroup.headers.map((header) => {
                 return (
                   <th key={header.id} colSpan={header.colSpan}>
-                    <div style={{display: 'flex'}}
+                    <div style={{ display: 'flex' }}
                       {...{
                         className: header.column.getCanSort()
                           ? 'cursor-pointer select-none'
@@ -69,7 +69,7 @@ function Table({resource, data, schema}) {
                         asc: <ArrowUpIcon width={20} />,
                         desc: <ArrowDownIcon width={20} />,
                       }[header.column.getIsSorted()] || null}
-                      
+
                     </div>
                   </th>
                 )
