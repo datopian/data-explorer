@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import './App.css'
 import { QueryBuilder } from '@datopian/datastore-query-builder'
@@ -37,59 +37,71 @@ export const App = props => {
   })
 
   const totalRows =
-        props.datapackage.resources[0].datastore_active
-          ? props.datapackage.resources[0].totalrowcount
-            ? props.datapackage.resources[0].totalrowcount.toLocaleString()
-            : ''
-          : ''
+    props.datapackage.resources[0].datastore_active
+      ? props.datapackage.resources[0].totalrowcount
+        ? props.datapackage.resources[0].totalrowcount.toLocaleString()
+        : ''
+      : ''
 
-  var distinguisher = '-' + Math.random().toString(36).slice(2,5)
+  var distinguisher = '-' + Math.random().toString(36).slice(2, 5)
   const retrieveSelectedTab = activeWidget ? activeWidget.name : props.widgets[0].name
   let selectedTab
 
   if (retrieveSelectedTab.includes('-')) {
     selectedTab = retrieveSelectedTab
   } else {
-    selectedTab = retrieveSelectedTab+distinguisher
+    selectedTab = retrieveSelectedTab + distinguisher
   }
   var illegalCharacters = /\W+/gi
   selectedTab = selectedTab.replace(illegalCharacters, "-")
 
   const tabLinks = props.widgets.map((widget, index) => {
-    return <TabLink to={(widget.name + distinguisher).replace(illegalCharacters, "-")} className={`mr-4 tab-${widget.name.toLowerCase()}`} key={`tabLink-${index}`}>{t(widget.name)}</TabLink>
-  })
+    return (
+      <TabLink
+        to={(widget.name + distinguisher).replace(illegalCharacters, "-")}
+        className={`mr-4 tab-${widget.name.toLowerCase()}`}
+        key={`tabLink-${index}`}
+      >
+        {t(widget.name)}
+      </TabLink>
+    );
+  });
 
   const tabContents = props.widgets.map((widget, index) => {
-    return <TabContent for={(widget.name + distinguisher).replace(illegalCharacters, "-")} className={`mr-4 tabpanel-${widget.name.toLowerCase()}`} key={`tabContent-${index}`}>
-        {
-          (['table', 'web', 'tabularmap'].includes(widget.datapackage.views[0].specType) || ['dataexplorer_map_view', 'dataexplorer_chart_view'].includes(widget.datapackage.views[0].view_type))
+    return <TabContent
+      for={(widget.name + distinguisher).replace(illegalCharacters, "-")}
+      className={`mr-4 tabpanel-${widget.name.toLowerCase()}`}
+      key={`tabContent-${index}`}
+    >
+      {
+        (['table', 'web', 'tabularmap'].includes(widget.datapackage.views[0].specType) || ['dataexplorer_map_view', 'dataexplorer_chart_view'].includes(widget.datapackage.views[0].view_type))
           ? <div className="container flex py-6">
-              <div className="w-full py-3">
-                <DataView {...widget} />
-              </div>
+            <div className="w-full py-3">
+              <DataView {...widget} />
             </div>
+          </div>
           : <div className="container flex py-6">
-              <div className="w-3/4 py-3 mr-4">
-                <DataView {...widget} />
-              </div>
-              <div className="w-1/4">
-                <div className="w-full">
-                  <div className="p-4 mr-4">
-                   {
-                      widget.datapackage.views[0].specType === 'simple'
+            <div className="w-3/4 py-3 mr-4">
+              <DataView {...widget} />
+            </div>
+            <div className="w-1/4">
+              <div className="w-full">
+                <div className="p-4 mr-4">
+                  {
+                    widget.datapackage.views[0].specType === 'simple'
                       ? <ChartBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
                       : ''
-                    }
-                    {
-                      widget.datapackage.views[0].specType === 'tabularmap'
+                  }
+                  {
+                    widget.datapackage.views[0].specType === 'tabularmap'
                       ? <MapBuilder view={widget.datapackage.views[0]} dataViewBuilderAction={props.dataViewBuilderAction} />
                       : ''
-                    }
-                  </div>
+                  }
                 </div>
               </div>
             </div>
-        }
+          </div>
+      }
     </TabContent>
   })
 
@@ -103,8 +115,8 @@ export const App = props => {
       <div className="datastore-query-builder">
         {
           showQueryBuilder(props)
-          ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
-          : ''
+            ? <QueryBuilder resource={getResourceForFiltering(props.datapackage)} filterBuilderAction={props.filterUIAction} />
+            : ''
         }
       </div>
       {/* End of Data Editor */}
@@ -116,31 +128,33 @@ export const App = props => {
         }}
         className="data-explorer-content"
         selectedTab={selectedTab}>
+        <div role="tablist">
           {tabLinks}
-          {tabContents}
+        </div>
+        {tabContents}
       </Tabs>
 
       {/* Pagination for DataStore resources */}
       {props.datapackage.resources[0].datastore_active && datastoreComponents
         ? <Pagination datapackage={props.datapackage} updateAction={props.filterUIAction} />
-      : <div className="no-pagination not-datastore-resource"></div>
+        : <div className="no-pagination not-datastore-resource"></div>
       }
       {/* End of Pagination */}
 
       {/* End of Widgets */}
-     </div>
+    </div>
   )
 }
 
 const mapStateToProps = state => ({
- ...state
+  ...state
 })
 
 const mapDispatchToProps = dispatch => ({
- filterUIAction: (payload) => dispatch(filterUIAction(payload)),
- fetchDataAction: payload => dispatch(fetchDataAction(payload)),
- dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload)),
- selectTabAction: payload => dispatch(selectTabAction(payload))
+  filterUIAction: (payload) => dispatch(filterUIAction(payload)),
+  fetchDataAction: payload => dispatch(fetchDataAction(payload)),
+  dataViewBuilderAction: payload => dispatch(dataViewBuilderAction(payload)),
+  selectTabAction: payload => dispatch(selectTabAction(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

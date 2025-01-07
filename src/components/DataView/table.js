@@ -44,8 +44,8 @@ function Table({ resource, data, schema }) {
   })
 
   return (
-    <div className="p-2 ReactTable" style={{ overflow: 'scroll' }}>
-      <div className="h-2" />
+<div className="p-2 ReactTable" style={{ overflow: 'scroll' }} tabIndex="0">
+    <div className="h-2" />
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -101,8 +101,7 @@ function Table({ resource, data, schema }) {
         <div className='no-data-message' style={{textAlign: 'center', padding:'4px' }}>
           <p>Data view unavailable.</p>
           <a href={resource.path} 
-          aria-label={resource.title} 
-          class="text-primary font-bold">Download the data.</a>
+          class="text-primary font-bold">Download the data.</a>  
         </div>
       )}
       
