@@ -1,9 +1,11 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  viewportWidth: 1366,
+  viewportHeight: 900,
   e2e: {
-    defaultCommandTimeout: 10000,
-    requestTimeout: 10000,
-    responseTimeout: 10000
-  },
-});
+    baseUrl: 'http://localhost:9090',
+    specPattern: 'cypress/e2e/**/*.cy.js',
+    supportFile: 'cypress/support/e2e.js'
+  }
+})
