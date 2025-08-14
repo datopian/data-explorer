@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Data Explorer</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="data-explorer" id="data-explorer-1"></div>
+    <script>
+      // Get spec from URL parameter or default to table
+      const urlParams = new URLSearchParams(window.location.search);
+      const spec = urlParams.get('spec') || 'table';
+      
+      const specs = {
+        table: {
+          "widgets": [
+            {
+              "name": "Table Example",
+              "active": true,
+              "datapackage": {
+                "views": [
+                  {
+                    "id": "table-view-1",
+                    "specType": "table",
+                    "description": "Basic table view",
+                    "title": "Table Example",
+                    "resource_id": "test-resource",
+                    "view_type": "table_view",
+                    "package_id": "table-package",
+                    "resources": ["test-data"]
+                  }
+                ]
+              }
+            }
+          ],
+          "datapackage": {
+            "resources": [
+              {
+                "views": [
+                  {
+                    "description": "Basic table view",
+                    "title": "Table Example",
+                    "resource_id": "test-resource",
+                    "view_type": "table_view",
+                    "id": "table-view-1",
+                    "package_id": "table-package",
+                    "specType": "table",
+                    "resources": ["test-data"]
+                  }
+                ],
+                "package_id": "table-package",
+                "datastore_active": false,
+                "id": "test-resource",
+                "state": "active",
+                "hash": "",
+                "description": "Sample data for table view",
+                "name": "test-data",
+                "title": "Test Table Data",
+                "path": "https://raw.githubusercontent.com/datopian/data/master/csv/sample.csv",
+                "descriptionHtml": "<p>Sample data for table view</p>\n",
+                "api": null
+              }
+            ]
+          }
+        },
+        chart: {
+          "widgets": [
+            {
+              "name": "Chart Example",
+              "active": true,
+              "datapackage": {
+                "views": [
+                  {
+                    "id": "chart-view-1",
+                    "specType": "simple",
+                    "description": "Basic chart visualization",
+                    "title": "Chart Example",
+                    "resource_id": "test-resource",
+                    "view_type": "chartjs_view",
+                    "package_id": "chart-package",
+                    "resources": ["test-data"]
+                  }
+                ]
+              }
+            }
+          ],
+          "datapackage": {
+            "resources": [
+              {
+                "views": [
+                  {
+                    "description": "Basic chart visualization",
+                    "title": "Chart Example",
+                    "resource_id": "test-resource",
+                    "view_type": "chartjs_view",
+                    "id": "chart-view-1",
+                    "package_id": "chart-package",
+                    "specType": "simple",
+                    "resources": ["test-data"]
+                  }
+                ],
+                "package_id": "chart-package",
+                "datastore_active": false,
+                "id": "test-resource",
+                "state": "active",
+                "hash": "",
+                "description": "Sample data for chart visualization",
+                "name": "test-data",
+                "title": "Test Chart Data",
+                "path": "https://raw.githubusercontent.com/datopian/data/master/csv/sample.csv",
+                "descriptionHtml": "<p>Sample data for chart visualization</p>\n",
+                "api": null
+              }
+            ]
+          }
+        },
+        map: {
+          "widgets": [
+            {
+              "name": "GeoJSON",
+              "active": true,
+              "datapackage": {
+                "views": [
+                  {
+                    "id": "89729cc2-c08e-48b6-ae69-71157a970bbe",
+                    "specType": "map",
+                    "description": "",
+                    "title": "GeoJSON",
+                    "resource_id": "539a04ea-8bf3-4366-a277-49812c651cfb",
+                    "view_type": "geojson_view",
+                    "package_id": "f72029e7-3056-4021-9493-01c58a667d7a",
+                    "resources": ["geojson-test"]
+                  }
+                ]
+              }
+            }
+          ],
+          "datapackage": {
+            "resources": [
+              {
+                "views": [
+                  {
+                    "description": "",
+                    "title": "GeoJSON",
+                    "resource_id": "539a04ea-8bf3-4366-a277-49812c651cfb",
+                    "view_type": "geojson_view",
+                    "id": "89729cc2-c08e-48b6-ae69-71157a970bbe",
+                    "package_id": "f72029e7-3056-4021-9493-01c58a667d7a",
+                    "specType": "map",
+                    "resources": ["geojson-test"]
+                  }
+                ],
+                "package_id": "f72029e7-3056-4021-9493-01c58a667d7a",
+                "datastore_active": false,
+                "id": "539a04ea-8bf3-4366-a277-49812c651cfb",
+                "state": "active",
+                "hash": "",
+                "description": "The GIS boundaries for GB Generation Charging Zones in GeoJSON format.",
+                "name": "geojson-test",
+                "title": "GB Generation Charging Zones with GeoJSON",
+                "path": "https://storage.googleapis.com/dx-nationalgrid-staging/nationalgrid-staging/resources/05efd1e3-38f4-4a3f-b68a-f68790b786d8/tnuosgenzones_geojs.geojson",
+                "descriptionHtml": "<p>The GIS boundaries for GB Generation Charging Zones in GeoJSON format.</p>\n",
+                "api": null
+              }
+            ]
+          }
+        }
+      };
+      
+      // Set the data-datapackage attribute
+      const selectedSpec = specs[spec] || specs.table;
+      document.getElementById('data-explorer-1').setAttribute('data-datapackage', JSON.stringify(selectedSpec));
+      
+      // Update title
+      document.title = `Data Explorer - ${spec.charAt(0).toUpperCase() + spec.slice(1)} View`;
+    </script>
+  </body>
+</html>

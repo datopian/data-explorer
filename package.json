@@ -30,37 +30,49 @@
     "@babel/cli": "^7.25.6",
     "@babel/core": "^7.25.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "autoprefixer": "^10.4.20",
     "cypress": "^14.5.3",
-    "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.1.0",
-    "react-cosmos": "^4.8.1",
+    "eslint-config-react-app": "^7.0.1",
+    "postcss-cli": "^7.1.2",
+    "postcss-import": "^12.0.1",
+    "react-app-rewired": "^2.2.1",
     "redux-devtools-extension": "^2.13.8",
     "tailwindcss": "^3.4.10"
   },
   "scripts": {
     "css": "postcss src/css/index.css -o src/App.css",
-    "start": "yarn css && PORT=5000 react-scripts start",
-    "dev": "yarn cosmos",
+    "start": "PORT=3000 NODE_OPTIONS=\"--openssl-legacy-provider\" SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
     "build": "set GENERATE_SOURCEMAP=false && yarn css && react-scripts build",
     "build:package": "rm -rf dist/ && mkdir dist && NODE_ENV=production npx babel src/ -d dist/ --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "cypress:run": "cypress run",
+    "cypress:open:dev": "cypress open --spec 'cypress/e2e/**/*-dev.cy.js'",
+    "cypress:run:dev": "cypress run --spec 'cypress/e2e/**/*-dev.cy.js'",
+    "cypress:open:specs": "cypress open --spec 'cypress/e2e/**/*-spec-dev.cy.js'",
+    "cypress:run:specs": "cypress run --spec 'cypress/e2e/**/*-spec-dev.cy.js'"
   },
   "babel": {
     "presets": [
-      "@babel/preset-env",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "14"
+          }
+        }
+      ],
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-optional-chaining",
+      "@babel/plugin-proposal-nullish-coalescing-operator"
     ]
   },
   "browserslist": {

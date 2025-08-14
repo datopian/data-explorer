@@ -29,9 +29,8 @@ jobs:
 
       - name: Start development server
         run: |
-          # Start cosmos server in background
-          NODE_OPTIONS="--openssl-legacy-provider" yarn cosmos > cosmos.log 2>&1 &
-          echo $! > cosmos.pid
+          # Start server
+          yarn start
         env:
           CI: true
 
@@ -40,7 +39,7 @@ jobs:
           # Wait up to 60 seconds for server to start
           timeout=60
           while [ $timeout -gt 0 ]; do
-            if curl -f http://localhost:9090 > /dev/null 2>&1; then
+            if curl -f http://localhost:3000 > /dev/null 2>&1; then
               echo "Server is ready!"
               break
             fi
@@ -51,8 +50,8 @@ jobs:
 
           if [ $timeout -le 0 ]; then
             echo "Server failed to start within 60 seconds"
-            echo "=== Cosmos log ==="
-            cat cosmos.log
+            echo "=== Server log ==="
+            cat server.log || echo "No server log found"
             exit 1
           fi
 
@@ -60,23 +59,13 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           install: false  # Dependencies already installed
-          wait-on: 'http://localhost:9090'
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
           browser: chrome
           record: false
         env:
           # Ensure Cypress runs with the same Node options if needed
           NODE_OPTIONS: "--openssl-legacy-provider"
-
-      - name: Stop development server
-        if: always()
-        run: |
-          if [ -f cosmos.pid ]; then
-            kill $(cat cosmos.pid) || true
-            rm cosmos.pid
-          fi
-          # Also kill by name as fallback
-          pkill -f "cosmos" || true
 
       - name: Upload Cypress screenshots
         if: failure()
@@ -99,5 +88,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: server-logs
-          path: cosmos.log
+          path: server.log
           retention-days: 7
