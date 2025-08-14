@@ -1,0 +1,103 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches: [ newdxp ]
+  pull_request:
+    branches: [ newdxp ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.18.0]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Start development server
+        run: |
+          # Start cosmos server in background
+          NODE_OPTIONS="--openssl-legacy-provider" yarn cosmos > cosmos.log 2>&1 &
+          echo $! > cosmos.pid
+        env:
+          CI: true
+
+      - name: Wait for server to be ready
+        run: |
+          # Wait up to 60 seconds for server to start
+          timeout=60
+          while [ $timeout -gt 0 ]; do
+            if curl -f http://localhost:9090 > /dev/null 2>&1; then
+              echo "Server is ready!"
+              break
+            fi
+            echo "Waiting for server... ($timeout seconds remaining)"
+            sleep 2
+            timeout=$((timeout-2))
+          done
+
+          if [ $timeout -le 0 ]; then
+            echo "Server failed to start within 60 seconds"
+            echo "=== Cosmos log ==="
+            cat cosmos.log
+            exit 1
+          fi
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: false  # Dependencies already installed
+          wait-on: 'http://localhost:9090'
+          wait-on-timeout: 60
+          browser: chrome
+          record: false
+        env:
+          # Ensure Cypress runs with the same Node options if needed
+          NODE_OPTIONS: "--openssl-legacy-provider"
+
+      - name: Stop development server
+        if: always()
+        run: |
+          if [ -f cosmos.pid ]; then
+            kill $(cat cosmos.pid) || true
+            rm cosmos.pid
+          fi
+          # Also kill by name as fallback
+          pkill -f "cosmos" || true
+
+      - name: Upload Cypress screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 7
+
+      - name: Upload Cypress videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 7
+
+      - name: Upload server logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-logs
+          path: cosmos.log
+          retention-days: 7
