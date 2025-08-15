@@ -12,7 +12,7 @@ describe('Spec Selector Tests (Dev Server)', () => {
 
   it('should display all spec cards', () => {
     cy.get('.specs-grid').should('be.visible');
-    cy.get('.spec-card').should('have.length', 3);
+    cy.get('.spec-card').should('have.length', 4);
     
     // Check that each spec has a title and description
     cy.get('.spec-card').each($card => {
@@ -23,13 +23,16 @@ describe('Spec Selector Tests (Dev Server)', () => {
 
   it('should have working links to each spec', () => {
     // Test map spec link
-    cy.get('.spec-card').contains('Map View').should('have.attr', 'href', '/?spec=map');
+    cy.get('.spec-card').contains('Data Explorer').parent().should('have.attr', 'href', '/?spec=map');
     
     // Test table spec link
-    cy.get('.spec-card').contains('Table View').should('have.attr', 'href', '/?spec=table');
+    cy.get('.spec-card').contains('Table View').parent().should('have.attr', 'href', '/?spec=table');
     
     // Test chart spec link
-    cy.get('.spec-card').contains('Chart View').should('have.attr', 'href', '/?spec=chart');
+    cy.get('.spec-card').contains('Chart View').parent().should('have.attr', 'href', '/?spec=chart');
+
+    // Test query builder spec link
+    cy.get('.spec-card').contains('Query Builder').parent().should('have.attr', 'href', '/?spec=querybuilder');
   });
 
   it('should navigate to table spec when clicked', () => {
@@ -44,10 +47,15 @@ describe('Spec Selector Tests (Dev Server)', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
   });
 
-  it('should navigate to map spec when clicked', () => {
-    cy.get('.spec-card').contains('Map View').click();
+  it('should navigate to Data Explorer spec when clicked', () => {
+    cy.get('.spec-card').contains('Data Explorer').click();
     cy.url().should('include', '?spec=map');
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
   });
 
+  it('should navigate to Query Builder spec when clicked', () => {
+    cy.get('.spec-card').contains('Query Builder').click();
+    cy.url().should('include', '?spec=querybuilder');
+    cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
+  });
 });

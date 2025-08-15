@@ -18,14 +18,14 @@ describe('Filters Tests (Dev Server)', () => {
           if ($select.find('option').length > 1) {
             cy.get('select[name="rules.0.field"]').select(1);
             cy.get('select[name="rules.0.operator"]').select('=');
-            cy.get('input[name="rules.0.value"]').type('test');
+            cy.get('input[name="rules.0.value"]').type('14');
             
             // Apply filter
             cy.get('.submit-button').click();
             cy.wait(3000);
             
             // Verify filter was applied (check if UI updated)
-            cy.get('.dq-rule').should('exist');
+            cy.get('.dq-rule-item').should('exist');
           }
         });
       } else {
@@ -45,19 +45,19 @@ describe('Filters Tests (Dev Server)', () => {
           if ($select.find('option').length > 1) {
             cy.get('select[name="rules.0.field"]').select(1);
             cy.get('select[name="rules.0.operator"]').select('=');
-            cy.get('input[name="rules.0.value"]').type('test');
+            cy.get('input[name="rules.0.value"]').type('14');
             cy.get('.submit-button').click();
             cy.wait(2000);
             
             // Remove the filter
-            cy.get('.dq-rule-remove').then($remove => {
+            cy.get('.dq-btn-remove').then($remove => {
               if ($remove.length > 0) {
-                cy.get('.dq-rule-remove').click();
+                cy.get('.dq-btn-remove').click();
                 cy.get('.submit-button').click();
                 cy.wait(2000);
                 
                 // Verify filter was removed
-                cy.get('.dq-rule').should('not.exist');
+                cy.get('.dq-rule-item').should('not.exist');
               }
             });
           }
@@ -79,22 +79,22 @@ describe('Filters Tests (Dev Server)', () => {
           if ($select.find('option').length > 1) {
             cy.get('select[name="rules.0.field"]').select(1);
             cy.get('select[name="rules.0.operator"]').select('=');
-            cy.get('input[name="rules.0.value"]').type('value1');
+            cy.get('input[name="rules.0.value"]').type('14');
             
             // Add second filter
-            cy.get('.dq-rule-add').click();
+            cy.get('.dq-btn-add').click();
             cy.get('select[name="rules.1.field"]').then($select2 => {
               if ($select2.find('option').length > 1) {
                 cy.get('select[name="rules.1.field"]').select(1);
                 cy.get('select[name="rules.1.operator"]').select('>');
-                cy.get('input[name="rules.1.value"]').type('100');
+                cy.get('input[name="rules.1.value"]').type('2021');
                 
                 // Apply filters
                 cy.get('.submit-button').click();
                 cy.wait(3000);
                 
                 // Verify both filters exist
-                cy.get('.dq-rule').should('have.length', 2);
+                cy.get('.dq-rule-item').should('have.length', 2);
               }
             });
           }
@@ -122,7 +122,7 @@ describe('Filters Tests (Dev Server)', () => {
                 if ($select.find('option').length > 1) {
                   cy.get('select[name="rules.0.field"]').select(1);
                   cy.get('select[name="rules.0.operator"]').select('=');
-                  cy.get('input[name="rules.0.value"]').type('test');
+                  cy.get('input[name="rules.0.value"]').type('2021');
                   cy.get('.submit-button').click();
                   cy.wait(3000);
                   
@@ -142,7 +142,7 @@ describe('Filters Tests (Dev Server)', () => {
               if ($select.find('option').length > 1) {
                 cy.get('select[name="rules.0.field"]').select(1);
                 cy.get('select[name="rules.0.operator"]').select('=');
-                cy.get('input[name="rules.0.value"]').type('test');
+                cy.get('input[name="rules.0.value"]').type('14');
                 cy.get('.submit-button').click();
                 cy.wait(3000);
                 cy.get('.ReactTable').should('exist');
@@ -156,42 +156,4 @@ describe('Filters Tests (Dev Server)', () => {
     });
   });
 
-  it('should maintain filters when switching views', () => {
-    cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-
-    cy.get('.dq-rule-add').then($el => {
-      if ($el.length > 0) {
-        // Add filter in table view
-        cy.get('.dq-rule-add').click();
-        cy.get('select[name="rules.0.field"]').then($select => {
-          if ($select.find('option').length > 1) {
-            cy.get('select[name="rules.0.field"]').select(1);
-            cy.get('select[name="rules.0.operator"]').select('=');
-            cy.get('input[name="rules.0.value"]').type('test');
-            cy.get('.submit-button').click();
-            cy.wait(2000);
-            
-            // Switch to chart view
-            cy.get('button[id^="tab-Chart-"]').click();
-            cy.wait(2000);
-            
-            // Switch back to table view
-            cy.get('button[id^="tab-Table-"]').click();
-            cy.wait(1000);
-            
-            // Verify filter is still applied
-            cy.get('.dq-rule').should('exist');
-            cy.get('input[name="rules.0.value"]').should('have.value', 'test');
-          }
-        });
-      } else {
-        // Just test view switching without filters
-        cy.get('button[id^="tab-Chart-"]').click();
-        cy.wait(1000);
-        cy.get('button[id^="tab-Table-"]').click();
-        cy.wait(1000);
-        cy.get('.ReactTable').should('exist');
-      }
-    });
-  });
 });

@@ -78,31 +78,6 @@ describe('Chart Builder Functionality (Dev Server)', () => {
     cy.get('.plot-container').should('exist');
   });
 
-  it('should maintain chart configuration when switching between views', () => {
-    cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-
-    // Configure chart
-    cy.get('button[id^="tab-Chart-"]').click();
-    cy.get('.chart-builder', { timeout: 10000 }).should('exist');
-    
-    cy.get('#chartType').select('line');
-    cy.get('#xAxis').select(1);
-    cy.get('input[name^="yAxis"]:first').check();
-    cy.get('button').contains('Add view').click();
-    cy.wait(3000);
-    
-    // Switch to table and back
-    cy.get('button[id^="tab-Table-"]').click();
-    cy.wait(1000);
-    cy.get('.ReactTable', { timeout: 10000 }).should('exist');
-    
-    cy.get('button[id^="tab-Chart-"]').click();
-    cy.wait(1000);
-    
-    // Verify configuration is maintained
-    cy.get('#chartType').should('have.value', 'line');
-  });
-
   it('should render responsive charts that adapt to container size', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
 

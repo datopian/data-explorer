@@ -42,8 +42,7 @@ describe('Map Spec Tests (Dev Server)', () => {
     cy.get('button[id^="tab-Map-"]').then($mapTab => {
       if ($mapTab.length > 0) {
         cy.wrap($mapTab).click();
-        cy.wait(3000); // Maps may take longer to load
-        cy.get('button[id^="tab-Map-"]').should('have.class', 'active');
+        cy.get('button[id^="tab-Map-"]', { timeout: 15000 }).should('have.class', 'tab-link-active');
       } else {
         cy.log('Map tab not available - may load directly in map view');
       }
@@ -56,8 +55,7 @@ describe('Map Spec Tests (Dev Server)', () => {
     cy.get('button[id^="tab-Table-"]').then($tableTab => {
       if ($tableTab.length > 0) {
         cy.wrap($tableTab).click();
-        cy.wait(2000);
-        cy.get('.ReactTable', { timeout: 10000 }).should('exist');
+        cy.get('.ReactTable', { timeout: 15000 }).should('exist');
       } else {
         cy.log('Table tab not available in map spec');
       }
@@ -66,9 +64,6 @@ describe('Map Spec Tests (Dev Server)', () => {
 
   it('should handle GeoJSON data loading', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    
-    // Wait for potential network requests to complete
-    cy.wait(5000);
     
     // Check if any error messages are displayed
     cy.get('body').then($body => {

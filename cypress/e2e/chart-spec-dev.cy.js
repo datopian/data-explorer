@@ -15,8 +15,7 @@ describe('Chart Spec Tests (Dev Server)', () => {
     cy.get('button[id^="tab-Chart-"]').then($chartTab => {
       if ($chartTab.length > 0) {
         cy.wrap($chartTab).click();
-        cy.wait(2000);
-        cy.get('button[id^="tab-Chart-"]').should('have.class', 'active');
+        cy.get('button[id^="tab-Chart-"]', { timeout: 10000 }).should('have.class', 'tab-link-active');
       } else {
         cy.log('Chart tab not available - may load directly in chart view');
       }
@@ -53,11 +52,10 @@ describe('Chart Spec Tests (Dev Server)', () => {
   it('should allow switching back to table view', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
     
-    cy.get('button[id^="tab-Table-"]').then($tableTab => {
+    cy.get('div').contains('Table View').then($tableTab => {
       if ($tableTab.length > 0) {
         cy.wrap($tableTab).click();
-        cy.wait(2000);
-        cy.get('.ReactTable', { timeout: 10000 }).should('exist');
+        cy.get('.ReactTable', { timeout: 15000 }).should('exist');
       } else {
         cy.log('Table tab not available in chart spec');
       }

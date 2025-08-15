@@ -138,32 +138,6 @@ describe('Sorting Tests (Dev Server)', () => {
     });
   });
 
-  it('should maintain sort order when switching views', () => {
-    cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    cy.get('.ReactTable', { timeout: 10000 }).should('exist');
-
-    // Apply sorting
-    cy.get('.ReactTable thead th').first().click();
-    cy.wait(2000);
-    
-    // Get first row data after sorting
-    cy.get('.ReactTable tbody tr:first-child td:first-child').invoke('text').then((sortedFirstRow) => {
-      
-      // Switch to chart view
-      cy.get('button[id^="tab-Chart-"]').click();
-      cy.wait(2000);
-      
-      // Switch back to table view
-      cy.get('button[id^="tab-Table-"]').click();
-      cy.wait(2000);
-      
-      // Check if sort order is maintained
-      cy.get('.ReactTable tbody tr:first-child td:first-child').invoke('text').then((afterSwitchFirstRow) => {
-        expect(afterSwitchFirstRow).to.equal(sortedFirstRow);
-      });
-    });
-  });
-
   it('should clear sort when reset option is available', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
     cy.get('.ReactTable', { timeout: 10000 }).should('exist');

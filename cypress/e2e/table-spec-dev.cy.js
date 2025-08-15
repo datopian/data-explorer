@@ -14,7 +14,7 @@ describe('Table Spec Tests (Dev Server)', () => {
   it('should display table view by default', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
     cy.get('.ReactTable', { timeout: 10000 }).should('be.visible');
-    cy.get('button[id^="tab-Table-"]').should('have.class', 'active');
+    cy.get('button[id^="tab-Table-"]').should('have.class', 'tab-link-active');
   });
 
   it('should allow sorting in table view', () => {
