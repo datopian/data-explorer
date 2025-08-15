@@ -2,7 +2,7 @@ describe('Sorting Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=table');
+    cy.visit('/?spec=table');
   });
 
   it('should allow sorting by clicking column headers', () => {

@@ -2,7 +2,7 @@ describe('Filters Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=table');
+    cy.visit('/?spec=table');
   });
 
   it('should allow adding a simple filter', () => {

@@ -7,8 +7,9 @@ on:
     branches: [ newdxp ]
 
 jobs:
-  cypress-run:
+  cypress-main-tests:
     runs-on: ubuntu-latest
+    name: Main Tests (Development Server)
 
     strategy:
       matrix:
@@ -27,51 +28,26 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Start development server
-        run: |
-          # Start server
-          yarn start
-        env:
-          CI: true
-
-      - name: Wait for server to be ready
-        run: |
-          # Wait up to 60 seconds for server to start
-          timeout=60
-          while [ $timeout -gt 0 ]; do
-            if curl -f http://localhost:3000 > /dev/null 2>&1; then
-              echo "Server is ready!"
-              break
-            fi
-            echo "Waiting for server... ($timeout seconds remaining)"
-            sleep 2
-            timeout=$((timeout-2))
-          done
-
-          if [ $timeout -le 0 ]; then
-            echo "Server failed to start within 60 seconds"
-            echo "=== Server log ==="
-            cat server.log || echo "No server log found"
-            exit 1
-          fi
-
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           install: false  # Dependencies already installed
+          start: yarn start
           wait-on: 'http://localhost:3000'
-          wait-on-timeout: 60
+          wait-on-timeout: 120
           browser: chrome
           record: false
+          command: yarn cypress:run
         env:
           # Ensure Cypress runs with the same Node options if needed
           NODE_OPTIONS: "--openssl-legacy-provider"
+          CI: true
 
       - name: Upload Cypress screenshots
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots
+          name: main-tests-cypress-screenshots
           path: cypress/screenshots
           retention-days: 7
 
@@ -79,7 +55,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-videos
+          name: main-tests-cypress-videos
           path: cypress/videos
           retention-days: 7
 
@@ -87,6 +63,66 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: server-logs
+          name: main-tests-server-logs
+          path: server.log
+          retention-days: 7
+
+  cypress-spec-tests:
+    runs-on: ubuntu-latest
+    name: Component Specification Tests
+
+    strategy:
+      matrix:
+        node-version: [22.18.0]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Component Specification Tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: false  # Dependencies already installed
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          browser: chrome
+          record: false
+          command: yarn cypress:run:specs
+        env:
+          # Ensure Cypress runs with the same Node options if needed
+          NODE_OPTIONS: "--openssl-legacy-provider"
+          CI: true
+
+      - name: Upload Cypress screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-tests-cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 7
+
+      - name: Upload Cypress videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-tests-cypress-videos
+          path: cypress/videos
+          retention-days: 7
+
+      - name: Upload server logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-tests-server-logs
           path: server.log
           retention-days: 7

@@ -2,7 +2,7 @@ describe('Views Toggle Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=table');
+    cy.visit('/?spec=table');
   });
 
   it('should display table view by default', () => {

@@ -2,7 +2,7 @@ describe('Chart Spec Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=chart');
+    cy.visit('/?spec=chart');
   });
 
   it('should load chart specification', () => {

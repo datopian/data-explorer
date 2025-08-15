@@ -2,7 +2,7 @@ describe('Query Builder Integration Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=table');
+    cy.visit('/?spec=table');
   });
 
   it('should update curl query when filters are added', () => {

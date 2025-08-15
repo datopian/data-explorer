@@ -3,7 +3,7 @@ describe('Chart Builder Functionality (Dev Server)', () => {
     cy.clearLocalStorage();
     cy.clearCookies();
     // Visit the chart spec for testing chart builder functionality
-    cy.visit('/data-explorer.html?spec=chart');
+    cy.visit('/?spec=chart');
   });
 
   it('should allow user to switch to chart view and access chart builder', () => {

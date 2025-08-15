@@ -51,10 +51,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:open:dev": "cypress open --spec 'cypress/e2e/**/*-dev.cy.js'",
-    "cypress:run:dev": "cypress run --spec 'cypress/e2e/**/*-dev.cy.js'",
-    "cypress:open:specs": "cypress open --spec 'cypress/e2e/**/*-spec-dev.cy.js'",
+    "cypress:run": "cypress run --spec 'cypress/e2e/**/*-dev.cy.js'",
+    "cypress:open:specs": "cypress open",
     "cypress:run:specs": "cypress run --spec 'cypress/e2e/**/*-spec-dev.cy.js'"
   },
   "babel": {
@@ -91,6 +89,6 @@
     "./src/i18n.js"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }

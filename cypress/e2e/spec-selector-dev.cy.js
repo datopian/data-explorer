@@ -23,30 +23,30 @@ describe('Spec Selector Tests (Dev Server)', () => {
 
   it('should have working links to each spec', () => {
     // Test map spec link
-    cy.get('.spec-card').contains('Map View').should('have.attr', 'href', '/data-explorer.html?spec=map');
+    cy.get('.spec-card').contains('Map View').should('have.attr', 'href', '/?spec=map');
     
     // Test table spec link
-    cy.get('.spec-card').contains('Table View').should('have.attr', 'href', '/data-explorer.html?spec=table');
+    cy.get('.spec-card').contains('Table View').should('have.attr', 'href', '/?spec=table');
     
     // Test chart spec link
-    cy.get('.spec-card').contains('Chart View').should('have.attr', 'href', '/data-explorer.html?spec=chart');
+    cy.get('.spec-card').contains('Chart View').should('have.attr', 'href', '/?spec=chart');
   });
 
   it('should navigate to table spec when clicked', () => {
     cy.get('.spec-card').contains('Table View').click();
-    cy.url().should('include', '/data-explorer.html?spec=table');
+    cy.url().should('include', '?spec=table');
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
   });
 
   it('should navigate to chart spec when clicked', () => {
     cy.get('.spec-card').contains('Chart View').click();
-    cy.url().should('include', '/data-explorer.html?spec=chart');
+    cy.url().should('include', '?spec=chart');
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
   });
 
   it('should navigate to map spec when clicked', () => {
     cy.get('.spec-card').contains('Map View').click();
-    cy.url().should('include', '/data-explorer.html?spec=map');
+    cy.url().should('include', '?spec=map');
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
   });
 

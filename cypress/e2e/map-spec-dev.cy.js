@@ -2,7 +2,7 @@ describe('Map Spec Tests (Dev Server)', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/data-explorer.html?spec=map');
+    cy.visit('/?spec=map');
   });
 
   it('should load map specification', () => {
