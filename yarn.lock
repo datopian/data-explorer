@@ -1540,7 +1540,7 @@
 
 "@datopian/datapackage-views-js@git+https://github.com/datopian/datapackage-views-js.git":
   version "1.4.5"
-  resolved "git+ssh://git@github.com/datopian/datapackage-views-js.git#579fc5232b074a00649b39b1dadc6aa40ddbe26c"
+  resolved "git+https://github.com/datopian/datapackage-views-js.git#579fc5232b074a00649b39b1dadc6aa40ddbe26c"
   dependencies:
     datapackage-render "git+https://github.com/frictionlessdata/datapackage-render-js.git"
     i18next "^19.0.3"
@@ -1562,7 +1562,7 @@
 
 "@datopian/datastore-query-builder@git+https://github.com/datopian/datastore-query-builder.git#feature/tools-integration":
   version "0.4.16"
-  resolved "git+ssh://git@github.com/datopian/datastore-query-builder.git#289ae664d786b314eb419960cef37866a6ba5229"
+  resolved "git+https://github.com/datopian/datastore-query-builder.git#289ae664d786b314eb419960cef37866a6ba5229"
   dependencies:
     formik "^1.5.8"
     i18next "^19.0.3"
@@ -5973,7 +5973,7 @@ data.js@^0.12.11:
 
 "datapackage-render@git+https://github.com/frictionlessdata/datapackage-render-js.git":
   version "0.3.7"
-  resolved "git+ssh://git@github.com/frictionlessdata/datapackage-render-js.git#646b85eaccbb6961d5a734c54fbb00a4c9923b5e"
+  resolved "git+https://github.com/frictionlessdata/datapackage-render-js.git#646b85eaccbb6961d5a734c54fbb00a4c9923b5e"
   dependencies:
     lodash "^4.17.21"
 
