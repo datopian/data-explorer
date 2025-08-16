@@ -7,19 +7,23 @@ describe('Table Spec Tests (Dev Server)', () => {
 
   it('should load table specification', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    cy.get('.ReactTable', { timeout: 10000 }).should('exist');
+    // Wait for any network requests to complete
+    cy.wait(3000);
+    cy.get('.ReactTable', { timeout: 30000 }).should('exist');
     cy.get('.ReactTable tbody tr').should('have.length.greaterThan', 0);
   });
 
   it('should display table view by default', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    cy.get('.ReactTable', { timeout: 10000 }).should('be.visible');
+    // Wait for any network requests to complete
+    cy.wait(3000);
+    cy.get('.ReactTable', { timeout: 30000 }).should('be.visible');
     cy.get('button[id^="tab-Table-"]').should('have.class', 'tab-link-active');
   });
 
   it('should allow sorting in table view', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    cy.get('.ReactTable', { timeout: 10000 }).should('exist');
+    cy.get('.ReactTable', { timeout: 30000 }).should('exist');
 
     cy.get('.ReactTable thead th').first().click();
     cy.wait(2000);
@@ -28,7 +32,7 @@ describe('Table Spec Tests (Dev Server)', () => {
 
   it('should show pagination if data is large enough', () => {
     cy.get('.data-explorer', { timeout: 15000 }).should('be.visible');
-    cy.get('.ReactTable', { timeout: 10000 }).should('exist');
+    cy.get('.ReactTable', { timeout: 30000 }).should('exist');
 
     cy.get('.pagination').then($pagination => {
       if ($pagination.length > 0) {

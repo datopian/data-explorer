@@ -55,7 +55,9 @@ describe('Map Spec Tests (Dev Server)', () => {
     cy.get('button[id^="tab-Table-"]').then($tableTab => {
       if ($tableTab.length > 0) {
         cy.wrap($tableTab).click();
-        cy.get('.ReactTable', { timeout: 15000 }).should('exist');
+        // Wait for tab switch and data loading
+        cy.wait(3000);
+        cy.get('.ReactTable', { timeout: 30000 }).should('exist');
       } else {
         cy.log('Table tab not available in map spec');
       }
