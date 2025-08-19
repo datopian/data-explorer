@@ -18,10 +18,9 @@ const widgets = [
   ]
 
 const datapackage = {
-    name: 'test',
     resources: [
       {
-        path: 'https://montreal.l3.ckan.io/en/dataset/587de1ea-817b-4e10-b387-83ec89f94e1b/resource/bc1e71e4-269a-4fa9-a278-ab6bfd80ec23/download/murales.geojson',
+        path: 'https://storage.googleapis.com/dx-nationalgrid-staging/nationalgrid-staging/resources/05efd1e3-38f4-4a3f-b68a-f68790b786d8/tnuosgenzones_geojs.geojson',
         pathType: 'remote',
         name: 'geojson-test',
         format: 'GeoJSON',

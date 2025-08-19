@@ -2,6 +2,7 @@ import "../../i18n/i18n";
 import React from 'react'
 import Loader from 'react-loader'
 import { DataView } from '@datopian/datapackage-views-js'
+import Table from "../DataView/table";
 import { useTranslation } from "react-i18next";
 
 export default props => {
@@ -31,7 +32,18 @@ export default props => {
       {
         checkIfGuideIsNeeded(views[0])
         ? showGuideText(views[0].specType)
-        : views.map(view => <DataView key={Math.random()} datapackage={{views: [view]}} />)
+        : views.map(view => {
+          // use react-table v8 for table view
+          // it's not supported in the current version of @datopian/datapackage-views-js
+          // so we need to handle it separately
+          if (view && view.specType === 'table'  ) {    
+            if (view.resources && view.resources[0]) {
+              return <Table resource={view.resources[0]}  data={view.resources[0].data || []} schema={view.resources[0].schema} />
+            }
+          } else {
+            return <DataView key={Math.random()} datapackage={{views: [view]}} />
+          }
+        })
       }
     </div>
   </Loader>
