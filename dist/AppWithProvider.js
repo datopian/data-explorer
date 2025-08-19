@@ -4,31 +4,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _react = _interopRequireDefault(require("react"));
-
 var _reactRedux = require("react-redux");
-
 var _store = _interopRequireDefault(require("./store"));
-
 require("./App.css");
-
 var _App2 = _interopRequireDefault(require("./App"));
-
 require("./i18n/i18n");
-
 var _reactI18next = require("react-i18next");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var _default = props => {
+  const {
+    t
+  } = (0, _reactI18next.useTranslation)();
+  let datapackage;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var _default = function _default(props) {
-  var _useTranslation = (0, _reactI18next.useTranslation)(),
-      t = _useTranslation.t;
-
-  var datapackage; // Allow datapackage json or obj
-
+  // Allow datapackage json or obj
   if (typeof props.datapackage === 'string') {
     try {
       datapackage = JSON.parse(props.datapackage);
@@ -37,27 +27,24 @@ var _default = function _default(props) {
       datapackage = {};
       console.warn('Invalid datapackage', e);
     }
-  } else if (_typeof(props.datapackage) === 'object') {
+  } else if (typeof props.datapackage === 'object') {
     datapackage = props.datapackage;
   }
-
-  var views;
-
+  let views;
   try {
     views = JSON.parse(JSON.stringify(datapackage.views));
     delete datapackage.views;
-  } catch (_unused) {
+  } catch {
     console.log('No views set on datapackage');
   }
-
-  var widgetsFromViews = function widgetsFromViews(views) {
-    var widgetNames = {
+  const widgetsFromViews = views => {
+    const widgetNames = {
       'table': t('Table'),
       'tabularmap': t('Map'),
       'map': t('Map'),
       'simple': t('Chart')
     };
-    return views.map(function (view, index) {
+    return views.map((view, index) => {
       return {
         active: index === 0 ? true : false,
         name: widgetNames[view.specType],
@@ -67,14 +54,12 @@ var _default = function _default(props) {
       };
     });
   };
-
-  var widgets = props.widgets ? props.widgets : widgetsFromViews(views);
-  return _react.default.createElement(_reactRedux.Provider, {
+  const widgets = props.widgets ? props.widgets : widgetsFromViews(views);
+  return /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
     store: (0, _store.default)({
-      widgets: widgets,
-      datapackage: datapackage
+      widgets,
+      datapackage
     })
-  }, _react.default.createElement(_App2.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_App2.default, null));
 };
-
 exports.default = _default;

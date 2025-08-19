@@ -4,47 +4,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("../../i18n/i18n");
-
 var _react = _interopRequireDefault(require("react"));
-
 var _reactPaginate = _interopRequireDefault(require("react-paginate"));
-
 var _reactI18next = require("react-i18next");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(props) {
-  var _useTranslation = (0, _reactI18next.useTranslation)(),
-      t = _useTranslation.t;
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var _default = props => {
+  const {
+    t
+  } = (0, _reactI18next.useTranslation)();
   function handlePageClick(data) {
-    var selected = data.selected;
-    var offset = Math.ceil(selected * 100);
-    var resource = JSON.parse(JSON.stringify(props.datapackage.resources[0]));
-    var urlObj = new URL(resource.api);
-
+    const selected = data.selected;
+    const offset = Math.ceil(selected * 100);
+    const resource = JSON.parse(JSON.stringify(props.datapackage.resources[0]));
+    const urlObj = new URL(resource.api);
     if (resource.api.includes('datastore_search?')) {
       urlObj.searchParams.set('offset', offset);
     } else if (resource.api.includes('datastore_search_sql?')) {
-      var sql = urlObj.searchParams.get('sql');
-      var regex = /OFFSET(%20|\s)\d+/;
-
+      const sql = urlObj.searchParams.get('sql');
+      const regex = /OFFSET(%20|\s)\d+/;
       if (regex.test(sql)) {
-        urlObj.searchParams.set('sql', sql.replace(regex, "OFFSET ".concat(offset)));
+        urlObj.searchParams.set('sql', sql.replace(regex, `OFFSET ${offset}`));
       } else {
-        urlObj.searchParams.set('sql', sql + " OFFSET ".concat(offset));
+        urlObj.searchParams.set('sql', sql + ` OFFSET ${offset}`);
       }
-
       resource.api = resource.api.includes('offset');
     }
-
     resource.api = urlObj.href;
     props.updateAction(resource);
   }
-
-  return _react.default.createElement(_reactPaginate.default, {
+  return /*#__PURE__*/_react.default.createElement(_reactPaginate.default, {
     previousLabel: t('Previous'),
     nextLabel: t('Next'),
     breakLabel: '...',
@@ -53,9 +42,8 @@ var _default = function _default(props) {
     marginPagesDisplayed: 2,
     pageRangeDisplayed: 5,
     onPageChange: handlePageClick,
-    containerClassName: 'pagination',
+    containerClassName: Object.keys(props.datapackage.resources[0].data || []).length === 0 ? 'hidden' : 'pagination',
     activeClassName: 'active'
   });
 };
-
 exports.default = _default;

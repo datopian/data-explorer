@@ -4,18 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _default = function _default() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
+var _default = (state = {}, action) => {
   switch (action.type) {
     case 'DATAPACKAGE_LOAD':
       return action.payload.datapackage;
-
     default:
       return state;
   }
 };
-
 exports.default = _default;
