@@ -1,6 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { thunk } from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 
 const initialState = {
@@ -13,10 +12,12 @@ const initialState = {
 }
 
 export default function configureStore(props) {
+  const composeEnhancers = 
+    (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
  
- return createStore(
-   rootReducer,
-   Object.assign({}, initialState, props),
-   composeWithDevTools(applyMiddleware(thunk))
- )
+  return createStore(
+    rootReducer,
+    Object.assign({}, initialState, props),
+    composeEnhancers(applyMiddleware(thunk))
+  )
 }
