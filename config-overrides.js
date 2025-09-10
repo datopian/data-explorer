@@ -26,6 +26,14 @@ module.exports = function override(config, env) {
     }
   });
 
+  // Add rule for handling .mjs files
+  config.module.rules.push({
+    test: /\.m?js$/,
+    resolve: {
+      fullySpecified: false
+    }
+  });
+
   // Force webpack to use a single React instance to avoid hook errors
   config.resolve = config.resolve || {};
 
@@ -39,6 +47,7 @@ module.exports = function override(config, env) {
     util: require.resolve('util'),
     url: require.resolve('url'),
     assert: require.resolve('assert'),
+    'process/browser': require.resolve('process/browser'),
     vm: false,
     fs: false
   };
